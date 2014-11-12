@@ -51,7 +51,7 @@ public class ConcreteCreatureFactory
 		}
 		else
 		{
-			return new Rabbit();
+			return new Monkey();
 		}
 		
 		// TODO: Throw an exception if the creature type doesnt exist. 

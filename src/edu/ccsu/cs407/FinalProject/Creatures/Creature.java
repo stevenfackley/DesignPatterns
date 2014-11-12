@@ -1,5 +1,6 @@
 package edu.ccsu.cs407.FinalProject.Creatures;
 
+import AnimalComponents.Torso;
 import edu.ccsu.cs407.FinalProject.Strategies.EatingStrategy;
 import edu.ccsu.cs407.FinalProject.Strategies.FightStrategy;
 import edu.ccsu.cs407.FinalProject.Strategies.MovementStrategy;
@@ -24,6 +25,8 @@ public abstract class Creature
 	private boolean canEatLarger;
 	private int size;
 	private int movementSpeed;
+	protected Torso torso;
+	protected int startingHealth;
 
     public Creature(){
         name = null;
@@ -34,6 +37,8 @@ public abstract class Creature
         canEatLarger =  false;
         size =  -1;
         movementSpeed = -1;
+        torso = null;
+        startingHealth = 0;
     }
 	
 	/**
@@ -116,30 +121,6 @@ public abstract class Creature
 		fighting = f;
 	}
 	
-	public EatingStrategy getEating() {
-		return eating;
-	}
-
-	public MovementStrategy getMoving() {
-		return moving;
-	}
-
-	public FightStrategy getFighting() {
-		return fighting;
-	}
-
-	public boolean isCannibal() {
-		return isCannibal;
-	}
-
-	public boolean isCanEatLarger() {
-		return canEatLarger;
-	}
-
-	public int getMovementSpeed() {
-		return movementSpeed;
-	}
-
 	public void setIsCannibal(boolean b)
 	{
 		isCannibal = b;
@@ -164,6 +145,10 @@ public abstract class Creature
 	{
 		movementSpeed = m;
 	}
+	public int getStartingHealth()
+	{
+		return startingHealth;
+	}
 	
 	public String toString()
 	{
@@ -172,7 +157,8 @@ public abstract class Creature
                             .append("\nMoving Strategy: " + moving.toString() )
                             .append("\nFighting Strategy: " + fighting.toString() + "\nSize: " + size  )
                             .append("\nMovement Speed: " + movementSpeed + "\nIs a cannibal? " + isCannibal)
-                            .append( "\nCan it eat larger creatures? " + canEatLarger).toString();
+                            .append( "\nCan it eat larger creatures? " + canEatLarger)
+                            .append("\nBody Parts: " + torso.toString() + " -> Total(" + startingHealth + ")").toString();
 
 		return s;
 	}
