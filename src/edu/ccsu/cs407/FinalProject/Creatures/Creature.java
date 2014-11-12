@@ -116,6 +116,30 @@ public abstract class Creature
 		fighting = f;
 	}
 	
+	public EatingStrategy getEating() {
+		return eating;
+	}
+
+	public MovementStrategy getMoving() {
+		return moving;
+	}
+
+	public FightStrategy getFighting() {
+		return fighting;
+	}
+
+	public boolean isCannibal() {
+		return isCannibal;
+	}
+
+	public boolean isCanEatLarger() {
+		return canEatLarger;
+	}
+
+	public int getMovementSpeed() {
+		return movementSpeed;
+	}
+
 	public void setIsCannibal(boolean b)
 	{
 		isCannibal = b;

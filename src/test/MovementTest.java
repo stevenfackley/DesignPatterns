@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import edu.ccsu.cs407.FinalProject.Movements.Fly;
 import edu.ccsu.cs407.FinalProject.Movements.Walk;
 import edu.ccsu.cs407.FinalProject.Strategies.MovementStrategy;
-import junit.framework.Assert;
 
 import org.junit.Test;
 
