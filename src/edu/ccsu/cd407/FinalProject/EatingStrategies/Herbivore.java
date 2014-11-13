@@ -1,6 +1,5 @@
-package edu.ccsu.cs407.FinalProject.Creatures;
+package edu.ccsu.cd407.FinalProject.EatingStrategies;
 
-import edu.ccsu.cs407.FinalProject.Strategies.EatingStrategy;
 
 /**
  * Class that defines a functionality of the eat

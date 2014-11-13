@@ -1,4 +1,4 @@
-package edu.ccsu.cs407.FinalProject.Strategies;
+package edu.ccsu.cs407.FinalProject.FightStrategies;
 
 /**
  * Interface to outline a fighting strategy

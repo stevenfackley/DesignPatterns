@@ -1,9 +1,9 @@
 package test;
 
 import static org.junit.Assert.*;
-import edu.ccsu.cs407.FinalProject.Movements.Fly;
-import edu.ccsu.cs407.FinalProject.Movements.Walk;
-import edu.ccsu.cs407.FinalProject.Strategies.MovementStrategy;
+import edu.ccsu.cs407.FinalProject.MovementStrategies.Fly;
+import edu.ccsu.cs407.FinalProject.MovementStrategies.MovementStrategy;
+import edu.ccsu.cs407.FinalProject.MovementStrategies.Walk;
 
 import org.junit.Test;
 

@@ -1,9 +1,9 @@
 package edu.ccsu.cs407.FinalProject.Creatures;
 
-import AnimalComponents.Torso;
-import edu.ccsu.cs407.FinalProject.Strategies.EatingStrategy;
-import edu.ccsu.cs407.FinalProject.Strategies.FightStrategy;
-import edu.ccsu.cs407.FinalProject.Strategies.MovementStrategy;
+import edu.ccsu.cd407.FinalProject.EatingStrategies.EatingStrategy;
+import edu.ccsu.cs407.CreatureParts.Torso;
+import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
+import edu.ccsu.cs407.FinalProject.MovementStrategies.MovementStrategy;
 
 /**
  * Creature class outlines a typical creature. Creatures have
@@ -28,19 +28,6 @@ public abstract class Creature
 	protected Torso torso;
 	protected int startingHealth;
 
-    public Creature(){
-        name = null;
-        eating =  null;
-        moving =  null;
-        fighting =  null;
-        isCannibal =  false;
-        canEatLarger =  false;
-        size =  -1;
-        movementSpeed = -1;
-        torso = null;
-        startingHealth = 0;
-    }
-	
 	/**
 	 * Constructor for creating creatures.
 	 * 
@@ -52,9 +39,10 @@ public abstract class Creature
 	 * @param eatBig	boolean to determine if it can eat larger animals
 	 * @param s			integer defining creatures size
 	 * @param ms		integer defining creatures movement speed
+	 * @param t			torso to define basic creature form
 	 */
 	public Creature(String n, EatingStrategy eats, MovementStrategy moves, FightStrategy fights, 
-			boolean cannibal, boolean eatBig,int s, int ms)
+			boolean cannibal, boolean eatBig,int s, int ms, Torso t)
 	{
 		name = n;
 		eating = eats;
@@ -64,6 +52,7 @@ public abstract class Creature
 		canEatLarger = eatBig;
 		size = s;
 		movementSpeed = ms;
+		torso = t;
 	};
 	
 	/**
@@ -71,6 +60,7 @@ public abstract class Creature
 	 * be overridden for additional functionality. At the least creatures
 	 * must move, fight, and eat.
 	 */
+	
 	public void TakeTurn()
 	{
 		// Template Method

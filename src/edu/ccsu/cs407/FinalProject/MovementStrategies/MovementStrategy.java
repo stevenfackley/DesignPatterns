@@ -1,4 +1,4 @@
-package edu.ccsu.cs407.FinalProject.Strategies;
+package edu.ccsu.cs407.FinalProject.MovementStrategies;
 
 /**
 * Interface to outline a movement strategy

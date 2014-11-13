@@ -1,4 +1,4 @@
-package AnimalComponents;
+package edu.ccsu.cs407.CreatureParts;
 
 import java.util.Iterator;
 

@@ -1,4 +1,4 @@
-package edu.ccsu.cs407.FinalProject.Strategies;
+package edu.ccsu.cd407.FinalProject.EatingStrategies;
 
 /**
  * Interface to outline an eating strategy

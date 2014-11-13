@@ -1,6 +1,5 @@
-package edu.ccsu.cs407.FinalProject.Fights;
+package edu.ccsu.cs407.FinalProject.FightStrategies;
 
-import edu.ccsu.cs407.FinalProject.Strategies.FightStrategy;
 
 /**
  * Class that defines a functionality of the fight

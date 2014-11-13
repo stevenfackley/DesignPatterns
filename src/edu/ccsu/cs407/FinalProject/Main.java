@@ -13,7 +13,7 @@ public class Main
 		
 		// Make a creature by making a call to the creature factory
 		Creature creature = factory.createCreature("wolf");
-		Creature creature2 = factory.createCreature("monkey");
+		Creature creature2 = factory.createCreature("rabbit");
 		
 		// Print the creature
 		System.out.println(creature.toString());

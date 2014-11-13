@@ -7,4 +7,4 @@
  * @author Seth
  */
 
-package edu.ccsu.cs407.FinalProject.Movements;
+package edu.ccsu.cs407.FinalProject.MovementStrategies;
