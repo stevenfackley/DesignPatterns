@@ -144,7 +144,7 @@ public abstract class Creature
 		form.add(b);
 	}
 	
-	public void removeBodPart(BodyPart b)
+	public void removeBodyPart(BodyPart b)
 	{
 		form.remove(b);
 	}
