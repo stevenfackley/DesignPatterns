@@ -1,7 +1,8 @@
 package edu.ccsu.cs407.FinalProject.Creatures;
 
 import edu.ccsu.cd407.FinalProject.EatingStrategies.EatingStrategy;
-import edu.ccsu.cs407.CreatureParts.Torso;
+import edu.ccsu.cs407.FinalProject.CreatureParts.BodyPart;
+import edu.ccsu.cs407.FinalProject.CreatureParts.Form;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 import edu.ccsu.cs407.FinalProject.MovementStrategies.MovementStrategy;
 
@@ -25,8 +26,7 @@ public abstract class Creature
 	private boolean canEatLarger;
 	private int size;
 	private int movementSpeed;
-	protected Torso torso;
-	protected int startingHealth;
+	private Form form;
 
 	/**
 	 * Constructor for creating creatures.
@@ -39,10 +39,9 @@ public abstract class Creature
 	 * @param eatBig	boolean to determine if it can eat larger animals
 	 * @param s			integer defining creatures size
 	 * @param ms		integer defining creatures movement speed
-	 * @param t			torso to define basic creature form
 	 */
 	public Creature(String n, EatingStrategy eats, MovementStrategy moves, FightStrategy fights, 
-			boolean cannibal, boolean eatBig,int s, int ms, Torso t)
+			boolean cannibal, boolean eatBig,int s, int ms)
 	{
 		name = n;
 		eating = eats;
@@ -52,7 +51,7 @@ public abstract class Creature
 		canEatLarger = eatBig;
 		size = s;
 		movementSpeed = ms;
-		torso = t;
+		form = new Form();
 	};
 	
 	/**
@@ -135,21 +134,31 @@ public abstract class Creature
 	{
 		movementSpeed = m;
 	}
-	public int getStartingHealth()
+	public int getHealth()
 	{
-		return startingHealth;
+		return form.getHealth();
+	}
+	
+	public void addBodyPart(BodyPart b)
+	{
+		form.add(b);
+	}
+	
+	public void removeBodPart(BodyPart b)
+	{
+		form.remove(b);
 	}
 	
 	public String toString()
 	{
-        String s = new StringBuilder()
+        StringBuilder s = new StringBuilder()
                             .append("Name: "  + name + "\nEating Strategy: " + eating.toString())
                             .append("\nMoving Strategy: " + moving.toString() )
                             .append("\nFighting Strategy: " + fighting.toString() + "\nSize: " + size  )
                             .append("\nMovement Speed: " + movementSpeed + "\nIs a cannibal? " + isCannibal)
-                            .append( "\nCan it eat larger creatures? " + canEatLarger)
-                            .append("\nBody Parts: " + torso.toString() + " -> Total(" + startingHealth + ")").toString();
+                            .append("\nCan it eat larger creatures? " + canEatLarger)
+                            .append("\nHealth: " + getHealth());
 
-		return s;
+		return s.toString();
 	}
 }
