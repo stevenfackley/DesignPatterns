@@ -11,6 +11,11 @@ package edu.ccsu.cs407.FinalProject.Exceptions;
 
 public class InvalidCreatureException extends Exception 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5024915850163775973L;
+
 	public InvalidCreatureException()
 	{
 		super("Invalid Creature Parameter.");

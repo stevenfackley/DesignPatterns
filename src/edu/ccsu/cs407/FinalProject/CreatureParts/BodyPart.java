@@ -1,7 +1,6 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+
 
 /**
  * A BodyPart is a component of an animal, BodyPart

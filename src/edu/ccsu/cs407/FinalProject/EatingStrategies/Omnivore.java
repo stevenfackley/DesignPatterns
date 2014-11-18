@@ -1,4 +1,4 @@
-package edu.ccsu.cd407.FinalProject.EatingStrategies;
+package edu.ccsu.cs407.FinalProject.EatingStrategies;
 
 
 /**

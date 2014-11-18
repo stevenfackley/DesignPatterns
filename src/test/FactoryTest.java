@@ -3,7 +3,7 @@ package test;
 import static org.junit.Assert.*;
 import edu.ccsu.cs407.FinalProject.Creatures.ConcreteCreatureFactory;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
-import junit.framework.TestCase;
+
 
 import org.junit.Test;
 

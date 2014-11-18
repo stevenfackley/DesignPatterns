@@ -1,8 +1,8 @@
 package edu.ccsu.cs407.FinalProject.Creatures;
 
-import edu.ccsu.cd407.FinalProject.EatingStrategies.EatingStrategy;
 import edu.ccsu.cs407.FinalProject.CreatureParts.BodyPart;
 import edu.ccsu.cs407.FinalProject.CreatureParts.Form;
+import edu.ccsu.cs407.FinalProject.EatingStrategies.EatingStrategy;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 import edu.ccsu.cs407.FinalProject.MovementStrategies.MovementStrategy;
 

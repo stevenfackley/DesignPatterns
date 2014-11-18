@@ -1,7 +1,6 @@
 package edu.ccsu.cs407.FinalProject.Creatures;
 
-import edu.ccsu.cd407.FinalProject.EatingStrategies.Carnivore;
-import edu.ccsu.cs407.FinalProject.CreatureParts.*;
+import edu.ccsu.cs407.FinalProject.EatingStrategies.Carnivore;
 import edu.ccsu.cs407.FinalProject.FightStrategies.Fights;
 import edu.ccsu.cs407.FinalProject.MovementStrategies.Walk;
 

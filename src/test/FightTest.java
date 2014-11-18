@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 import edu.ccsu.cs407.FinalProject.FightStrategies.Fights;
 import edu.ccsu.cs407.FinalProject.FightStrategies.RunAway;
-import junit.framework.Assert;
 
 import org.junit.Test;
 
