@@ -10,10 +10,10 @@ public class TileFactory {
 	}
 	private TileFactory(){}
 	
-	public Tile createTile(String name){
+	public Tile createTile(String name, int maxPlants, int range){
 		if(name.equalsIgnoreCase("water"))
 			return new Water();
 		else
-			return new Land();
+			return new Land(maxPlants,range);
 	}
 }
