@@ -26,6 +26,13 @@ public class MyCanvas extends JPanel {
 			g.setColor(Color.BLACK);
 			g.drawRect(MainThread.mouseDragStartX, MainThread.mouseDragStartY, MainThread.mouseX-MainThread.mouseDragStartX, MainThread.mouseY-MainThread.mouseDragStartY);
 		}
+		else{
+			g.setColor(Color.WHITE);
+			g.fillRect(10, 10, 200, 100);
+			g.setColor(Color.BLACK);
+			g.drawString("tooltip goes here",15, 25);
+			g.drawRect(10, 10, 200, 100);
+		}
 		repaint();
 	}
 }

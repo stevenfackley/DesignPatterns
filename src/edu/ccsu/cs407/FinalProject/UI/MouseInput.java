@@ -86,8 +86,6 @@ public class MouseInput implements MouseListener,MouseMotionListener,MouseWheelL
 			else if(MainThread.startTileY<=0)
 				MainThread.startTileY=0;
 		}
-		System.out.println(MainThread.startTileX + " " + MainThread.startTileY + " " + (MainThread.startTileX+MainThread.width) + " " + (MainThread.startTileY+MainThread.width));
-		
 		MainThread.tileSize = (double)MainThread.canvasWidth/MainThread.width;
 		MainThread.offset=(MainThread.startTileX-Math.floor(MainThread.startTileX))*MainThread.tileSize;
 			

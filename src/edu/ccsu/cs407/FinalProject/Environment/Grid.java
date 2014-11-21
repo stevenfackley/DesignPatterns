@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.util.Random;
 
 import edu.ccsu.cs407.FinalProject.MainThread;
+import edu.ccsu.cs407.FinalProject.Creatures.ConcreteCreatureFactory;
 
 public class Grid {
 	private Random rand = new Random();
@@ -31,18 +32,19 @@ public class Grid {
 		int area=width*width;
 		seedLand(area/250);
 		growLand(25);
+		addCreatures(area/10);
 	}
 	
 	public Tile getTile(int x,int y){
 		return data[x][y];
 	}
 	public void setTile(int x,int y,String tile,int maxPlants,int range){
-		data[x][y] = tileFactory.createTile(tile,maxPlants , range);
+		data[x][y] = tileFactory.createTile(tile,maxPlants,range);
 	}
 	public int getWidth(){
 		return width;
 	}
-	public void seedLand(int numIslands){
+	private void seedLand(int numIslands){
 		int randX = 0;
 		int randY = 0;
 		for(int i=0; i<numIslands; i++){
@@ -51,7 +53,7 @@ public class Grid {
 			this.setTile(randX, randY, "land",0,0);
 		}
 	}
-	public void growLand(int iterations){
+	private void growLand(int iterations){
 		for(int iter=0; iter<iterations; iter++){
 			for(int i=1+(width/iterations*iter)/5; i<width-(width/iterations*iter)/5-1; i++){
 				for(int j=1+(width/iterations*iter)/5; j<width-(width/iterations*iter)/5-1; j++){
@@ -60,6 +62,20 @@ public class Grid {
 							setTile(i,j,"land",0+100*iter/iterations,(iterations-iter)/iterations*25+25);
 					}
 				}
+			}
+		}
+	}
+	
+	//Debug Method
+	private void addCreatures(int num){
+		int randX = 0;
+		int randY = 0;
+		ConcreteCreatureFactory factory = ConcreteCreatureFactory.getInstance();
+		for(int i=0; i<num; i++){
+			randX = rand.nextInt(width);
+			randY = rand.nextInt(width);
+			if(data[randX][randY] instanceof Land && data[randX][randY].carnivore==null){
+				data[randX][randY].carnivore = factory.createCreature("wolf");
 			}
 		}
 	}
@@ -95,7 +111,8 @@ public class Grid {
 		while(gridSize<10){
 			gridSize+=MainThread.tileSize;
 		}
-		g.setColor(Color.BLACK);
+		System.out.println("CURRENT GRID SIZE = " + (int)(gridSize/MainThread.tileSize*10) + "M");
+		g.setColor(new Color(0,0,0,75));
 		for(int i=0; i<=width/(gridSize/MainThread.tileSize); i++){
 			for(int j=0; j<=width/(gridSize/MainThread.tileSize); j++){
 				g.drawRect((int)(i*gridSize-MainThread.offset), (int)(j*gridSize-MainThread.offset), (int)gridSize, (int)gridSize);
