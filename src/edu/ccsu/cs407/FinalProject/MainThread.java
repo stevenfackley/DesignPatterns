@@ -26,13 +26,11 @@ public class MainThread implements Runnable
 	public static double startTileX=0,startTileY=0;
 	public static double offsetX=0,offsetY=0;
 	public static double tileSize=0;
+	//size of a square in m
+	public static int realGridSize=0;
 	public static int width=0;
 	// top level swing container
 	public static MyFrame frame;
-	//mouse info
-	public static int mouseX=0,mouseY=0;
-	public static int mouseDragStartX=0, mouseDragStartY=0;
-	public static boolean mouseHeld[]= new boolean[16];
 	
 	public static void main(String[] args) 
 	{

@@ -12,30 +12,33 @@ import edu.ccsu.cs407.FinalProject.MainThread;
 public class MouseInput implements MouseListener,MouseMotionListener,MouseWheelListener{
 	public static double oldStartTileX;
 	public static double oldStartTileY;
+	//mouse info
+	public static int mouseX=0,mouseY=0;
+	public static int mouseDragStartX=0, mouseDragStartY=0;
+	public static boolean mouseHeld[]= new boolean[16];
 	
+	/**
+	 * Position of the mouse if a mouse button is held down.
+	 * Pans the grid if LMB is held.
+	 */
 	public void mouseDragged(MouseEvent e) {
-		MainThread.mouseX = e.getX();
-		MainThread.mouseY = e.getY();
-		if(MainThread.mouseHeld[MouseEvent.BUTTON1]==true && MainThread.width!=MainThread.grid.getWidth()){
-			MainThread.startTileX=oldStartTileX-(MainThread.mouseX-MainThread.mouseDragStartX)/MainThread.tileSize;
-			MainThread.startTileY=oldStartTileY-(MainThread.mouseY-MainThread.mouseDragStartY)/MainThread.tileSize;
-			if(MainThread.startTileX+MainThread.width>=MainThread.grid.getWidth())
-				MainThread.startTileX=MainThread.grid.getWidth()-MainThread.width-1;
-			else if(MainThread.startTileX<=0)
-				MainThread.startTileX=0;
-			if(MainThread.startTileY+MainThread.width>=MainThread.grid.getWidth())
-				MainThread.startTileY=MainThread.grid.getWidth()-MainThread.width-1;
-			else if(MainThread.startTileY<=0)
-				MainThread.startTileY=0;
-			
+		mouseX = e.getX();
+		mouseY = e.getY();
+		if(mouseHeld[MouseEvent.BUTTON1]==true && MainThread.width!=MainThread.grid.getWidth()){
+			MainThread.startTileX=oldStartTileX-(mouseX-mouseDragStartX)/MainThread.tileSize;
+			MainThread.startTileY=oldStartTileY-(mouseY-mouseDragStartY)/MainThread.tileSize;
+			checkBounds();
 			MainThread.offsetX=(MainThread.startTileX-Math.floor(MainThread.startTileX))*MainThread.tileSize;
 			MainThread.offsetY=(MainThread.startTileY-Math.floor(MainThread.startTileY))*MainThread.tileSize;
 		}
 	}
-	@Override
+	/**
+	 * Triggers in the mouse is moved
+	 * Position of the mouse if nothing is clicked
+	 */
 	public void mouseMoved(MouseEvent e) {
-		MainThread.mouseX = e.getX();
-		MainThread.mouseY = e.getY();
+		mouseX = e.getX();
+		mouseY = e.getY();
 	}
 
 	@Override
@@ -56,33 +59,42 @@ public class MouseInput implements MouseListener,MouseMotionListener,MouseWheelL
 		
 	}
 
-	@Override
+	/**
+	 * Triggers when a mouse button is pressed.
+	 * Stores the position of the mouse and grid at this time.
+	 */
 	public void mousePressed(MouseEvent e) {
-		MainThread.mouseDragStartX=e.getX();
-		MainThread.mouseDragStartY=e.getY();
-		MainThread.mouseHeld[e.getButton()]=true;
+		mouseDragStartX=e.getX();
+		mouseDragStartY=e.getY();
+		mouseHeld[e.getButton()]=true;
 		oldStartTileX = MainThread.startTileX;
 		oldStartTileY = MainThread.startTileY;
 	}
 
-	@Override
+	/**
+	 * Triggers when a mouse button is released.
+	 * Resolves the current selection zoom if RMB was pressed.
+	 */
 	public void mouseReleased(MouseEvent e) {
-		MainThread.mouseHeld[e.getButton()]=false;
+		mouseHeld[e.getButton()]=false;
 		if(e.getButton()==MouseEvent.BUTTON3){
-			if((MainThread.mouseX-MainThread.mouseDragStartX)>(MainThread.mouseY-MainThread.mouseDragStartY)){
-				MainThread.width=(int)((MainThread.mouseX-MainThread.mouseDragStartX)/MainThread.tileSize);
+			if((mouseX-mouseDragStartX)>(mouseY-mouseDragStartY)){
+				MainThread.width=(int)((mouseX-mouseDragStartX)/MainThread.tileSize);
 			}
 			else
-				MainThread.width=(int)((MainThread.mouseY-MainThread.mouseDragStartY)/MainThread.tileSize);
-			MainThread.startTileX+=(int)(MainThread.mouseDragStartX/MainThread.tileSize);
-			MainThread.startTileY+=(int)(MainThread.mouseDragStartY/MainThread.tileSize);
+				MainThread.width=(int)((mouseY-mouseDragStartY)/MainThread.tileSize);
+			MainThread.startTileX+=(int)(mouseDragStartX/MainThread.tileSize);
+			MainThread.startTileY+=(int)(mouseDragStartY/MainThread.tileSize);
 			MainThread.tileSize = (double)MainThread.canvasWidth/MainThread.width;
 			MainThread.offsetX=(MainThread.startTileX-Math.floor(MainThread.startTileX))*MainThread.tileSize;
 			MainThread.offsetY=(MainThread.startTileY-Math.floor(MainThread.startTileY))*MainThread.tileSize;
 		}
 	}
 
-	@Override
+	/**
+	 * Triggers when the mouse wheel is scrolled.
+	 * Zooms the visible grid in or out.
+	 */
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		int zoom = e.getWheelRotation()*(MainThread.width/33+1);
 		if(zoom<0 && MainThread.width==1)
@@ -96,19 +108,24 @@ public class MouseInput implements MouseListener,MouseMotionListener,MouseWheelL
 		else{
 			MainThread.startTileX-=zoom*.5;
 			MainThread.startTileY-=zoom*.5;
-			if(MainThread.startTileX+MainThread.width>=MainThread.grid.getWidth())
-				MainThread.startTileX=MainThread.grid.getWidth()-MainThread.width-1;
-			else if(MainThread.startTileX<=0)
-				MainThread.startTileX=0;
-			if(MainThread.startTileY+MainThread.width>=MainThread.grid.getWidth())
-				MainThread.startTileY=MainThread.grid.getWidth()-MainThread.width-1;
-			else if(MainThread.startTileY<=0)
-				MainThread.startTileY=0;
+			checkBounds();
 		}
 		MainThread.tileSize = (double)MainThread.canvasWidth/MainThread.width;
 		MainThread.offsetX=(MainThread.startTileX-Math.floor(MainThread.startTileX))*MainThread.tileSize;
 		MainThread.offsetY=(MainThread.startTileY-Math.floor(MainThread.startTileY))*MainThread.tileSize;
 			
 	}
-	
+	/**
+	 * Checks to see if the current visable grid is within the overall grid, if not: corrects the error
+	 */
+	private static void checkBounds(){
+		if(MainThread.startTileX+MainThread.width>=MainThread.grid.getWidth())
+		MainThread.startTileX=MainThread.grid.getWidth()-MainThread.width-1;
+	else if(MainThread.startTileX<=0)
+		MainThread.startTileX=0;
+	if(MainThread.startTileY+MainThread.width>=MainThread.grid.getWidth())
+		MainThread.startTileY=MainThread.grid.getWidth()-MainThread.width-1;
+	else if(MainThread.startTileY<=0)
+		MainThread.startTileY=0;
+	}
 }

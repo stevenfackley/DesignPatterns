@@ -18,20 +18,35 @@ public class MyCanvas extends JPanel {
 		this.addMouseWheelListener(new MouseInput());
 		
 	}
+	
+	/**
+	 * Draws everything to the screen
+	 */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		//draws the current position of the screen
 		MainThread.grid.draw((int)MainThread.startTileX,(int)MainThread.startTileY,(int)MainThread.width,g);
-		if(MainThread.mouseHeld[MouseEvent.BUTTON3]==true){
+		//draws the selection box if RMB is held
+		if(MouseInput.mouseHeld[MouseEvent.BUTTON3]==true){
 			g.setColor(new Color(255,255,255,128));
-			g.fillRect(MainThread.mouseDragStartX, MainThread.mouseDragStartY, MainThread.mouseX-MainThread.mouseDragStartX, MainThread.mouseY-MainThread.mouseDragStartY);
+			g.fillRect(MouseInput.mouseDragStartX, MouseInput.mouseDragStartY, MouseInput.mouseX-MouseInput.mouseDragStartX, MouseInput.mouseY-MouseInput.mouseDragStartY);
 			g.setColor(Color.BLACK);
-			g.drawRect(MainThread.mouseDragStartX, MainThread.mouseDragStartY, MainThread.mouseX-MainThread.mouseDragStartX, MainThread.mouseY-MainThread.mouseDragStartY);
+			g.drawRect(MouseInput.mouseDragStartX, MouseInput.mouseDragStartY, MouseInput.mouseX-MouseInput.mouseDragStartX, MouseInput.mouseY-MouseInput.mouseDragStartY);
 		}
+		//draws the tooltip
 		else{
 			g.setColor(Color.WHITE);
 			g.fillRect(10, 10, 200, 100);
 			g.setColor(Color.BLACK);
-			g.drawString("tooltip goes here",15, 25);
+			g.drawString("Grid Square: " + Integer.toString(MainThread.realGridSize) + "m",15, 25);
+			g.drawString("Plants: " + (int)MainThread.grid.getMouseOver().getPlants()+"/" + (int)MainThread.grid.getMouseOver().getMaxPlants(), 15, 50);
+			String CreatureString = "";
+			if(MainThread.grid.getMouseOver().getCreature()!=null && MainThread.tileSize>5){
+				CreatureString+=MainThread.grid.getMouseOver().getCreature().getName();
+				CreatureString+= " "  + MainThread.grid.getMouseOver().getCreature().getHealth();
+				CreatureString+= "/"  + MainThread.grid.getMouseOver().getCreature().getHealth();
+				g.drawString(CreatureString, 15, 75);
+			}
 			g.drawRect(10, 10, 200, 100);
 		}
 		repaint();

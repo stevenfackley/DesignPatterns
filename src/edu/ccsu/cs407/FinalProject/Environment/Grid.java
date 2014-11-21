@@ -6,6 +6,7 @@ import java.util.Random;
 
 import edu.ccsu.cs407.FinalProject.MainThread;
 import edu.ccsu.cs407.FinalProject.Creatures.ConcreteCreatureFactory;
+import edu.ccsu.cs407.FinalProject.UI.MouseInput;
 
 public class Grid {
 	private Random rand = new Random();
@@ -74,8 +75,8 @@ public class Grid {
 		for(int i=0; i<num; i++){
 			randX = rand.nextInt(width);
 			randY = rand.nextInt(width);
-			if(data[randX][randY] instanceof Land && data[randX][randY].carnivore==null){
-				data[randX][randY].carnivore = factory.createCreature("wolf");
+			if(data[randX][randY] instanceof Land && data[randX][randY].getCreature()==null){
+				data[randX][randY].setCreature(factory.createCreature("wolf"));
 			}
 		}
 	}
@@ -109,13 +110,13 @@ public class Grid {
 	private void drawGrid(int startTileX, int startTileY, int width, Graphics g){
 		double gridSize = MainThread.tileSize;
 		while(gridSize<10){
-			gridSize+=MainThread.tileSize;
+			gridSize*=2;
 		}
-		System.out.println("CURRENT GRID SIZE = " + (int)(gridSize/MainThread.tileSize*10) + "M");
+		MainThread.realGridSize = (int) (gridSize/MainThread.tileSize)*10;
 		g.setColor(new Color(0,0,0,75));
 		for(int i=0; i<=width/(gridSize/MainThread.tileSize); i++){
 			for(int j=0; j<=width/(gridSize/MainThread.tileSize); j++){
-				g.drawRect((int)(i*gridSize-MainThread.offsetX), (int)(j*gridSize-MainThread.offsetY), (int)gridSize, (int)gridSize);
+				g.drawRect((int)(i*gridSize-MainThread.offsetX-Math.floor(MainThread.startTileX)%(gridSize/MainThread.tileSize)*MainThread.tileSize), (int)(j*gridSize-MainThread.offsetY-Math.floor(MainThread.startTileY)%(gridSize/MainThread.tileSize)*MainThread.tileSize), (int)gridSize, (int)gridSize);
 			}
 		}
 	}
@@ -127,5 +128,11 @@ public class Grid {
 				data[i][j].draw((int)Math.ceil(MainThread.tileSize), (int)(Math.floor(i-startTileX)*MainThread.tileSize-MainThread.offsetX), (int)(Math.floor(j-startTileY)*MainThread.tileSize-MainThread.offsetY), g);
 			}
 		}
+	}
+	
+	public Tile getMouseOver(){
+		int tileX=(int) (Math.floor(MouseInput.mouseX)/MainThread.tileSize+MainThread.startTileX);
+		int tileY=(int) (Math.floor(MouseInput.mouseY)/MainThread.tileSize+MainThread.startTileY);
+		return getTile(tileX,tileY);
 	}
 }
