@@ -65,14 +65,29 @@ public class MouseInput implements MouseListener,MouseMotionListener,MouseWheelL
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		int zoom = e.getWheelRotation();
-		if(zoom>0 && MainThread.width==MainThread.grid.getWidth())
-			zoom=0;
+		int zoom = e.getWheelRotation()*(MainThread.width/33+1);
 		if(zoom<0 && MainThread.width==1)
 			zoom=0;
 		MainThread.width+=zoom;
-		MainThread.startTileX-=zoom*.5;
-		MainThread.startTileY-=zoom*.5;
+		if(MainThread.width>MainThread.grid.getWidth()){
+			MainThread.width=MainThread.grid.getWidth();
+			MainThread.startTileX=0;
+			MainThread.startTileY=0;
+		}
+		else{
+			MainThread.startTileX-=zoom*.5;
+			MainThread.startTileY-=zoom*.5;
+			if(MainThread.startTileX+MainThread.width>=MainThread.grid.getWidth())
+				MainThread.startTileX=MainThread.grid.getWidth()-MainThread.width-1;
+			else if(MainThread.startTileX<=0)
+				MainThread.startTileX=0;
+			if(MainThread.startTileY+MainThread.width>=MainThread.grid.getWidth())
+				MainThread.startTileY=MainThread.grid.getWidth()-MainThread.width-1;
+			else if(MainThread.startTileY<=0)
+				MainThread.startTileY=0;
+		}
+		System.out.println(MainThread.startTileX + " " + MainThread.startTileY + " " + (MainThread.startTileX+MainThread.width) + " " + (MainThread.startTileY+MainThread.width));
+		
 		MainThread.tileSize = (double)MainThread.canvasWidth/MainThread.width;
 		MainThread.offset=(MainThread.startTileX-Math.floor(MainThread.startTileX))*MainThread.tileSize;
 			
