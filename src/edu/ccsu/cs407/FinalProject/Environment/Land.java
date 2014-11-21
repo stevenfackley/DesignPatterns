@@ -9,7 +9,7 @@ public class Land extends Tile{
 		Random rand = new Random();
 		this.maxPlants = maxPlants;
 		if(range>0)
-			this.maxPlants -= rand.nextInt(range);
+			this.maxPlants += rand.nextInt(range);
 		if(this.maxPlants<0)
 			this.maxPlants=0;
 		if(this.maxPlants>100)

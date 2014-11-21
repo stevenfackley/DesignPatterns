@@ -30,7 +30,7 @@ public class Tile {
 	public void step(){
 		//regrows plants in a S-curve, takes about 50 cycles to bring plants from ~5% to ~95%
 		if(maxPlants!=0){
-			plants+=(plants/maxPlants)*((1-plants/maxPlants));
+			plants+=((plants+1)/(maxPlants+1))*((1-plants/maxPlants));
 			if(maxPlants<plants){
 				plants=maxPlants;
 			}
