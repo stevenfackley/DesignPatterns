@@ -8,12 +8,30 @@ import java.awt.event.MouseWheelListener;
 
 import edu.ccsu.cs407.FinalProject.MainThread;
 
+
 public class MouseInput implements MouseListener,MouseMotionListener,MouseWheelListener{
+	public static double oldStartTileX;
+	public static double oldStartTileY;
+	
 	public void mouseDragged(MouseEvent e) {
 		MainThread.mouseX = e.getX();
 		MainThread.mouseY = e.getY();
+		if(MainThread.mouseHeld[MouseEvent.BUTTON1]==true && MainThread.width!=MainThread.grid.getWidth()){
+			MainThread.startTileX=oldStartTileX-(MainThread.mouseX-MainThread.mouseDragStartX)/MainThread.tileSize;
+			MainThread.startTileY=oldStartTileY-(MainThread.mouseY-MainThread.mouseDragStartY)/MainThread.tileSize;
+			if(MainThread.startTileX+MainThread.width>=MainThread.grid.getWidth())
+				MainThread.startTileX=MainThread.grid.getWidth()-MainThread.width-1;
+			else if(MainThread.startTileX<=0)
+				MainThread.startTileX=0;
+			if(MainThread.startTileY+MainThread.width>=MainThread.grid.getWidth())
+				MainThread.startTileY=MainThread.grid.getWidth()-MainThread.width-1;
+			else if(MainThread.startTileY<=0)
+				MainThread.startTileY=0;
+			
+			MainThread.offsetX=(MainThread.startTileX-Math.floor(MainThread.startTileX))*MainThread.tileSize;
+			MainThread.offsetY=(MainThread.startTileY-Math.floor(MainThread.startTileY))*MainThread.tileSize;
+		}
 	}
-
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		MainThread.mouseX = e.getX();
@@ -40,17 +58,17 @@ public class MouseInput implements MouseListener,MouseMotionListener,MouseWheelL
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(e.getButton()==MouseEvent.BUTTON3){
-			MainThread.mouseHeld=true;
-			MainThread.mouseDragStartX=e.getX();
-			MainThread.mouseDragStartY=e.getY();
-		}
+		MainThread.mouseDragStartX=e.getX();
+		MainThread.mouseDragStartY=e.getY();
+		MainThread.mouseHeld[e.getButton()]=true;
+		oldStartTileX = MainThread.startTileX;
+		oldStartTileY = MainThread.startTileY;
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		MainThread.mouseHeld[e.getButton()]=false;
 		if(e.getButton()==MouseEvent.BUTTON3){
-			MainThread.mouseHeld=false;
 			if((MainThread.mouseX-MainThread.mouseDragStartX)>(MainThread.mouseY-MainThread.mouseDragStartY)){
 				MainThread.width=(int)((MainThread.mouseX-MainThread.mouseDragStartX)/MainThread.tileSize);
 			}
@@ -59,7 +77,8 @@ public class MouseInput implements MouseListener,MouseMotionListener,MouseWheelL
 			MainThread.startTileX+=(int)(MainThread.mouseDragStartX/MainThread.tileSize);
 			MainThread.startTileY+=(int)(MainThread.mouseDragStartY/MainThread.tileSize);
 			MainThread.tileSize = (double)MainThread.canvasWidth/MainThread.width;
-			MainThread.offset = 0;
+			MainThread.offsetX=(MainThread.startTileX-Math.floor(MainThread.startTileX))*MainThread.tileSize;
+			MainThread.offsetY=(MainThread.startTileY-Math.floor(MainThread.startTileY))*MainThread.tileSize;
 		}
 	}
 
@@ -87,7 +106,8 @@ public class MouseInput implements MouseListener,MouseMotionListener,MouseWheelL
 				MainThread.startTileY=0;
 		}
 		MainThread.tileSize = (double)MainThread.canvasWidth/MainThread.width;
-		MainThread.offset=(MainThread.startTileX-Math.floor(MainThread.startTileX))*MainThread.tileSize;
+		MainThread.offsetX=(MainThread.startTileX-Math.floor(MainThread.startTileX))*MainThread.tileSize;
+		MainThread.offsetY=(MainThread.startTileY-Math.floor(MainThread.startTileY))*MainThread.tileSize;
 			
 	}
 	

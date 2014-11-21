@@ -115,7 +115,7 @@ public class Grid {
 		g.setColor(new Color(0,0,0,75));
 		for(int i=0; i<=width/(gridSize/MainThread.tileSize); i++){
 			for(int j=0; j<=width/(gridSize/MainThread.tileSize); j++){
-				g.drawRect((int)(i*gridSize-MainThread.offset), (int)(j*gridSize-MainThread.offset), (int)gridSize, (int)gridSize);
+				g.drawRect((int)(i*gridSize-MainThread.offsetX), (int)(j*gridSize-MainThread.offsetY), (int)gridSize, (int)gridSize);
 			}
 		}
 	}
@@ -124,7 +124,7 @@ public class Grid {
 			width++;
 		for(int i=startTileX; i<width+startTileX; i++){
 			for(int j=startTileY; j<width+startTileY; j++){
-				data[i][j].draw((int)Math.ceil(MainThread.tileSize), (int)((i-startTileX)*MainThread.tileSize-MainThread.offset), (int)((j-startTileY)*MainThread.tileSize-MainThread.offset), g);
+				data[i][j].draw((int)Math.ceil(MainThread.tileSize), (int)(Math.floor(i-startTileX)*MainThread.tileSize-MainThread.offsetX), (int)(Math.floor(j-startTileY)*MainThread.tileSize-MainThread.offsetY), g);
 			}
 		}
 	}

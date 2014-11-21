@@ -2,6 +2,7 @@ package edu.ccsu.cs407.FinalProject.UI;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
@@ -20,7 +21,7 @@ public class MyCanvas extends JPanel {
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		MainThread.grid.draw((int)MainThread.startTileX,(int)MainThread.startTileY,(int)MainThread.width,g);
-		if(MainThread.mouseHeld){
+		if(MainThread.mouseHeld[MouseEvent.BUTTON3]==true){
 			g.setColor(new Color(255,255,255,128));
 			g.fillRect(MainThread.mouseDragStartX, MainThread.mouseDragStartY, MainThread.mouseX-MainThread.mouseDragStartX, MainThread.mouseY-MainThread.mouseDragStartY);
 			g.setColor(Color.BLACK);

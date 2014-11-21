@@ -14,7 +14,7 @@ public class Land extends Tile{
 			this.maxPlants=0;
 		if(this.maxPlants>100)
 			this.maxPlants=100;
-		plants = 1;
+		plants = maxPlants/2;
 		
 	}
 	
