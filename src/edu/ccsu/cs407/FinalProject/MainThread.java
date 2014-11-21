@@ -15,7 +15,7 @@ import edu.ccsu.cs407.FinalProject.UI.MyFrame;
 public class MainThread implements Runnable
 {
 	// layout of the map where the world data is stored and where instances of animals are kept
-	public static Grid grid = new Grid(200);
+	public static Grid grid = new Grid(400);
 	//ms from the program launch
 	public static int time=0;
 	//ms per loop in the run function
