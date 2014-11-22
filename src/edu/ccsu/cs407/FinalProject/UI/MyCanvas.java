@@ -1,6 +1,7 @@
 package edu.ccsu.cs407.FinalProject.UI;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 
@@ -11,7 +12,7 @@ import edu.ccsu.cs407.FinalProject.MainThread;
 public class MyCanvas extends JPanel {
 	
 	public MyCanvas(){
-		setSize(MainThread.canvasWidth,MainThread.canvasHeight);
+		setMaximumSize(new Dimension(MainThread.canvasWidth,MainThread.canvasHeight));
 		setBackground(Color.WHITE);
 		addMouseListener(new MouseInput());
 		addMouseMotionListener(new MouseInput());
@@ -25,29 +26,31 @@ public class MyCanvas extends JPanel {
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		//draws the current position of the screen
-		MainThread.grid.draw((int)MainThread.startTileX,(int)MainThread.startTileY,(int)MainThread.width,g);
-		//draws the selection box if RMB is held
-		if(MouseInput.mouseHeld[MouseEvent.BUTTON3]==true){
-			g.setColor(new Color(255,255,255,128));
-			g.fillRect(MouseInput.mouseDragStartX, MouseInput.mouseDragStartY, MouseInput.mouseX-MouseInput.mouseDragStartX, MouseInput.mouseY-MouseInput.mouseDragStartY);
-			g.setColor(Color.BLACK);
-			g.drawRect(MouseInput.mouseDragStartX, MouseInput.mouseDragStartY, MouseInput.mouseX-MouseInput.mouseDragStartX, MouseInput.mouseY-MouseInput.mouseDragStartY);
-		}
-		//draws the tooltip
-		else{
-			g.setColor(Color.WHITE);
-			g.fillRect(10, 10, 200, 100);
-			g.setColor(Color.BLACK);
-			g.drawString("Grid Square: " + Integer.toString(MainThread.realGridSize) + "m",15, 25);
-			g.drawString("Plants: " + (int)MainThread.grid.getMouseOver().getPlants()+"/" + (int)MainThread.grid.getMouseOver().getMaxPlants(), 15, 50);
-			String CreatureString = "";
-			if(MainThread.grid.getMouseOver().getCreature()!=null && MainThread.tileSize>5){
-				CreatureString+=MainThread.grid.getMouseOver().getCreature().getName();
-				CreatureString+= " "  + MainThread.grid.getMouseOver().getCreature().getHealth();
-				CreatureString+= "/"  + MainThread.grid.getMouseOver().getCreature().getHealth();
-				g.drawString(CreatureString, 15, 75);
+		if(MainThread.grid!=null){
+			MainThread.grid.draw((int)MainThread.startTileX,(int)MainThread.startTileY,(int)MainThread.width,g);
+			//draws the selection box if RMB is held
+			if(MouseInput.mouseHeld[MouseEvent.BUTTON3]==true && (MouseInput.mouseX-MouseInput.mouseDragStartX)>0 && (MouseInput.mouseY-MouseInput.mouseDragStartY)>0){
+				g.setColor(new Color(255,255,255,128));
+				g.fillRect(MouseInput.mouseDragStartX, MouseInput.mouseDragStartY, MouseInput.mouseX-MouseInput.mouseDragStartX, MouseInput.mouseY-MouseInput.mouseDragStartY);
+				g.setColor(Color.BLACK);
+				g.drawRect(MouseInput.mouseDragStartX, MouseInput.mouseDragStartY, MouseInput.mouseX-MouseInput.mouseDragStartX, MouseInput.mouseY-MouseInput.mouseDragStartY);
 			}
-			g.drawRect(10, 10, 200, 100);
+			//draws the tooltip
+			else{
+				g.setColor(Color.WHITE);
+				g.fillRect(10, 10, 200, 100);
+				g.setColor(Color.BLACK);
+				g.drawString("Grid Square: " + Integer.toString(MainThread.realGridSize) + "m",15, 25);
+				g.drawString("Plants: " + (int)MainThread.grid.getMouseOver().getPlants()+"/" + (int)MainThread.grid.getMouseOver().getMaxPlants(), 15, 50);
+				String CreatureString = "";
+				if(MainThread.grid.getMouseOver().getCreature()!=null && MainThread.tileSize>5){
+					CreatureString+=MainThread.grid.getMouseOver().getCreature().getName();
+					CreatureString+= " "  + MainThread.grid.getMouseOver().getCreature().getHealth();
+					CreatureString+= "/"  + MainThread.grid.getMouseOver().getCreature().getHealth();
+					g.drawString(CreatureString, 15, 75);
+				}
+				g.drawRect(10, 10, 200, 100);
+			}
 		}
 		repaint();
 	}

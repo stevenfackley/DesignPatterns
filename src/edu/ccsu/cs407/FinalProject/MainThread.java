@@ -15,11 +15,11 @@ import edu.ccsu.cs407.FinalProject.UI.MyFrame;
 public class MainThread implements Runnable
 {
 	// layout of the map where the world data is stored and where instances of animals are kept
-	public static Grid grid = new Grid(400);
+	public static Grid grid = null;
 	//ms from the program launch
 	public static int time=0;
 	//ms per loop in the run function
-	public static final int timePerFrame = 10;
+	public static int timePerFrame = 1000;
 	//size of the drawable area
 	public static final int canvasWidth=800,canvasHeight=800;
 	//area of the grid being displayed
@@ -28,9 +28,10 @@ public class MainThread implements Runnable
 	public static double tileSize=0;
 	//size of a square in m
 	public static int realGridSize=0;
-	public static int width=0;
+	public static int width=400;
 	// top level swing container
 	public static MyFrame frame;
+	public static boolean pause=true;
 	
 	public static void main(String[] args) 
 	{
@@ -50,18 +51,23 @@ public class MainThread implements Runnable
 		Creature wolf = factory.createCreature("wolf");
 		// Print the creature
 		System.out.println(wolf.toString());
-		//initialize the width so the display shows the whole grid
-		width = grid.getWidth();
 		tileSize = (double)canvasWidth/width;
-		frame = new MyFrame(800,800);
+		frame = new MyFrame(canvasWidth,canvasHeight+30);
+		grid = new Grid(width);
 		try {
 			/*
 			 * CODE TO BE RUN OVER THE LIFE OF THE PROGRAM
 			 */
 			while(true){
-				grid.step();
-				Thread.sleep(timePerFrame);
-				time+=timePerFrame;
+				while(pause){
+					Thread.sleep(1);
+					time+=timePerFrame;
+				}
+				if(grid!=null && time%timePerFrame==0){
+					grid.step();
+				}
+				Thread.sleep(1);
+				time++;
 			}
 			
 		} catch (InterruptedException e) {
