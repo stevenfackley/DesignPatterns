@@ -17,7 +17,7 @@ public class MyFrame extends JFrame {
 	
 	void addComponentsToLayout(Container pane){
 		pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
-		pane.add(new MenuBar());
+		add(new MenuBar());
 		MyCanvas canvas = new MyCanvas();
 		pane.add(canvas);
 	}

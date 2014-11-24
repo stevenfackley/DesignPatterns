@@ -1,5 +1,7 @@
 package edu.ccsu.cs407.FinalProject.UI;
 
+import java.awt.Dimension;
+
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -9,6 +11,8 @@ import edu.ccsu.cs407.FinalProject.MainThread;
 public class SimulationSpeedSlider extends JSlider implements ChangeListener{
 	
 	public SimulationSpeedSlider(){
+		this.setMaximumSize(new Dimension(100,30));
+		this.setMinimumSize(new Dimension(100,30));
 		setMajorTickSpacing(5);
 		setMinorTickSpacing(1);
 		setPaintTicks(true);
@@ -27,7 +31,6 @@ public class SimulationSpeedSlider extends JSlider implements ChangeListener{
 			MenuBar.resultField.setText(Math.floor((fps*100))/100 + " FPS");
 		if(!this.getValueIsAdjusting()){
 			MainThread.timePerFrame = (int) (1000/fps);
-			System.out.println(fps + " " + MainThread.timePerFrame);
 		}
 	}
 	

@@ -11,8 +11,13 @@ import edu.ccsu.cs407.FinalProject.Environment.Grid;
 public class GenerateMapButton extends JButton{
 	private static class AListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			MainThread.grid = new Grid(MainThread.width);
+			MainThread.grid = new Grid(Integer.parseInt(MenuBar.gridSizeField.getText()));
 			MainThread.width = MainThread.grid.getWidth();
+			MainThread.startTileX=0;
+			MainThread.startTileY=0;
+			MainThread.tileSize = (double)MainThread.canvasWidth/MainThread.width;
+			MainThread.offsetX = 0;
+			MainThread.offsetY = 0;
 		}
 	}
 	public GenerateMapButton(){
