@@ -8,8 +8,16 @@ import javax.swing.event.ChangeListener;
 
 import edu.ccsu.cs407.FinalProject.MainThread;
 
+/**
+ * A slider that is used to set the speed of the simulation
+ * @author grunes
+ *
+ */
 public class SimulationSpeedSlider extends JSlider implements ChangeListener{
 	
+	/**
+	 * Initializes the slider and adds a change listener
+	 */
 	public SimulationSpeedSlider(){
 		this.setMaximumSize(new Dimension(100,30));
 		this.setMinimumSize(new Dimension(100,30));

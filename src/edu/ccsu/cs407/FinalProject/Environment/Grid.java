@@ -8,12 +8,20 @@ import edu.ccsu.cs407.FinalProject.MainThread;
 import edu.ccsu.cs407.FinalProject.Creatures.ConcreteCreatureFactory;
 import edu.ccsu.cs407.FinalProject.UI.MouseInput;
 
+/**
+ * Holds a square 2d array of Tiles
+ * @author grunes
+ *
+ */
 public class Grid {
 	private Random rand = new Random();
 	private int width;
 	private Tile data[][];
 	private TileFactory tileFactory = TileFactory.getInstance();
 	
+	/**
+	 * Calls the step function on every tile in the grid
+	 */
 	public void step(){
 		for(int i=0; i<width; i++){
 			for(int j=0; j<width; j++){
@@ -22,6 +30,10 @@ public class Grid {
 		}
 	}
 	
+	/**
+	 * Initializes the grid and generates a random map
+	 * @param width number of Tiles wide/long the grid is
+	 */
 	public Grid(int width){
 		data = new Tile[width][width];
 		for(int i=0; i<width; i++){
@@ -35,16 +47,35 @@ public class Grid {
 		growLand(25);
 		addCreatures(area/10);
 	}
-	
+	/**
+	 * @param x x-position on the grid
+	 * @param y y-position on the grid
+	 * @return the tile at that location
+	 */
 	public Tile getTile(int x,int y){
 		return data[x][y];
 	}
-	public void setTile(int x,int y,String tile,int maxPlants,int range){
-		data[x][y] = tileFactory.createTile(tile,maxPlants,range);
+	/**
+	 * sets a tile at a location on the grid
+	 * @param x x-position on the grid
+	 * @param y y-position on the grid
+	 * @param tile the name of the tile being added
+	 * @param minPlants the min number of plants(1-100)
+	 * @param range the range of the number of plants
+	 */
+	public void setTile(int x,int y,String tile,int minPlants,int range){
+		data[x][y] = tileFactory.createTile(tile,minPlants,range);
 	}
+	/**
+	 * @return returns the width of the grid
+	 */
 	public int getWidth(){
 		return width;
 	}
+	/**
+	 * Creates seeds that land can grow from
+	 * @param numIslands number of seeds to start
+	 */
 	private void seedLand(int numIslands){
 		int randX = 0;
 		int randY = 0;
@@ -54,6 +85,10 @@ public class Grid {
 			this.setTile(randX, randY, "land",0,0);
 		}
 	}
+	/**
+	 * Randomly grows the land on the grid
+	 * @param iterations number of times to iterate through the grid
+	 */
 	private void growLand(int iterations){
 		for(int iter=0; iter<iterations; iter++){
 			for(int i=1+(width/iterations*iter)/5; i<width-(width/iterations*iter)/5-1; i++){
@@ -80,7 +115,11 @@ public class Grid {
 			}
 		}
 	}
-	
+	/**
+	 * @param x x-position on the grid
+	 * @param y y-position on the grid
+	 * @return number of land tiles around a tile
+	 */
 	public int numSurrounding(int x, int y){
 		int surrounding=0;
 		if(data[x-1][y-1] instanceof Land)
@@ -101,12 +140,25 @@ public class Grid {
 			surrounding++;
 		return surrounding;
 	}
-	
+	/**
+	 * draws a square selection of the grid to the screed
+	 * @param startTileX x-position of the top left point 
+	 * @param startTileY y-position of the top left point
+	 * @param width width of the selection
+	 * @param g Graphics of the screen you are drawing to
+	 */
 	public void draw(int startTileX, int startTileY, int width, Graphics g){
 		drawTiles(startTileX,startTileY,width,g);
 		drawGrid(startTileX,startTileY,width,g);
 		
 	}
+	/**
+	 * draws a grid overlaid on the tiles
+	 * @param startTileX x-position of the top left point 
+	 * @param startTileY y-position of the top left point
+	 * @param width width of the selection
+	 * @param g Graphics of the screen you are drawing to
+	 */
 	private void drawGrid(int startTileX, int startTileY, int width, Graphics g){
 		double gridSize = MainThread.tileSize;
 		while(gridSize<10){
@@ -120,6 +172,13 @@ public class Grid {
 			}
 		}
 	}
+	/**
+	 * draws the tiles to the screen
+	 * @param startTileX x-position of the top left point 
+	 * @param startTileY y-position of the top left point
+	 * @param width width of the selection
+	 * @param g Graphics of the screen you are drawing to
+	 */
 	private void drawTiles(int startTileX, int startTileY, int width, Graphics g){
 		if(width<this.width)
 			width++;
@@ -130,6 +189,9 @@ public class Grid {
 		}
 	}
 	
+	/**
+	 * @return the tile the mouse is currently on
+	 */
 	public Tile getMouseOver(){
 		int tileX=(int) (Math.floor(MouseInput.mouseX)/MainThread.tileSize+MainThread.startTileX);
 		int tileY=(int) (Math.floor(MouseInput.mouseY)/MainThread.tileSize+MainThread.startTileY);

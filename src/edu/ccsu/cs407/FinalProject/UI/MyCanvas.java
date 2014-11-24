@@ -35,7 +35,7 @@ public class MyCanvas extends JPanel {
 				g.setColor(Color.BLACK);
 				g.drawRect(MouseInput.mouseDragStartX, MouseInput.mouseDragStartY, MouseInput.mouseX-MouseInput.mouseDragStartX, MouseInput.mouseY-MouseInput.mouseDragStartY);
 			}
-			//draws the tooltip
+			//draws the tooltip if RMB is not held
 			else{
 				g.setColor(Color.WHITE);
 				g.fillRect(10, 10, 200, 100);

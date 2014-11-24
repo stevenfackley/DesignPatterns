@@ -17,9 +17,14 @@ import javax.swing.JTextPane;
 
 import edu.ccsu.cs407.FinalProject.MainThread;
 
+/**
+ * A JPannel that contains controls for the grid. Uses a box layout to organize components.
+ * @author seth grunert
+ *
+ */
 public class MenuBar extends JPanel{
 	public static JTextField resultField = new JTextField("1 FPS      ");
-	public static JTextField gridSizeField = new JTextField(" 400 ");
+	public static JTextField gridSizeField = new JTextField("400");
 	
 	public MenuBar(){
 		setMaximumSize(new Dimension(MainThread.canvasWidth, 30));

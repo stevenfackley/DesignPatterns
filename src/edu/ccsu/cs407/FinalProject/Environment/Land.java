@@ -2,7 +2,11 @@ package edu.ccsu.cs407.FinalProject.Environment;
 
 import java.awt.Color;
 import java.util.Random;
-
+/**
+ * A tile that represtents land
+ * @author grunes
+ *
+ */
 public class Land extends Tile{
 	
 	public Land(int maxPlants, int range){
@@ -17,7 +21,9 @@ public class Land extends Tile{
 		plants = maxPlants/2;
 		
 	}
-	
+	/**
+	 * A shade from white to yellow to green based on the amount of food on the tile
+	 */
 	protected Color calcColor(){
 		if(plants>66)
 			return new Color(0,255-((int)plants-66)*3,0);
