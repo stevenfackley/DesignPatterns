@@ -5,7 +5,7 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * Defines slow creature legs. Has health 20, weight 15, speed 5.
  * @author dcruz
  * @author seth
- * @author steven
+ * @author steven 
  */
 
 public class SlowLegs extends Legs 

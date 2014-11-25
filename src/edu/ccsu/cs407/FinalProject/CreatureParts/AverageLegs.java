@@ -5,7 +5,7 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * Defines average creature legs. Has health 15, weight 10, speed 10.
  * @author dcruz
  * @author seth
- * @author steven
+ * @author steven 
  */
 
 public class AverageLegs extends Legs 
