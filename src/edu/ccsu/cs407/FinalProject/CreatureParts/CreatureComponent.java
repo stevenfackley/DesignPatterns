@@ -63,12 +63,27 @@ public abstract class CreatureComponent
 		throw new UnsupportedOperationException();
 	}
 	
-	public boolean getFly() throws UnsupportedOperationException
+	public boolean canFly() throws UnsupportedOperationException
 	{
 		throw new UnsupportedOperationException();
 	}
 	
-	public boolean getSwim() throws UnsupportedOperationException
+	public boolean canSwim() throws UnsupportedOperationException
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	public boolean isOmnivore() throws UnsupportedOperationException
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	public boolean isHerbivore() throws UnsupportedOperationException
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	public boolean isCarnivore() throws UnsupportedOperationException
 	{
 		throw new UnsupportedOperationException();
 	}

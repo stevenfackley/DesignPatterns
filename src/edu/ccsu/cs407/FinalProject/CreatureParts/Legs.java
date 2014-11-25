@@ -46,6 +46,10 @@ public class Legs extends CompositeCreatureComponent
 		return weight;
 	}
 	
+	/**
+	 * getSpeed
+	 * @return speed
+	 */
 	public int getSpeed()
 	{
 		return speed;
