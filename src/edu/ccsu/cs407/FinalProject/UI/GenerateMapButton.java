@@ -28,6 +28,8 @@ public class GenerateMapButton extends JButton{
 			MainThread.tileSize = (double)MainThread.canvasWidth/MainThread.width;
 			MainThread.offsetX = 0;
 			MainThread.offsetY = 0;
+			MainThread.frames = 0;
+			
 		}
 	}
 	/**

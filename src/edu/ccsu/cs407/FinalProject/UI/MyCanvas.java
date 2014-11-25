@@ -37,21 +37,29 @@ public class MyCanvas extends JPanel {
 			}
 			//draws the tooltip if RMB is not held
 			else{
-				g.setColor(Color.WHITE);
-				g.fillRect(10, 10, 200, 100);
-				g.setColor(Color.BLACK);
-				g.drawString("Grid Square: " + Integer.toString(MainThread.realGridSize) + "m",15, 25);
-				g.drawString("Plants: " + (int)MainThread.grid.getMouseOver().getPlants()+"/" + (int)MainThread.grid.getMouseOver().getMaxPlants(), 15, 50);
-				String CreatureString = "";
-				if(MainThread.grid.getMouseOver().getCreature()!=null && MainThread.tileSize>5){
-					CreatureString+=MainThread.grid.getMouseOver().getCreature().getName();
-					CreatureString+= " "  + MainThread.grid.getMouseOver().getCreature().getHealth();
-					CreatureString+= "/"  + MainThread.grid.getMouseOver().getCreature().getHealth();
-					g.drawString(CreatureString, 15, 75);
-				}
-				g.drawRect(10, 10, 200, 100);
+				paintTooltip(10,10,200,100,g);
 			}
 		}
 		repaint();
+	}
+	
+	private void paintTooltip(int x, int y, int w, int h, Graphics g){
+		g.setColor(Color.WHITE);
+		g.fillRect(x, y, w, h);
+		g.setColor(Color.BLACK);
+		g.drawString("Grid Square: " + Integer.toString(MainThread.realGridSize) + "m",15, 25);
+		g.drawString("Plants: " + (int)MainThread.grid.getMouseOver().getPlants()+"/" + (int)MainThread.grid.getMouseOver().getMaxPlants(), 15, 50);
+		String CreatureString = "";
+		if(MainThread.grid.getMouseOver().getCreature()!=null && MainThread.tileSize>5){
+			CreatureString+=MainThread.grid.getMouseOver().getCreature().getName();
+			CreatureString+= " "  + MainThread.grid.getMouseOver().getCreature().getHealth();
+			CreatureString+= "/"  + MainThread.grid.getMouseOver().getCreature().getHealth();
+			g.drawString(CreatureString, 15, 75);
+		}
+		g.drawString("Time:" + MainThread.time + "ms", 10, 107);
+		g.drawString("Frames:" + MainThread.frames, 110, 107);
+		
+		g.drawRect(10, 10, 200, 100);
+		g.drawRect(10, 95, 200, 15);
 	}
 }

@@ -20,6 +20,8 @@ public class MainThread implements Runnable
 	public static int time=0;
 	//ms per loop in the run function
 	public static int timePerFrame = 1000;
+	//number of steps in current simulation
+	public static int frames = 0;
 	//size of the drawable area
 	public static final int canvasWidth=800,canvasHeight=800;
 	//area of the grid being displayed
@@ -61,10 +63,11 @@ public class MainThread implements Runnable
 			while(true){
 				while(pause){
 					Thread.sleep(1);
-					time+=timePerFrame;
+					time++;
 				}
 				if(grid!=null && time%timePerFrame==0){
 					grid.step();
+					frames++;
 				}
 				Thread.sleep(1);
 				time++;
