@@ -1,31 +1,29 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 /**
- * Legs
+ * Torso
  * Composite creature part. Provides structure for other concrete 
- * leg objects. Constructor is protected because only other legs
+ * torso objects. Constructor is protected because only other torsos
  * should have access to the super constructor.
  * 
- * Legs have a name, health stat, weight stat, and speed stat
+ * Torso has a name, health stat, and weight stat
  * 
  * @author dcruz
  * @author seth
  * @author steven
  */
 
-public class Legs extends CompositeCreatureComponent 
+public class Torso extends CompositeCreatureComponent 
 {
 	String name;
 	int health;
 	int weight;
-	int speed;
 	
-	public Legs(String n, int h, int w, int s)
+	protected Torso(String n, int h, int w)
 	{
 		name = n;
 		health = h;
 		weight = w;
-		speed = s;
 	}
 	
 	/**
@@ -46,11 +44,6 @@ public class Legs extends CompositeCreatureComponent
 		return weight;
 	}
 	
-	public int getSpeed()
-	{
-		return speed;
-	}
-	
 	/**
 	 * getName
 	 * @return name
@@ -63,7 +56,7 @@ public class Legs extends CompositeCreatureComponent
 	@Override
 	public String toString()
 	{
-		return ("Name: " + name + " Health: " + health + " Weight: " + 
-				weight + "Speed: " + speed);
+		return ("Name: " + name + " Health: " + health + " Weight: " + weight);
 	}
+
 }
