@@ -15,17 +15,17 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class Legs extends CompositeCreatureComponent 
 {
-	String name;
 	int health;
 	int weight;
 	int speed;
+	int damage;
 	
-	public Legs(String n, int h, int w, int s)
+	public Legs(int h, int w, int s, int d)
 	{
-		name = n;
 		health = h;
 		weight = w;
 		speed = s;
+		damage = d;
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class Legs extends CompositeCreatureComponent
 	 */
 	public int getHealth()
 	{
-		return health;
+		return health + super.getHealth();
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class Legs extends CompositeCreatureComponent
 	 */
 	public int getWeight()
 	{
-		return weight;
+		return weight + super.getWeight();
 	}
 	
 	/**
@@ -52,22 +52,11 @@ public class Legs extends CompositeCreatureComponent
 	 */
 	public int getSpeed()
 	{
-		return speed;
+		return speed + super.getSpeed();
 	}
 	
-	/**
-	 * getName
-	 * @return name
-	 */
-	public String getName()
+	public int getDamage()
 	{
-		return name;
-	}
-	
-	@Override
-	public String toString()
-	{
-		return ("Name: " + name + " Health: " + health + " Weight: " + 
-				weight + "Speed: " + speed);
+		return damage + super.getDamage();
 	}
 }

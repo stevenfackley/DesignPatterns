@@ -15,13 +15,11 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class Torso extends CompositeCreatureComponent 
 {
-	String name;
 	int health;
 	int weight;
 	
-	protected Torso(String n, int h, int w)
+	public Torso(int h, int w)
 	{
-		name = n;
 		health = h;
 		weight = w;
 	}
@@ -32,7 +30,7 @@ public class Torso extends CompositeCreatureComponent
 	 */
 	public int getHealth()
 	{
-		return health;
+		return health + super.getHealth();
 	}
 	
 	/**
@@ -41,22 +39,6 @@ public class Torso extends CompositeCreatureComponent
 	 */
 	public int getWeight()
 	{
-		return weight;
+		return weight + super.getWeight();
 	}
-	
-	/**
-	 * getName
-	 * @return name
-	 */
-	public String getName()
-	{
-		return name;
-	}
-	
-	@Override
-	public String toString()
-	{
-		return ("Name: " + name + " Health: " + health + " Weight: " + weight);
-	}
-
 }

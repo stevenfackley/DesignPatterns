@@ -12,6 +12,6 @@ public class LargeTorso extends Torso
 {
 	public LargeTorso()
 	{
-		super("Large Torso", 30, 15);
+		super(30, 15);
 	}
 }

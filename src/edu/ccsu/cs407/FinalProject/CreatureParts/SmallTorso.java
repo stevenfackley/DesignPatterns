@@ -14,6 +14,6 @@ public class SmallTorso extends Torso
 	
 	public SmallTorso()
 	{
-		super("Small Torso", 10, 5);
+		super(10, 5);
 	}
 }

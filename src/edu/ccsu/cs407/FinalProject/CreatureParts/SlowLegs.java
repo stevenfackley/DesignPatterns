@@ -12,6 +12,6 @@ public class SlowLegs extends Legs
 {
 	public SlowLegs()
 	{
-		super("Slow Legs", 20, 15, 5);
+		super(20, 15, 5, 8);
 	}
 }

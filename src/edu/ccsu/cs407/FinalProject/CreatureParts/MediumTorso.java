@@ -12,6 +12,6 @@ public class MediumTorso extends Torso
 {
 	public MediumTorso()
 	{
-		super("Medium Torso", 20, 10);
+		super(20, 10);
 	}
 }

@@ -12,6 +12,6 @@ public class FastLegs extends Legs
 {
 	public FastLegs()
 	{
-		super("Fast Legs", 10, 5, 15);
+		super(10, 5, 15, 4);
 	}
 }

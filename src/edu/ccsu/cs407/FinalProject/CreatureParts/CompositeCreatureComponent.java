@@ -2,44 +2,224 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-/**
- * A BodyPart that contains at least 1 subcomponent
- * 
- * @author seth
- * @author dylan
- * @author steve
- */
-
-public abstract class CompositeCreatureComponent extends CreatureComponent
+public class CompositeCreatureComponent extends CreatureComponent 
 {
-	protected List<CreatureComponent> children = new ArrayList<CreatureComponent>();
-
-/**
- * Add a child body part	
- * @param part
- */
-	public void add(CreatureComponent part) 
+	private ArrayList creatureComponents = new ArrayList();
+	
+	public void add(CreatureComponent c)
 	{
-		children.add(part);	
+		creatureComponents.add(c);
+	}
+	
+	public void remove(CreatureComponent c)
+	{
+		creatureComponents.remove(c);
+	}
+	
+	public CreatureComponent getChild(int i)
+	{
+		return (CreatureComponent) creatureComponents.get(i);
+	}
+	
+	public int getHealth()
+	{
+		int health = 0;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					health += creatureComponent.getHealth();
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		
+		return health;
+	}
+	
+	public int getSpeed()
+	{
+		int speed = 0;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					speed += creatureComponent.getSpeed();
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		
+		return speed;
+	}
+	
+	public int getWeight()
+	{
+		int weight = 0;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					weight += creatureComponent.getWeight();
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		return weight;
+	}
+	
+	public int getDamage()
+	{
+		int damage = 0;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					damage += creatureComponent.getDamage();
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		return damage;
+	}
+	
+	public boolean canFly()
+	{
+		boolean fly = false;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					if (creatureComponent.canFly())
+					{
+						fly=true;
+					}
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		return fly;
+	}
+	
+	public boolean canSwim()
+	{
+		boolean swim= false;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					if (creatureComponent.canSwim())
+					{
+						swim=true;
+					}
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		return swim;
+	}
+	
+	public boolean canEatLarger()
+	{
+		boolean larger = false;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					if (creatureComponent.canEatLarger())
+					{
+						larger=true;
+					}
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		return larger;
+	}
+	
+	public boolean isOmnivore()
+	{
+		boolean omni = false;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					if (creatureComponent.isOmnivore())
+					{
+						omni=true;
+					}
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		return omni;
 	}
 
-/**
- * Remove a body part
- * @param part
- */
-	public void remove(CreatureComponent part) 
+	public boolean isHerbivore()
 	{
-		children.remove(part);		
+		boolean herb = false;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					if (creatureComponent.isHerbivore())
+					{
+						herb=true;
+					}
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		return herb;
 	}
 
-/**
- * Iterator
- * @return children component iterator
- */
-	public Iterator<CreatureComponent> iterator() 
+	public boolean isCarnivore()
 	{
-		return children.iterator();
+		boolean carn = false;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					if (creatureComponent.isCarnivore())
+					{
+						carn=true;
+					}
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		return carn;
 	}
+
 }

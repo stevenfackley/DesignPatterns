@@ -12,6 +12,6 @@ public class GiantTorso extends Torso
 {
 	protected GiantTorso() 
 	{
-		super("Giant Torso", 40, 20);
+		super(40, 20);
 	}
 }

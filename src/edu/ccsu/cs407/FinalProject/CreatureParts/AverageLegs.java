@@ -12,6 +12,6 @@ public class AverageLegs extends Legs
 {
 	public AverageLegs()
 	{
-		super("Average Legs", 15, 10, 10);
+		super(15, 10, 10, 6);
 	}
 }
