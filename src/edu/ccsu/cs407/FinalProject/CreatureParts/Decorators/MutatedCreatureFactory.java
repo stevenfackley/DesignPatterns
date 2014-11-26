@@ -2,36 +2,15 @@ package edu.ccsu.cs407.FinalProject.CreatureParts.Decorators;
 
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 
-public class MutatedCreatureFactory implements MutatedFactory 
+/**
+ * interface defining the shell for a
+ * mutated creature factory
+ * @author dcruz
+ * @author seth
+ * @author steven
+ */
+
+public interface MutatedCreatureFactory 
 {
-	private static MutatedCreatureFactory instance = null;
-
-	private MutatedCreatureFactory(){}
-
-	public static MutatedCreatureFactory getInstance()
-	{
-		if (instance == null)
-		{
-			instance = new MutatedCreatureFactory(); 
-		}
-		return instance;
-	}
-	
-	public Creature CreateMutatedCreature(Creature c, String m, int x) 
-	{
-		Creature creature = c;
-		
-		if (m.equalsIgnoreCase("health"))
-		{
-			creature = new HealthMutator(creature, x);
-		}
-		if (m.equalsIgnoreCase("speed"))
-		{
-			creature = new SpeedMutator(creature, x);
-		}
-		
-		return creature;
-	}
-	
-
+	public Creature CreateMutatedCreature(Creature c, String m, int x);
 }

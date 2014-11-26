@@ -2,8 +2,8 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class Head extends CompositeCreatureComponent 
 {
-	int health;
-	int weight;
+	private int health;
+	private int weight;
 	
 	public Head(int h, int w)
 	{

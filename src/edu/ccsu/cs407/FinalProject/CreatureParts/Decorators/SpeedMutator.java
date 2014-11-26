@@ -13,7 +13,7 @@ import edu.ccsu.cs407.FinalProject.Creatures.Creature;
  * @author steven
  */
 
-public class SpeedMutator extends CreatureDecorator 
+public class SpeedMutator extends CreatureMutator 
 {
 	private Creature creature;
 	private int speedMutator;

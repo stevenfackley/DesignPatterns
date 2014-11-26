@@ -14,7 +14,7 @@ import edu.ccsu.cs407.FinalProject.Creatures.Creature;
  * @author steven
  */
 
-public class HealthMutator extends CreatureDecorator 
+public class HealthMutator extends CreatureMutator 
 {
 	private Creature creature;
 	private int healthMod;

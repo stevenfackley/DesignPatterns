@@ -9,14 +9,14 @@ import edu.ccsu.cs407.FinalProject.Creatures.Creature;
  * creature decorator. This functionality will
  * be used to mutate creatures. This class
  * forces the child decorator to implement all
- * methods of creature. 
+ * trait methods of creature. 
  * 
  * @author dcruz
  * @author seth
  * @author steve
  */
 
-public abstract class CreatureDecorator extends Creature
+public abstract class CreatureMutator extends Creature
 {	
 	public abstract int getHealth();
 	public abstract int getSpeed();
