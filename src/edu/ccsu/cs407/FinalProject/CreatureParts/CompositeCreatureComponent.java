@@ -180,27 +180,6 @@ public class CompositeCreatureComponent extends CreatureComponent
 		return omni;
 	}
 
-	public boolean isHerbivore()
-	{
-		boolean herb = false;
-		Iterator iterator = creatureComponents.iterator();
-		
-		while (iterator.hasNext())
-		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
-		
-				try 
-				{
-					if (creatureComponent.isHerbivore())
-					{
-						herb=true;
-					}
-				} 
-				catch (UnsupportedOperationException e) {}
-		}
-		return herb;
-	}
-
 	public boolean isCarnivore()
 	{
 		boolean carn = false;
@@ -221,5 +200,4 @@ public class CompositeCreatureComponent extends CreatureComponent
 		}
 		return carn;
 	}
-
 }

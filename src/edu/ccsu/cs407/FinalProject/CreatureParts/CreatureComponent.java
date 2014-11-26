@@ -134,18 +134,8 @@ public abstract class CreatureComponent
 	}
 	
 	/**
-	 * isHerbivore
-	 * @return true if herbivore
-	 * @throws UnsupportedOperationException
-	 */
-	public boolean isHerbivore() throws UnsupportedOperationException
-	{
-		throw new UnsupportedOperationException();
-	}
-	
-	/**
 	 * isCarnivore
-	 * @return true if carnivore
+	 * @return true if carnivore false if herbivore
 	 * @throws UnsupportedOperationException
 	 */
 	public boolean isCarnivore() throws UnsupportedOperationException

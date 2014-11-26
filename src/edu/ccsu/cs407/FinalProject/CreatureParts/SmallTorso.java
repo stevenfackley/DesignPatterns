@@ -10,8 +10,6 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class SmallTorso extends Torso 
 {
-	
-	
 	public SmallTorso()
 	{
 		super(10, 5);

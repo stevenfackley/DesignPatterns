@@ -1,9 +1,7 @@
 package edu.ccsu.cs407.FinalProject.Creatures;
 
 
-import java.text.Normalizer.Form;
-
-import edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent;
+import edu.ccsu.cs407.FinalProject.CreatureParts.CompositeCreatureComponent;
 import edu.ccsu.cs407.FinalProject.EatingStrategies.EatingStrategy;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 import edu.ccsu.cs407.FinalProject.MovementStrategies.MovementStrategy;
@@ -18,29 +16,11 @@ import edu.ccsu.cs407.FinalProject.MovementStrategies.MovementStrategy;
  * @author dylan
  */
 
-public class Creature extends CreatureComponent
+public class Creature extends CompositeCreatureComponent
 {
-	private String name;
 	private EatingStrategy eating;
 	private MovementStrategy moving;
 	private FightStrategy fighting;
-
-	/**
-	 * Constructor for creating creatures.
-	 * 
-	 * @param n			name of the creature
-	 * @param eats		eating strategy of creature
-	 * @param moves		movement strategy
-	 * @param fights	fighting strategy
-	 * @param cannibal	boolean to determine if its a cannibal
-	 * @param eatBig	boolean to determine if it can eat larger animals
-	 * @param s			integer defining creatures size
-	 * @param ms		integer defining creatures movement speed
-	 */
-	public Creature(String n)
-	{
-		name = n;
-	}
 	
 	/**
 	 * This method determines a standard turn for most animals. It can
