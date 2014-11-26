@@ -47,7 +47,7 @@ public class MutatedStatCreatureFactory implements MutatedCreatureFactory
 		Creature creature = c;
 		
 		if (m.equalsIgnoreCase("health"))
-		
+		{
 			creature = new HealthMutator(creature, x);
 		}
 		if (m.equalsIgnoreCase("speed"))
