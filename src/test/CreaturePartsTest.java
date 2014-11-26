@@ -7,12 +7,12 @@ import edu.ccsu.cs407.FinalProject.CreatureParts.LargeTorso;
 import edu.ccsu.cs407.FinalProject.CreatureParts.Decorators.HealthMutator;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 
-public class CreaturePartsTest {
+public class CreaturePartsTest 
+{
 
 	@Test
 	public void test() 
 	{
-		
 		Creature c = new Creature();
 		c.add(new LargeTorso());
 		c.add(new LargeHead());

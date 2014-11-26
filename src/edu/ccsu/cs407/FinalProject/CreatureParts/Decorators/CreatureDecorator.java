@@ -4,6 +4,18 @@ import edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent;
 import edu.ccsu.cs407.FinalProject.CreatureParts.UnsupportedOperationException;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 
+/**
+ * This abstract class defines the shell for a 
+ * creature decorator. This functionality will
+ * be used to mutate creatures. This class
+ * forces the child decorator to implement all
+ * methods of creature. 
+ * 
+ * @author dcruz
+ * @author seth
+ * @author steve
+ */
+
 public abstract class CreatureDecorator extends Creature
 {	
 	public abstract int getHealth();
