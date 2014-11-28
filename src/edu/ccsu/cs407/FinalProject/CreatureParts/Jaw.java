@@ -1,6 +1,6 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts;
 
-public class Jaw extends CreatureComponent 
+public abstract class Jaw extends CreatureComponent 
 {
 	private boolean canEatLarger;
 	
@@ -13,4 +13,6 @@ public class Jaw extends CreatureComponent
 	{
 		return canEatLarger;
 	}
+	
+	public abstract String toString();
 }

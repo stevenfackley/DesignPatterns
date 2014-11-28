@@ -1,11 +1,23 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts;
 
-public class SharpClaws extends Claws {
+/**
+ * SharpClaws
+ * Defines sharp animal claws. Has damage 10.
+ * @author dcruz
+ * @author seth
+ * @author steven
+ */
 
+
+public class SharpClaws extends Claws 
+{
 	public SharpClaws() 
 	{
 		super(10);
-		// TODO Auto-generated constructor stub
 	}
-
+	
+	public String toString()
+	{
+		return "Sharp Claws";
+	}
 }

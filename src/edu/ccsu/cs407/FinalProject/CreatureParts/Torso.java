@@ -13,7 +13,7 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author steven
  */
 
-public class Torso extends CompositeCreatureComponent 
+public abstract class Torso extends CompositeCreatureComponent 
 {
 	int health;
 	int weight;
@@ -41,4 +41,6 @@ public class Torso extends CompositeCreatureComponent
 	{
 		return weight + super.getWeight();
 	}
+	
+	public abstract String toString();
 }

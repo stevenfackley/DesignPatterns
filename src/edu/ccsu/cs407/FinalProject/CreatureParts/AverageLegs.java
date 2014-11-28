@@ -14,4 +14,10 @@ public class AverageLegs extends Legs
 	{
 		super(15, 10, 10, 6);
 	}
+
+	@Override
+	public String toString() 
+	{
+		return "Average Legs";
+	}
 }

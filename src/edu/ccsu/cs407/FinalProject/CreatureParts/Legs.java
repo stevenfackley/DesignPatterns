@@ -13,7 +13,7 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author steven
  */
 
-public class Legs extends CompositeCreatureComponent 
+public abstract class Legs extends CompositeCreatureComponent 
 {
 	int health;
 	int weight;
@@ -59,4 +59,6 @@ public class Legs extends CompositeCreatureComponent
 	{
 		return damage + super.getDamage();
 	}
+	
+	public abstract String toString();
 }

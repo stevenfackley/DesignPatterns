@@ -1,6 +1,6 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts;
 
-public class Teeth extends CreatureComponent 
+public abstract class Teeth extends CreatureComponent 
 {
 	private boolean eatPlants;
 	private boolean eatAnimals;
@@ -27,4 +27,6 @@ public class Teeth extends CreatureComponent
 	{
 		return damage;
 	}
+	
+	public abstract String toString();
 }

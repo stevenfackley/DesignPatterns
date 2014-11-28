@@ -14,4 +14,9 @@ public class SlowLegs extends Legs
 	{
 		super(20, 15, 5, 8);
 	}
+	
+	public String toString()
+	{
+		return "Slow Legs";
+	}
 }

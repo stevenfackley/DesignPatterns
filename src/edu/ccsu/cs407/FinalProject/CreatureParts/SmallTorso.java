@@ -14,4 +14,9 @@ public class SmallTorso extends Torso
 	{
 		super(10, 5);
 	}
+	
+	public String toString()
+	{
+		return "Small Torso";
+	}
 }

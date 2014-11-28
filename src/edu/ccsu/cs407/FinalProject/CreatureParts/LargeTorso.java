@@ -14,4 +14,10 @@ public class LargeTorso extends Torso
 	{
 		super(30, 15);
 	}
+
+	@Override
+	public String toString() 
+	{
+		return "Large Torso";
+	}
 }

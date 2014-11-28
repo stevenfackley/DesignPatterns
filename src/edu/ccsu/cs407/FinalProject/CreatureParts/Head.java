@@ -1,6 +1,6 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts;
 
-public class Head extends CompositeCreatureComponent 
+public abstract class Head extends CompositeCreatureComponent 
 {
 	private int health;
 	private int weight;
@@ -20,4 +20,6 @@ public class Head extends CompositeCreatureComponent
 	{
 		return weight + super.getWeight();
 	}
+	
+	public abstract String toString();
 }

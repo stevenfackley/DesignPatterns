@@ -14,4 +14,9 @@ public class MediumTorso extends Torso
 	{
 		super(20, 10);
 	}
+	
+	public String toString()
+	{
+		return "Medium Torso";
+	}
 }
