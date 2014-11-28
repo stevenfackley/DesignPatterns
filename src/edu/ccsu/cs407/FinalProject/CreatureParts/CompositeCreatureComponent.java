@@ -3,6 +3,8 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import edu.ccsu.cs407.FinalProject.Exceptions.UnsupportedOperationException;
+
 public class CompositeCreatureComponent extends CreatureComponent 
 {
 	private ArrayList creatureComponents = new ArrayList();

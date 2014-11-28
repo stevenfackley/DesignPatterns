@@ -10,8 +10,12 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class SlowLegs extends Legs 
 {
-	public SlowLegs()
-	{
+	public SlowLegs(){
 		super(20, 15, 5, 8);
+	}
+	
+	@Override
+	public String toString(){
+		return "Slow Legs";
 	}
 }

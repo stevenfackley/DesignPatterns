@@ -2,8 +2,12 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class LargeHead extends Head 
 {
-	public LargeHead()
-	{
+	public LargeHead(){
 		super(9,6);
+	}
+	
+	@Override
+	public String toString(){
+		return "Large Head";
 	}
 }

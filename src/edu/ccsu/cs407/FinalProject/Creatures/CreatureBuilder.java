@@ -23,19 +23,19 @@ public class CreatureBuilder extends AbstractCreatureBuilder {
 
 	@Override
 	public void addTorso(Torso t) {
-		// TODO Auto-generated method stub
+		torso = t;
 
 	}
 
 	@Override
 	public void addHead(Head h) {
-		// TODO Auto-generated method stub
+		head = h;
 
 	}
 
 	@Override
 	public void addLegs(Legs l) {
-		// TODO Auto-generated method stub
+		legs = l;
 
 	}
 

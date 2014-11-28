@@ -1,8 +1,8 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts.Decorators;
 
 import edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent;
-import edu.ccsu.cs407.FinalProject.CreatureParts.UnsupportedOperationException;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
+import edu.ccsu.cs407.FinalProject.Exceptions.UnsupportedOperationException;
 
 /**
  * This abstract class defines the shell for a 

@@ -14,4 +14,9 @@ public class FastLegs extends Legs
 	{
 		super(10, 5, 15, 4);
 	}
+	
+	@Override
+	public String toString(){
+		return "Fast Legs";
+	}
 }

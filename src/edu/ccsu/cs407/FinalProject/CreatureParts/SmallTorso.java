@@ -10,8 +10,12 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class SmallTorso extends Torso 
 {
-	public SmallTorso()
-	{
+	public SmallTorso(){
 		super(10, 5);
+	}
+	
+	@Override
+	public String toString(){
+		return "Small Torso";
 	}
 }

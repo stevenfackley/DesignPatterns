@@ -2,6 +2,8 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 import java.util.Iterator;
 
+import edu.ccsu.cs407.FinalProject.Exceptions.UnsupportedOperationException;
+
 /**
  * Abstract class to provide interface for creature components
  * 

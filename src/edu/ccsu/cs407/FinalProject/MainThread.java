@@ -7,7 +7,6 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import edu.ccsu.cs407.FinalProject.Creatures.ConcreteCreatureFactory;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 import edu.ccsu.cs407.FinalProject.Environment.Grid;
 import edu.ccsu.cs407.FinalProject.UI.MyFrame;

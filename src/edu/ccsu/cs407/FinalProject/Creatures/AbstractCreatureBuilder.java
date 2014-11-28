@@ -15,7 +15,20 @@ import edu.ccsu.cs407.FinalProject.CreatureParts.Torso;
 
 public abstract class AbstractCreatureBuilder 
 {
-	public abstract Creature buildCreature();
+	protected Torso torso;
+	protected Head head;
+	protected Legs legs;
+	
+	public Creature buildCreature(){
+		Creature creature = new Creature();
+		if (head != null)
+			creature.add(head);
+		if (torso != null)
+			creature.add(torso);
+		if (legs != null)
+			creature.add(legs);
+		return creature;
+	};
 	public abstract void addTorso(Torso t);
 	public abstract void addHead(Head h);
 	public abstract void addLegs(Legs l);

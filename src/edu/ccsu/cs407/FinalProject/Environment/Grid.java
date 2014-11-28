@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.util.Random;
 
 import edu.ccsu.cs407.FinalProject.MainThread;
-import edu.ccsu.cs407.FinalProject.Creatures.ConcreteCreatureFactory;
 import edu.ccsu.cs407.FinalProject.UI.MouseInput;
 
 /**

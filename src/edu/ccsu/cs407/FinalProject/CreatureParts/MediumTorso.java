@@ -10,8 +10,12 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class MediumTorso extends Torso 
 {
-	public MediumTorso()
-	{
+	public MediumTorso(){
 		super(20, 10);
+	}
+	
+	@Override
+	public String toString(){
+		return "Medium Torso";
 	}
 }
