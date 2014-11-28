@@ -1,8 +1,5 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts;
 
-import java.util.Iterator;
-
-import edu.ccsu.cs407.FinalProject.Exceptions.UnsupportedOperationException;
 
 /**
  * Abstract class to provide interface for creature components
@@ -126,21 +123,31 @@ public abstract class CreatureComponent
 	}
 	
 	/**
-	 * isOmnivore
-	 * @return true if omnivore
+	 * canEatPlants
+	 * @return true animal can eat plants
 	 * @throws UnsupportedOperationException
 	 */
-	public boolean isOmnivore() throws UnsupportedOperationException
+	public boolean canEatPlants() throws UnsupportedOperationException
 	{
 		throw new UnsupportedOperationException();
 	}
 	
 	/**
-	 * isCarnivore
-	 * @return true if carnivore false if herbivore
+	 * canEatAnimals
+	 * @return true if animal can eat animals
 	 * @throws UnsupportedOperationException
 	 */
-	public boolean isCarnivore() throws UnsupportedOperationException
+	public boolean canEatAnimals() throws UnsupportedOperationException
+	{
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * canEatSameSpecies
+	 * @return true if animal can eat own species
+	 * @throws UnsupportedOperationException
+	 */
+	public boolean canEatSameSpecies()  throws UnsupportedOperationException
 	{
 		throw new UnsupportedOperationException();
 	}

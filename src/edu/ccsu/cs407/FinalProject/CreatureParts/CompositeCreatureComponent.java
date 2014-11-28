@@ -3,8 +3,6 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import edu.ccsu.cs407.FinalProject.Exceptions.UnsupportedOperationException;
-
 public class CompositeCreatureComponent extends CreatureComponent 
 {
 	private ArrayList creatureComponents = new ArrayList();
@@ -161,7 +159,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 		return larger;
 	}
 	
-	public boolean isOmnivore()
+	public boolean canEatPlants()
 	{
 		boolean omni = false;
 		Iterator iterator = creatureComponents.iterator();
@@ -172,7 +170,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 		
 				try 
 				{
-					if (creatureComponent.isOmnivore())
+					if (creatureComponent.canEatPlants())
 					{
 						omni=true;
 					}
@@ -182,7 +180,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 		return omni;
 	}
 
-	public boolean isCarnivore()
+	public boolean canEatAnimals()
 	{
 		boolean carn = false;
 		Iterator iterator = creatureComponents.iterator();
@@ -193,7 +191,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 		
 				try 
 				{
-					if (creatureComponent.isCarnivore())
+					if (creatureComponent.canEatAnimals())
 					{
 						carn=true;
 					}
@@ -201,5 +199,26 @@ public class CompositeCreatureComponent extends CreatureComponent
 				catch (UnsupportedOperationException e) {}
 		}
 		return carn;
+	}
+
+	public boolean canEatSameSpecies()
+	{
+		boolean cannibal = false;
+		Iterator iterator = creatureComponents.iterator();
+		
+		while (iterator.hasNext())
+		{
+			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+		
+				try 
+				{
+					if (creatureComponent.canEatAnimals())
+					{
+						cannibal=true;
+					}
+				} 
+				catch (UnsupportedOperationException e) {}
+		}
+		return cannibal;
 	}
 }

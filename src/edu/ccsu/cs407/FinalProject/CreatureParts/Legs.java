@@ -20,7 +20,7 @@ public class Legs extends CompositeCreatureComponent
 	int speed;
 	int damage;
 	
-	public Legs(int h, int w, int s, int d)
+	protected Legs(int h, int w, int s, int d)
 	{
 		health = h;
 		weight = w;

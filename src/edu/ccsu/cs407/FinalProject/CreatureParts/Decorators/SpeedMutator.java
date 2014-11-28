@@ -82,17 +82,21 @@ public class SpeedMutator extends CreatureMutator
 	}
 
 	
-	public boolean isCarnivore() 
+	public boolean canEatAnimals() 
 	{
-		return creature.isCarnivore();
+		return creature.canEatAnimals();
 	}
 
 	
-	public boolean isOmnivore() 
+	public boolean canEatPlants() 
 	{
-		return creature.isOmnivore();
+		return creature.canEatPlants();
 	}
 
+	public boolean canEatSameSpecies()
+	{
+		return creature.canEatSameSpecies();
+	}
 	
 	public void add(CreatureComponent c) 
 	{
@@ -109,5 +113,10 @@ public class SpeedMutator extends CreatureMutator
 	public CreatureComponent getChild(int i) 
 	{
 		return creature.getChild(i);
+	}
+	
+	public String toString()
+	{
+		return creature.toString();
 	}
 }

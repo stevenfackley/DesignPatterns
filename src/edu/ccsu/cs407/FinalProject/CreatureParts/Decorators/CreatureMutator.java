@@ -1,8 +1,8 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts.Decorators;
 
 import edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent;
+import edu.ccsu.cs407.FinalProject.CreatureParts.UnsupportedOperationException;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
-import edu.ccsu.cs407.FinalProject.Exceptions.UnsupportedOperationException;
 
 /**
  * This abstract class defines the shell for a 
@@ -25,9 +25,11 @@ public abstract class CreatureMutator extends Creature
 	public abstract boolean canFly();
 	public abstract boolean canEatLarger(); 
 	public abstract boolean canSwim();
-	public abstract boolean isCarnivore();
-	public abstract boolean isOmnivore(); 
+	public abstract boolean canEatPlants();
+	public abstract boolean canEatAnimals(); 
+	public abstract boolean canEatSameSpecies();
 	public abstract void add(CreatureComponent c);
 	public abstract void remove(CreatureComponent c);
 	public abstract CreatureComponent getChild(int i);
+	public abstract String toString();
 }

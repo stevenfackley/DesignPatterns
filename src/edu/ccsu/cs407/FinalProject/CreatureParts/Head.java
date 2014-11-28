@@ -5,7 +5,7 @@ public class Head extends CompositeCreatureComponent
 	private int health;
 	private int weight;
 	
-	public Head(int h, int w)
+	protected Head(int h, int w)
 	{
 		health = h;
 		weight = w;

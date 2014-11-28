@@ -2,9 +2,7 @@ package edu.ccsu.cs407.FinalProject.Creatures;
 
 
 import edu.ccsu.cs407.FinalProject.CreatureParts.CompositeCreatureComponent;
-import edu.ccsu.cs407.FinalProject.EatingStrategies.EatingStrategy;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
-import edu.ccsu.cs407.FinalProject.MovementStrategies.MovementStrategy;
 
 /**
  * Creature class outlines a typical creature. Creatures have
@@ -18,9 +16,12 @@ import edu.ccsu.cs407.FinalProject.MovementStrategies.MovementStrategy;
 
 public class Creature extends CompositeCreatureComponent
 {
-	private EatingStrategy eating;
-	private MovementStrategy moving;
 	private FightStrategy fighting;
+	private String name;
+	
+	public Creature()
+	{}
+
 	
 	/**
 	 * This method determines a standard turn for most animals. It can
@@ -28,28 +29,37 @@ public class Creature extends CompositeCreatureComponent
 	 * must move, fight, and eat.
 	 */
 	
-	public void TakeTurn()
+	public void Fight()
 	{
-		// Template Method
-		Move();
-		Fight();
-		Eat();
+		fighting.Fight(); 
 	}
 	
-	private void Eat()
+	public String getName()
 	{
-		eating.Eat();
+		return name;
 	}
 	
-	private void Move()
+	public void setName(String s)
 	{
-		moving.Move();
+		name = s;
 	}
 	
-	private void Fight()
+	public void setFightStrategy(FightStrategy f)
 	{
-		fighting.Fight();
+		fighting = f;
 	}
 	
-	
+	public String toString()
+	{
+		String s;
+		
+		s = name + "\n" + "\nHealth: " + this.getHealth() +
+			"\nWeight: " + this.getWeight() + "\nSpeed: " + this.getSpeed() +
+			"\nDamage: " + this.getDamage() + "\nFly: " + this.canFly() + 
+			"\nSwim: " + this.canSwim() + "\nEat Larger: " + this.canEatLarger() +
+			"\nEats Plants: " + this.canEatPlants() + "\nEats Animals " + this.canEatAnimals() + 
+			"\nCannibal: " + this.canEatSameSpecies() + "\nFighting Strategy: " + fighting.toString();
+		
+		return s;
+	}
 }

@@ -10,12 +10,8 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class GiantTorso extends Torso 
 {
-	protected GiantTorso() {
+	protected GiantTorso() 
+	{
 		super(40, 20);
-	}
-	
-	@Override
-	public String toString(){
-		return "Giant Torso";
 	}
 }

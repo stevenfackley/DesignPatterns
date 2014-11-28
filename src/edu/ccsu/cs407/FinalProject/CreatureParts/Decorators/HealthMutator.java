@@ -75,39 +75,46 @@ public class HealthMutator extends CreatureMutator
 		return creature.canEatLarger();
 	}
 
-	@Override
+
 	public boolean canSwim() 
 	{
 		return creature.canSwim();
 	}
 
-	@Override
-	public boolean isCarnivore() 
+	public boolean canEatPlants() 
 	{
-		return creature.isCarnivore();
+		return creature.canEatPlants();
 	}
 
-	@Override
-	public boolean isOmnivore() 
+
+	public boolean canEatAnimals() 
 	{
-		return creature.isOmnivore();
+		return creature.canEatAnimals();
 	}
 
-	@Override
+	public boolean canEatSameSpecies() 
+	{
+		return creature.canEatSameSpecies();
+	}
+
 	public void add(CreatureComponent c) 
 	{
 		creature.add(c);
 	}
 
-	@Override
 	public void remove(CreatureComponent c)
 	{
 		creature.remove(c);
 	}
 
-	@Override
 	public CreatureComponent getChild(int i) 
 	{
 		return creature.getChild(i);
 	}
+	
+	public String toString()
+	{
+		return creature.toString();
+	}
+
 }

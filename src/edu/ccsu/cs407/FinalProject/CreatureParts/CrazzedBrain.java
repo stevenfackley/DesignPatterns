@@ -1,10 +1,9 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts;
 
-public class LargeJaw extends Jaw
+public class CrazzedBrain extends Brain 
 {
-	public LargeJaw() 
+	public CrazzedBrain() 
 	{
 		super(true);
 	}
-
 }

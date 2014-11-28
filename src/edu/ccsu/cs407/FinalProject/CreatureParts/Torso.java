@@ -18,7 +18,7 @@ public class Torso extends CompositeCreatureComponent
 	int health;
 	int weight;
 	
-	public Torso(int h, int w)
+	protected Torso(int h, int w)
 	{
 		health = h;
 		weight = w;

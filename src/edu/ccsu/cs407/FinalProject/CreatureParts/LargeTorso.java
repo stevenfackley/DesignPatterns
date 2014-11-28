@@ -10,12 +10,8 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class LargeTorso extends Torso 
 {
-	public LargeTorso(){
+	public LargeTorso()
+	{
 		super(30, 15);
-	}
-	
-	@Override
-	public String toString(){
-		return "Large Torso";
 	}
 }
