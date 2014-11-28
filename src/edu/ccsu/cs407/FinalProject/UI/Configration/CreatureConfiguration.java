@@ -1,23 +1,22 @@
 package edu.ccsu.cs407.FinalProject.UI.Configration;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-
-import java.awt.GridBagLayout;
-
-import javax.swing.JLabel;
-
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import edu.ccsu.cs407.FinalProject.CreatureParts.FastLegs;
 import edu.ccsu.cs407.FinalProject.CreatureParts.GiantHead;
@@ -31,23 +30,11 @@ import edu.ccsu.cs407.FinalProject.CreatureParts.SlowLegs;
 import edu.ccsu.cs407.FinalProject.CreatureParts.SmallHead;
 import edu.ccsu.cs407.FinalProject.CreatureParts.SmallTorso;
 import edu.ccsu.cs407.FinalProject.CreatureParts.Torso;
-import edu.ccsu.cs407.FinalProject.EatingStrategies.Carnivore;
-import edu.ccsu.cs407.FinalProject.EatingStrategies.EatingStrategy;
-import edu.ccsu.cs407.FinalProject.EatingStrategies.Herbivore;
-import edu.ccsu.cs407.FinalProject.EatingStrategies.Omnivore;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 import edu.ccsu.cs407.FinalProject.FightStrategies.Fights;
 import edu.ccsu.cs407.FinalProject.FightStrategies.RunAway;
 import edu.ccsu.cs407.FinalProject.FileOperations.FileOperator;
 import edu.ccsu.cs407.FinalProject.FileOperations.XMLCreatureReader;
-import edu.ccsu.cs407.FinalProject.MovementStrategies.Fly;
-import edu.ccsu.cs407.FinalProject.MovementStrategies.MovementStrategy;
-import edu.ccsu.cs407.FinalProject.MovementStrategies.Walk;
-
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class CreatureConfiguration {
 
@@ -134,7 +121,7 @@ public class CreatureConfiguration {
 		gbc_lblNewLabel.gridx = 0;
 		gbc_lblNewLabel.gridy = 2;
 		frame.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
-		
+		/*
 		JComboBox<EatingStrategy> cbEatingStrategy = new JComboBox<EatingStrategy>();
 		cbEatingStrategy.addItem(new Herbivore());
 		cbEatingStrategy.addItem(new Carnivore());
@@ -164,7 +151,7 @@ public class CreatureConfiguration {
 		gbc_cbMovementStrategy.gridx = 1;
 		gbc_cbMovementStrategy.gridy = 3;
 		frame.getContentPane().add(cbMovementStrategy, gbc_cbMovementStrategy);
-		
+		*/
 		JLabel lblNewLabel_2 = new JLabel("Fight Strategy: ");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
