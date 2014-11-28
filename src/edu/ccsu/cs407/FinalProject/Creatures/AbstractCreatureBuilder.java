@@ -33,11 +33,11 @@ public abstract class AbstractCreatureBuilder
 		if (brain != null)
 			head.add(brain);
 		if (jaw != null)
-			head.add()
-			
-		
-		
-		
+			head.add(jaw);
+		if (teeth != null)
+			head.add(teeth);
+		if (claws != null);
+			legs.add(claws);
 		if (head != null)
 			creature.add(head);
 		if (torso != null)
