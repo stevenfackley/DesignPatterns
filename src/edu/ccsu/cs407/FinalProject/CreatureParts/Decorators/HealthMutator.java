@@ -1,120 +1,37 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts.Decorators;
 
-import edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 
 /**
- * Health Mutator is a concrete implementation of a
- * creture decorator. It wraps a creature inside of it
- * and relies on that creatures implementation for all
- * but the getHealth method where it alters the return.
- * 
+ * HealthMutator
+ * modifies a creatures health by wrapping a creature
+ * instance.
  * @author dcruz
  * @author seth
- * @author steven
+ * @author steve
  */
 
 public class HealthMutator extends CreatureMutator 
 {
-	private Creature creature;
-	private int healthMod;
-	
 	
 	/**
-	 * Constrcutor
-	 * accepts a creature c and an int h
-	 * h is the integer amount of the health modifier 
-	 * being applied to a particular creature.
-	 * @param c
-	 * @param h
+	 * Constructor
+	 * Passes a creature and integer to the super
+	 * constructor
+	 * @param creature to be wrapped
+	 * @param health modifier
 	 */
 	public HealthMutator(Creature c, int h) 
 	{
-		creature = c;
-		healthMod = h;
+		super(c, h);
 	}
 	
 	/**
 	 * getHealth
-	 * modifed getHealth method returns wrapped creatures
-	 * health and adds the modifer to it. 
+	 * @return creatures health with the added modifier
 	 */
 	public int getHealth()
 	{
-		return creature.getHealth() + healthMod;
+		return creature.getHealth() + mod;
 	}
-
-	/**
-	 * These methods are implemented to call the 
-	 * same respective method on creature since 
-	 * these traits arent being mutated. 
-	 */
-	public int getSpeed() 
-	{
-		return creature.getSpeed();
-	}
-
-	public int getDamage() 
-	{
-		return creature.getDamage();
-	}
-
-	public int getWeight() 
-	{
-		return creature.getWeight();
-	}
-
-	public boolean canFly() 
-	{
-		return creature.canFly();
-	}
-
-	@Override
-	public boolean canEatLarger() 
-	{
-		return creature.canEatLarger();
-	}
-
-
-	public boolean canSwim() 
-	{
-		return creature.canSwim();
-	}
-
-	public boolean canEatPlants() 
-	{
-		return creature.canEatPlants();
-	}
-
-
-	public boolean canEatAnimals() 
-	{
-		return creature.canEatAnimals();
-	}
-
-	public boolean canEatSameSpecies() 
-	{
-		return creature.canEatSameSpecies();
-	}
-
-	public void add(CreatureComponent c) 
-	{
-		creature.add(c);
-	}
-
-	public void remove(CreatureComponent c)
-	{
-		creature.remove(c);
-	}
-
-	public CreatureComponent getChild(int i) 
-	{
-		return creature.getChild(i);
-	}
-	
-	public String toString()
-	{
-		return creature.toString();
-	}
-
 }

@@ -5,8 +5,8 @@ import org.junit.Test;
 import edu.ccsu.cs407.FinalProject.CreatureParts.LargeHead;
 import edu.ccsu.cs407.FinalProject.CreatureParts.LargeTorso;
 import edu.ccsu.cs407.FinalProject.CreatureParts.Decorators.HealthMutator;
-import edu.ccsu.cs407.FinalProject.CreatureParts.Decorators.MutatedStatCreatureFactory;
 import edu.ccsu.cs407.FinalProject.CreatureParts.Decorators.MutatedCreatureFactory;
+import edu.ccsu.cs407.FinalProject.CreatureParts.Decorators.MutationFactory;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 
 public class CreaturePartsTest 
@@ -16,14 +16,37 @@ public class CreaturePartsTest
 	public void test() 
 	{
 		Creature c = new Creature();
-		c.add(new LargeTorso());
-		c.add(new LargeHead());
-		System.out.println(c.getHealth() + "\n" + c.getWeight());
-		c = new HealthMutator(c, 20);
-		System.out.println(c.getHealth() + "\n" + c.getWeight());
 		
-		MutatedCreatureFactory mf = MutatedStatCreatureFactory.getInstance();
-		c = mf.CreateMutatedCreature(c, "health", 40);
-		System.out.println(c.getHealth() + "\n" + c.getWeight());
+		
+		MutationFactory mf = MutatedCreatureFactory.getInstance();
+		c = mf.CreateMutatedCreature(c, 5);
+		System.out.println(c.getHealth() + " " + c.getWeight() + " " + c.getSpeed() + " " + c.getDamage());
+		
+		c = mf.CreateMutatedCreature(c, 5);
+		System.out.println(c.getHealth() + " " + c.getWeight() + " " + c.getSpeed() + " " + c.getDamage());
+		
+		c = mf.CreateMutatedCreature(c, 5);
+		System.out.println(c.getHealth() + " " + c.getWeight() + " " + c.getSpeed() + " " + c.getDamage());
+		
+		c = mf.CreateMutatedCreature(c, 5);
+		System.out.println(c.getHealth() + " " + c.getWeight() + " " + c.getSpeed() + " " + c.getDamage());
+		
+		c = mf.CreateMutatedCreature(c, 5);
+		System.out.println(c.getHealth() + " " + c.getWeight() + " " + c.getSpeed() + " " + c.getDamage());
+		
+		c = mf.CreateMutatedCreature(c, 5);
+		System.out.println(c.getHealth() + " " + c.getWeight() + " " + c.getSpeed() + " " + c.getDamage());
+		
+		c = mf.CreateMutatedCreature(c, 5);
+		System.out.println(c.getHealth() + " " + c.getWeight() + " " + c.getSpeed() + " " + c.getDamage());
+		
+		c = mf.CreateMutatedCreature(c, 5);
+		System.out.println(c.getHealth() + " " + c.getWeight() + " " + c.getSpeed() + " " + c.getDamage());
+		
+		c = mf.CreateMutatedCreature(c, 5);
+		System.out.println(c.getHealth() + " " + c.getWeight() + " " + c.getSpeed() + " " + c.getDamage());
+		
+		c = mf.CreateMutatedCreature(c, 5);
+		System.out.println(c.getHealth() + " " + c.getWeight() + " " + c.getSpeed() + " " + c.getDamage());
 	}
 }

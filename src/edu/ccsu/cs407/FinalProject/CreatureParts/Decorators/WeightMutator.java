@@ -3,35 +3,34 @@ package edu.ccsu.cs407.FinalProject.CreatureParts.Decorators;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 
 /**
- * SpeedMutator
- * modifies a creatures speed by wrapping a creature
+ * WeightMutator
+ * modifies a creatures weight by wrapping a creature
  * instance.
  * @author dcruz
  * @author seth
  * @author steve
  */
 
-public class SpeedMutator extends CreatureMutator 
-{	
+public class WeightMutator extends CreatureMutator 
+{
 	/**
 	 * Constructor
 	 * Passes a creature and integer to the super
 	 * constructor
 	 * @param creature to be wrapped
-	 * @param speed modifier
+	 * @param weight modifier
 	 */
-	public SpeedMutator(Creature c, int s)
+	public WeightMutator(Creature c, int w)
 	{
-		super(c, s);
+		super(c, w);
 	}
-	
 
 	/**
-	 * getSpeed
-	 * @return creatures speed with the added modifier
+	 * getWeight
+	 * @return creatures weight with the added modifier
 	 */
-	public int getSpeed() 
+	public int getWeight() 
 	{
-		return creature.getSpeed() + mod;
+		return creature.getWeight() + mod;
 	}
 }
