@@ -16,5 +16,5 @@ import javax.swing.text.Document;
 public interface FileOperator {
 
 	Document ReadFile(File filename) throws Exception;
-	void WriteToFile(Document doc) throws Exception;
+	void WriteToFile(org.w3c.dom.Document doc) throws Exception;
 }

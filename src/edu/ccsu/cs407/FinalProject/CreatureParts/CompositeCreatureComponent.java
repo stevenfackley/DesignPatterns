@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class CompositeCreatureComponent extends CreatureComponent 
 {
-	private ArrayList creatureComponents = new ArrayList();
+	private ArrayList<CreatureComponent> creatureComponents = new ArrayList<CreatureComponent>();
 	
 	public void add(CreatureComponent c)
 	{
@@ -19,17 +19,23 @@ public class CompositeCreatureComponent extends CreatureComponent
 	
 	public CreatureComponent getChild(int i)
 	{
-		return (CreatureComponent) creatureComponents.get(i);
+		return creatureComponents.get(i);
 	}
+	
+	public ArrayList<CreatureComponent> getCreatureComponents(){
+		return creatureComponents;
+	}
+	
+	
 	
 	public int getHealth()
 	{
 		int health = 0;
-		Iterator iterator = creatureComponents.iterator();
+		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
 		while (iterator.hasNext())
 		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+			CreatureComponent creatureComponent = iterator.next();
 		
 				try 
 				{
@@ -44,11 +50,11 @@ public class CompositeCreatureComponent extends CreatureComponent
 	public int getSpeed()
 	{
 		int speed = 0;
-		Iterator iterator = creatureComponents.iterator();
+		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
 		while (iterator.hasNext())
 		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+			CreatureComponent creatureComponent = iterator.next();
 		
 				try 
 				{
@@ -63,11 +69,11 @@ public class CompositeCreatureComponent extends CreatureComponent
 	public int getWeight()
 	{
 		int weight = 0;
-		Iterator iterator = creatureComponents.iterator();
+		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
 		while (iterator.hasNext())
 		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+			CreatureComponent creatureComponent = iterator.next();
 		
 				try 
 				{
@@ -81,11 +87,11 @@ public class CompositeCreatureComponent extends CreatureComponent
 	public int getDamage()
 	{
 		int damage = 0;
-		Iterator iterator = creatureComponents.iterator();
+		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
 		while (iterator.hasNext())
 		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+			CreatureComponent creatureComponent = iterator.next();
 		
 				try 
 				{
@@ -99,11 +105,11 @@ public class CompositeCreatureComponent extends CreatureComponent
 	public boolean canFly()
 	{
 		boolean fly = false;
-		Iterator iterator = creatureComponents.iterator();
+		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
 		while (iterator.hasNext())
 		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+			CreatureComponent creatureComponent = iterator.next();
 		
 				try 
 				{
@@ -120,11 +126,11 @@ public class CompositeCreatureComponent extends CreatureComponent
 	public boolean canSwim()
 	{
 		boolean swim= false;
-		Iterator iterator = creatureComponents.iterator();
+		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
 		while (iterator.hasNext())
 		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+			CreatureComponent creatureComponent = iterator.next();
 		
 				try 
 				{
@@ -141,11 +147,11 @@ public class CompositeCreatureComponent extends CreatureComponent
 	public boolean canEatLarger()
 	{
 		boolean larger = false;
-		Iterator iterator = creatureComponents.iterator();
+		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
 		while (iterator.hasNext())
 		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+			CreatureComponent creatureComponent = iterator.next();
 		
 				try 
 				{
@@ -162,11 +168,11 @@ public class CompositeCreatureComponent extends CreatureComponent
 	public boolean canEatPlants()
 	{
 		boolean omni = false;
-		Iterator iterator = creatureComponents.iterator();
+		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
 		while (iterator.hasNext())
 		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+			CreatureComponent creatureComponent = iterator.next();
 		
 				try 
 				{
@@ -183,11 +189,11 @@ public class CompositeCreatureComponent extends CreatureComponent
 	public boolean canEatAnimals()
 	{
 		boolean carn = false;
-		Iterator iterator = creatureComponents.iterator();
+		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
 		while (iterator.hasNext())
 		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+			CreatureComponent creatureComponent = iterator.next();
 		
 				try 
 				{
@@ -204,11 +210,11 @@ public class CompositeCreatureComponent extends CreatureComponent
 	public boolean canEatSameSpecies()
 	{
 		boolean cannibal = false;
-		Iterator iterator = creatureComponents.iterator();
+		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
 		while (iterator.hasNext())
 		{
-			CreatureComponent creatureComponent = (CreatureComponent)iterator.next();
+			CreatureComponent creatureComponent = iterator.next();
 		
 				try 
 				{

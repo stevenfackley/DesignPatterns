@@ -20,11 +20,6 @@ import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 
 public class CreatureBuilder extends AbstractCreatureBuilder {
 
-	@Override
-	public Creature buildCreature() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void setTorso(Torso t) 
 	{

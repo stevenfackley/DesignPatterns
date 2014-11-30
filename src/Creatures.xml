@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Game id="1">
-	<TemplatedCreature>
-		<Name>Wolf</Name>
-	</TemplatedCreature>
-	<TemplatedCreature>
-		<Name>Rabbit</Name>
-	</TemplatedCreature>
-	
 	<Creature>
-		<Name>Test</Name>
-		<EatingStrategy>Omnivore</EatingStrategy>
-		<MovementStrategy>Walk</MovementStrategy>
-		<FightStrategy>Fight</FightStrategy>
-		<IsCannibal>True</IsCannibal>
-		<CanEatBig>True</CanEatBig>
-		<Size>3</Size>
-		<MovementSpeed>5</MovementSpeed>
+		
+		
 	</Creature>
 </Game>

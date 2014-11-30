@@ -14,5 +14,7 @@ public abstract class Jaw extends CreatureComponent
 		return canEatLarger;
 	}
 	
-	public abstract String toString();
+	public String toString(){
+		return "Jaw";
+	};
 }
