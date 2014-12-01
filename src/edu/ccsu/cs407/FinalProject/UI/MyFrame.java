@@ -22,7 +22,7 @@ public class MyFrame extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		addComponentsToLayout(getContentPane());
-		setVisible(true);
+		this.setVisible(true);
 	}
 	/**
 	 * Adds the canvas and menu bar to the content pane of the window

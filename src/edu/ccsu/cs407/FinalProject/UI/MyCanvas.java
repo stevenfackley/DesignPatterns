@@ -52,7 +52,7 @@ public class MyCanvas extends JPanel {
 		String CreatureString = "";
 		if(MainThread.grid.getMouseOver().getCreature()!=null && MainThread.tileSize>5){
 			CreatureString+=MainThread.grid.getMouseOver().getCreature().getName();
-			CreatureString+= " "  + MainThread.grid.getMouseOver().getCreature().getHealth();
+			CreatureString+= " "  + (MainThread.grid.getMouseOver().getCreature().getHealth()-MainThread.grid.getMouseOver().getCreature().getDamageTaken());
 			CreatureString+= "/"  + MainThread.grid.getMouseOver().getCreature().getHealth();
 			g.drawString(CreatureString, 15, 75);
 		}

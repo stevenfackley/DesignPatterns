@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import edu.ccsu.cs407.FinalProject.MainThread;
 import edu.ccsu.cs407.FinalProject.CreatureParts.AverageClaws;
 import edu.ccsu.cs407.FinalProject.CreatureParts.Brain;
 import edu.ccsu.cs407.FinalProject.CreatureParts.Claws;
@@ -323,39 +324,38 @@ public class CreatureConfiguration {
 				
 				if (!tbCreatureName.getText().isEmpty() && isInteger(txtNumberOfCreatures.getText())){
 
-				Brain brain = (Brain)cbBrain.getSelectedItem();
-				Jaw jaw = (Jaw)cbJaw.getSelectedItem();
-				Claws claw = (Claws)cbClaws.getSelectedItem();
-				Head head = (Head)cbHead.getSelectedItem();
-				Torso torso = (Torso)cbTorso.getSelectedItem();
-				Legs legs = (Legs)cbLegs.getSelectedItem();
-				FightStrategy fight = (FightStrategy)cbFightStrategy.getSelectedItem();
-				String name = tbCreatureName.getText();
-				Teeth teeth = (Teeth)cbTeeth.getSelectedItem();
-				int numberOfCreatures = Integer.parseInt(txtNumberOfCreatures.getText());
-				
-				CreatureBuilder builder = new CreatureBuilder();
-				builder.setBrain(brain);
-				builder.setClaws(claw);
-				builder.setFightStrategy(fight);
-				builder.setHead(head);
-				builder.setJaw(jaw);
-				builder.setName(name);
-				builder.setLegs(legs);
-				builder.setTeeth(teeth);
-				builder.setTorso(torso);
-				Creature creature = builder.buildCreature();
-				
-				List<Creature> listOfCreatures = new ArrayList<Creature>();
-				
-				for (int i = 0; i < numberOfCreatures; i++){
-					listOfCreatures.add(creature.clone());
+					Brain brain = (Brain)cbBrain.getSelectedItem();
+					Jaw jaw = (Jaw)cbJaw.getSelectedItem();
+					Claws claw = (Claws)cbClaws.getSelectedItem();
+					Head head = (Head)cbHead.getSelectedItem();
+					Torso torso = (Torso)cbTorso.getSelectedItem();
+					Legs legs = (Legs)cbLegs.getSelectedItem();
+					FightStrategy fight = (FightStrategy)cbFightStrategy.getSelectedItem();
+					String name = tbCreatureName.getText();
+					Teeth teeth = (Teeth)cbTeeth.getSelectedItem();
+					int numberOfCreatures = Integer.parseInt(txtNumberOfCreatures.getText());
+					
+					CreatureBuilder builder = new CreatureBuilder();
+					builder.setBrain(brain);
+					builder.setClaws(claw);
+					builder.setFightStrategy(fight);
+					builder.setHead(head);
+					builder.setJaw(jaw);
+					builder.setName(name);
+					builder.setLegs(legs);
+					builder.setTeeth(teeth);
+					builder.setTorso(torso);
+					Creature creature = builder.buildCreature();
+					
+					List<Creature> listOfCreatures = new ArrayList<Creature>();
+					
+					for (int i = 0; i < numberOfCreatures; i++){
+						listOfCreatures.add(creature.clone());
+					}
+					frame.setVisible(false);
+					MainThread.LaunchTileUI();
+					MainThread.grid.addCreatures(listOfCreatures);
 				}
-				
-				}
-
-			
-				frame.setVisible(false);
 			}
 		});
 		GridBagConstraints gbc_btnCreate = new GridBagConstraints();

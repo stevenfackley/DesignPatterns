@@ -33,7 +33,7 @@ public class MainThread implements Runnable
 	public static int realGridSize=0;
 	public static int width=400;
 	// top level swing container
-	public static MyFrame frame;
+	public static MyFrame frame=null;
 	public static boolean pause=true;
 	
 	public static void main(String[] args) 
@@ -44,49 +44,39 @@ public class MainThread implements Runnable
 
 	MainThread(){}
 	
+	public static void LaunchTileUI(){
+		tileSize = (double)canvasWidth/width;
+		frame = new MyFrame(canvasWidth,canvasHeight+30);
+		grid = new Grid(width);
+	}
+	
 	@Override
 	public void run() {
 		 /*
 		  * CODE TO BE RUN ONCE AT THE START OF THE PROGRAM
 		  */
 		OpenMainGameBoard();
-		boolean continueToMainThread = false;
 		
 		CreatureConfiguration window = new CreatureConfiguration();
 		window.frame.setVisible(true);
-		tileSize = (double)canvasWidth/width;
-		frame = new MyFrame(canvasWidth,canvasHeight+30);
-		grid = new Grid(width);
-		
-		
 		try {
 			/*
 			 * CODE TO BE RUN OVER THE LIFE OF THE PROGRAM
 			 */
 			while(true){
-				if (!continueToMainThread){
-					try {
-						List<Creature> creatures = window.GetCreatures();
-						grid.addCreatures(creatures);
-						continueToMainThread = true;
-					} catch (Exception e) {
-						continueToMainThread = false;
-					}
-				}
-				
-				if (continueToMainThread){
-					
+				if (frame!=null){
 					while(pause){
 						Thread.sleep(1);
 						time++;
 					}
 					if(grid!=null && time%timePerFrame==0){
 						grid.step();
+						//add turn handler functionality here
 						frames++;
 					}
-					Thread.sleep(1);
-					time++;
 				}
+				Thread.sleep(1);
+				time++;
 			}
 			
 		} catch (InterruptedException e) {

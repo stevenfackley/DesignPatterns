@@ -30,11 +30,24 @@ public class Tile {
 		g.fillRect(startX, startY, tileSize, tileSize);
 		if(tileSize>5){
 			if(creature!=null){
-				g.setColor(Color.CYAN);
-				g.fillOval(startX+1, startY+1, tileSize-2, tileSize-2);
-				g.setColor(Color.RED);
-				if(tileSize>10)
-					g.fillRect(startX+tileSize*1/10, startY+tileSize*7/10, tileSize*8/10, tileSize*2/10);
+				if(creature.canEatPlants() && !creature.canEatAnimals())
+					g.setColor(Color.CYAN);
+				else if(!creature.canEatPlants() && creature.canEatAnimals())
+					g.setColor(Color.ORANGE);
+				else
+					g.setColor(Color.GRAY);
+				int size = (tileSize-2)*creature.getHealth()/60;
+				g.fillOval(startX+(tileSize-size)/2, startY+(tileSize-size)/2, size, size);
+				g.setColor(new Color(0,0,0,75));
+				g.drawOval(startX+(tileSize-size)/2, startY+(tileSize-size)/2, size, size);
+				if(tileSize>10){
+					g.setColor(Color.PINK);
+					g.fillRect(startX+tileSize*1/10, startY+tileSize*1/10, tileSize*8/10, tileSize*2/10);
+					g.setColor(Color.RED);
+					g.fillRect(startX+tileSize*1/10, startY+tileSize*1/10, tileSize*8/10*(creature.getDamage()-creature.getDamageTaken())/creature.getDamage(), tileSize*2/10);
+					g.setColor(new Color(0,0,0,75));
+					g.drawRect(startX+tileSize*1/10, startY+tileSize*1/10, tileSize*8/10, tileSize*2/10);
+				}
 			}
 		}
 			

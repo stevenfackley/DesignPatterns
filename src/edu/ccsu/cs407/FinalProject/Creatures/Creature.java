@@ -1,6 +1,11 @@
 package edu.ccsu.cs407.FinalProject.Creatures;
 
 
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Random;
+
+import edu.ccsu.cs407.FinalProject.MainThread;
 import edu.ccsu.cs407.FinalProject.CreatureParts.CompositeCreatureComponent;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 
@@ -18,6 +23,9 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 {
 	private FightStrategy fighting;
 	private String name;
+	private int posX = 0;
+	private int posY = 0;
+	private int damageTaken = 0;
 	
 	public Creature()
 	{}
@@ -48,6 +56,18 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 		fighting = f;
 	}
 	
+	public void setPosition(int x,int y){
+		posX=x;
+		posY=y;
+	}
+	
+	private void takeDamage(int damage){
+		damageTaken+=damage;
+	}
+	
+	public int getDamageTaken() {
+		return damageTaken;
+	}
 	@Override
 	public String toString()
 	{
@@ -69,5 +89,5 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 	  
 
 	    return creature;
-	}
+	}	
 }

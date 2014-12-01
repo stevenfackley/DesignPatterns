@@ -2,6 +2,7 @@ package edu.ccsu.cs407.FinalProject.Environment;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -19,6 +20,7 @@ public class Grid {
 	private int width;
 	private Tile data[][];
 	private TileFactory tileFactory = TileFactory.getInstance();
+	private ArrayList<Creature> creatures = new ArrayList<Creature>();
 	
 	/**
 	 * Calls the step function on every tile in the grid
@@ -46,7 +48,6 @@ public class Grid {
 		int area=width*width;
 		seedLand(area/250);
 		growLand(25);
-		//addCreatures(area/10);
 	}
 	/**
 	 * @param x x-position on the grid
@@ -113,6 +114,8 @@ public class Grid {
 			randY = rand.nextInt(width);
 			if(data[randX][randY] instanceof Land && data[randX][randY].getCreature()==null){
 				data[randX][randY].setCreature(creatures.get(i));
+				data[randX][randY].getCreature().setPosition(randX, randY);
+				creatures.add(data[randX][randY].getCreature());
 			}
 		}
 	}
