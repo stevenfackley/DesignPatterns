@@ -14,7 +14,7 @@ import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
  * @author dylan
  */
 
-public class Creature extends CompositeCreatureComponent
+public class Creature extends CompositeCreatureComponent implements Cloneable
 {
 	private FightStrategy fighting;
 	private String name;
@@ -49,6 +49,7 @@ public class Creature extends CompositeCreatureComponent
 		fighting = f;
 	}
 	
+	@Override
 	public String toString()
 	{
 		String s;
@@ -61,5 +62,14 @@ public class Creature extends CompositeCreatureComponent
 			"\nCannibal: " + this.canEatSameSpecies() + "\nFighting Strategy: " + fighting.toString();
 		
 		return s;
+	}
+	
+	@Override
+	public Creature clone()
+	{
+	    Creature creature = this;
+	  
+
+	    return creature;
 	}
 }

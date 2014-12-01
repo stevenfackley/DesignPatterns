@@ -6,9 +6,10 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -48,13 +49,13 @@ import edu.ccsu.cs407.FinalProject.Creatures.CreatureBuilder;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 import edu.ccsu.cs407.FinalProject.FightStrategies.Fights;
 import edu.ccsu.cs407.FinalProject.FightStrategies.RunAway;
-import edu.ccsu.cs407.FinalProject.FileOperations.FileOperator;
-import edu.ccsu.cs407.FinalProject.FileOperations.XMLCreatureReader;
 
 public class CreatureConfiguration {
-
-	private JFrame frame;
+	List<Creature> createdCreatures;
+	
+	public JFrame frame;
 	private JTextField tbCreatureName;
+	private JTextField txtNumberOfCreatures;
 
 	/**
 	 * Launch the application.
@@ -71,15 +72,19 @@ public class CreatureConfiguration {
 			}
 		});
 	}
+	
+	public List<Creature> GetCreatures(){
+		if (createdCreatures.isEmpty())
+			throw new UnsupportedOperationException("");
+		return createdCreatures;
+	}
 
 	/**
 	 * Create the application.
 	 */
 	public CreatureConfiguration() {
+		createdCreatures = new ArrayList<Creature>();
 		initialize();
-	}
-	private void createComboboxItems(){
-		
 	}
 
 	/**
@@ -131,6 +136,24 @@ public class CreatureConfiguration {
 		gbc_tbCreatureName.gridy = 1;
 		frame.getContentPane().add(tbCreatureName, gbc_tbCreatureName);
 		tbCreatureName.setColumns(10);
+		
+		JLabel lblNumberOfCreatures = new JLabel("Number of Creatures: ");
+		GridBagConstraints gbc_lblNumberOfCreatures = new GridBagConstraints();
+		gbc_lblNumberOfCreatures.anchor = GridBagConstraints.EAST;
+		gbc_lblNumberOfCreatures.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNumberOfCreatures.gridx = 0;
+		gbc_lblNumberOfCreatures.gridy = 2;
+		frame.getContentPane().add(lblNumberOfCreatures, gbc_lblNumberOfCreatures);
+		
+		txtNumberOfCreatures = new JTextField();
+		txtNumberOfCreatures.setText("1");
+		GridBagConstraints gbc_txtNumberOfCreatures = new GridBagConstraints();
+		gbc_txtNumberOfCreatures.insets = new Insets(0, 0, 5, 0);
+		gbc_txtNumberOfCreatures.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtNumberOfCreatures.gridx = 1;
+		gbc_txtNumberOfCreatures.gridy = 2;
+		frame.getContentPane().add(txtNumberOfCreatures, gbc_txtNumberOfCreatures);
+		txtNumberOfCreatures.setColumns(10);
 		
 		//Creature Fighting Strategy
 		JLabel lblNewLabel_2 = new JLabel("Fight Strategy: ");
@@ -294,12 +317,9 @@ public class CreatureConfiguration {
 		JButton btnCreate = new JButton("Create");
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//TODO: Search xml file for exsiting creature with same name
-				if (!tbCreatureName.getText().isEmpty()){
-					
-				}
 				
-				
+				if (!tbCreatureName.getText().isEmpty() && isInteger(txtNumberOfCreatures.getText())){
+
 				Brain brain = (Brain)cbBrain.getSelectedItem();
 				Jaw jaw = (Jaw)cbJaw.getSelectedItem();
 				Claws claw = (Claws)cbClaws.getSelectedItem();
@@ -309,6 +329,7 @@ public class CreatureConfiguration {
 				FightStrategy fight = (FightStrategy)cbFightStrategy.getSelectedItem();
 				String name = tbCreatureName.getText();
 				Teeth teeth = (Teeth)cbTeeth.getSelectedItem();
+				int numberOfCreatures = Integer.parseInt(txtNumberOfCreatures.getText());
 				
 				CreatureBuilder builder = new CreatureBuilder();
 				builder.setBrain(brain);
@@ -321,15 +342,16 @@ public class CreatureConfiguration {
 				builder.setTeeth(teeth);
 				builder.setTorso(torso);
 				Creature creature = builder.buildCreature();
-
-				XMLCreatureReader xmlReader = new XMLCreatureReader();
-				//TODO: Finish implementation of XML writer and reader
-				try {
-					xmlReader.WriteToFile(creature);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				
+				List<Creature> listOfCreatures = new ArrayList<Creature>();
+				
+				for (int i = 0; i < numberOfCreatures; i++){
+					listOfCreatures.add(creature.clone());
 				}
+				
+				}
+
+			
 				frame.setVisible(false);
 			}
 		});
@@ -339,6 +361,16 @@ public class CreatureConfiguration {
 		frame.getContentPane().add(btnCreate, gbc_btnCreate);
 		
 	
+	}
+	
+	public static boolean isInteger(String s) {
+	    try { 
+	        Integer.parseInt(s); 
+	    } catch(NumberFormatException e) { 
+	        return false; 
+	    }
+	    // only got here if we didn't return false
+	    return true;
 	}
 
 }

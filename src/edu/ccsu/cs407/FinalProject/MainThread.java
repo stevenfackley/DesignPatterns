@@ -3,6 +3,7 @@ package edu.ccsu.cs407.FinalProject;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,6 +11,7 @@ import javax.swing.JPanel;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 import edu.ccsu.cs407.FinalProject.Environment.Grid;
 import edu.ccsu.cs407.FinalProject.UI.MyFrame;
+import edu.ccsu.cs407.FinalProject.UI.Configration.CreatureConfiguration;
 
 public class MainThread implements Runnable
 {
@@ -47,34 +49,53 @@ public class MainThread implements Runnable
 		 /*
 		  * CODE TO BE RUN ONCE AT THE START OF THE PROGRAM
 		  */
-		ConcreteCreatureFactory factory = ConcreteCreatureFactory.getInstance();
-		// Make a creature by making a call to the creature factory
-		Creature wolf = factory.createCreature("wolf");
-		// Print the creature
-		System.out.println(wolf.toString());
+		OpenMainGameBoard();
+		boolean continueToMainThread = false;
+		
+		CreatureConfiguration window = new CreatureConfiguration();
+		window.frame.setVisible(true);
 		tileSize = (double)canvasWidth/width;
 		frame = new MyFrame(canvasWidth,canvasHeight+30);
 		grid = new Grid(width);
+		
+		
 		try {
 			/*
 			 * CODE TO BE RUN OVER THE LIFE OF THE PROGRAM
 			 */
 			while(true){
-				while(pause){
+				if (!continueToMainThread){
+					try {
+						List<Creature> creatures = window.GetCreatures();
+						grid.addCreatures(creatures);
+						continueToMainThread = true;
+					} catch (Exception e) {
+						continueToMainThread = false;
+					}
+				}
+				
+				if (continueToMainThread){
+					
+					while(pause){
+						Thread.sleep(1);
+						time++;
+					}
+					if(grid!=null && time%timePerFrame==0){
+						grid.step();
+						frames++;
+					}
 					Thread.sleep(1);
 					time++;
 				}
-				if(grid!=null && time%timePerFrame==0){
-					grid.step();
-					frames++;
-				}
-				Thread.sleep(1);
-				time++;
 			}
 			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private void OpenMainGameBoard(){
+		
 	}
 }

@@ -2,9 +2,11 @@ package edu.ccsu.cs407.FinalProject.Environment;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.List;
 import java.util.Random;
 
 import edu.ccsu.cs407.FinalProject.MainThread;
+import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 import edu.ccsu.cs407.FinalProject.UI.MouseInput;
 
 /**
@@ -44,7 +46,7 @@ public class Grid {
 		int area=width*width;
 		seedLand(area/250);
 		growLand(25);
-		addCreatures(area/10);
+		//addCreatures(area/10);
 	}
 	/**
 	 * @param x x-position on the grid
@@ -102,15 +104,15 @@ public class Grid {
 	}
 	
 	//Debug Method
-	private void addCreatures(int num){
+	public void addCreatures(List<Creature> creatures){
 		int randX = 0;
 		int randY = 0;
-		ConcreteCreatureFactory factory = ConcreteCreatureFactory.getInstance();
-		for(int i=0; i<num; i++){
+		
+		for(int i=0; i < creatures.size(); i++){
 			randX = rand.nextInt(width);
 			randY = rand.nextInt(width);
 			if(data[randX][randY] instanceof Land && data[randX][randY].getCreature()==null){
-				data[randX][randY].setCreature(factory.createCreature("wolf"));
+				data[randX][randY].setCreature(creatures.get(i));
 			}
 		}
 	}

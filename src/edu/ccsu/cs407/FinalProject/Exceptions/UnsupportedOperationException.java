@@ -13,8 +13,11 @@ public class UnsupportedOperationException extends Exception
 	/**
 	 * Throws the exception
 	 */
-	public UnsupportedOperationException()
-	{
+	public UnsupportedOperationException(){
 		super("This is an unsupported operation.");
+	}
+	
+	public UnsupportedOperationException(String message){
+		super(message);
 	}
 }
