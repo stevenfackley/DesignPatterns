@@ -21,13 +21,12 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 	
 	public Creature()
 	{}
-
 	
-	/**
-	 * This method determines a standard turn for most animals. It can
-	 * be overridden for additional functionality. At the least creatures
-	 * must move, fight, and eat.
-	 */
+	public Creature(String n, FightStrategy f)
+	{
+		fighting = f;
+		name = n;
+	}
 	
 	public void Fight()
 	{
@@ -54,10 +53,9 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 	{
 		String s;
 		
-		s = name + "\n" + "\nHealth: " + this.getHealth() +
+		s = name + "\nHealth: " + this.getHealth() +
 			"\nWeight: " + this.getWeight() + "\nSpeed: " + this.getSpeed() +
-			"\nDamage: " + this.getDamage() + "\nFly: " + this.canFly() + 
-			"\nSwim: " + this.canSwim() + "\nEat Larger: " + this.canEatLarger() +
+			"\nDamage: " + this.getDamage() + "\nEat Larger: " + this.canEatLarger() +
 			"\nEats Plants: " + this.canEatPlants() + "\nEats Animals " + this.canEatAnimals() + 
 			"\nCannibal: " + this.canEatSameSpecies() + "\nFighting Strategy: " + fighting.toString();
 		

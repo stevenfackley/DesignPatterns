@@ -49,22 +49,23 @@ public class MutatedCreatureFactory implements MutationFactory
 		Creature creature = c;
 		Random randgen = new Random();
 		int x = randgen.nextInt(4);
+		int mod = randgen.nextInt(2) + 1;
 		
 		if (x == 0)
 		{
-			creature = new HealthMutator(creature, m);
+			creature = new HealthMutator(creature, randgen.nextInt(2) + mod);
 		}
 		if (x == 1)
 		{
-			creature = new SpeedMutator(creature, m);
+			creature = new SpeedMutator(creature, randgen.nextInt(2) + mod);
 		}
 		if (x == 2)
 		{
-			creature = new WeightMutator(creature, m);
+			creature = new WeightMutator(creature, randgen.nextInt(2) + mod);
 		}
 		if (x == 3)
 		{
-			creature = new DamageMutator(creature, m);
+			creature = new DamageMutator(creature, randgen.nextInt(2) + mod);
 		} 
 		
 		return creature;

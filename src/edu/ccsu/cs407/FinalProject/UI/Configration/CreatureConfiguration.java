@@ -27,6 +27,7 @@ import edu.ccsu.cs407.FinalProject.CreatureParts.DullTeeth;
 import edu.ccsu.cs407.FinalProject.CreatureParts.FastLegs;
 import edu.ccsu.cs407.FinalProject.CreatureParts.GiantHead;
 import edu.ccsu.cs407.FinalProject.CreatureParts.Head;
+import edu.ccsu.cs407.FinalProject.CreatureParts.HybridTeeth;
 import edu.ccsu.cs407.FinalProject.CreatureParts.Jaw;
 import edu.ccsu.cs407.FinalProject.CreatureParts.LargeHead;
 import edu.ccsu.cs407.FinalProject.CreatureParts.LargeJaw;
@@ -49,6 +50,7 @@ import edu.ccsu.cs407.FinalProject.Creatures.CreatureBuilder;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 import edu.ccsu.cs407.FinalProject.FightStrategies.Fights;
 import edu.ccsu.cs407.FinalProject.FightStrategies.RunAway;
+
 
 public class CreatureConfiguration {
 	List<Creature> createdCreatures;
@@ -287,6 +289,7 @@ public class CreatureConfiguration {
 		final JComboBox<Teeth> cbTeeth = new JComboBox<Teeth>();
 		cbTeeth.addItem(new SharpTeeth());
 		cbTeeth.addItem(new DullTeeth());
+		cbTeeth.addItem(new HybridTeeth());
 		GridBagConstraints gbc_cbTeeth = new GridBagConstraints();
 		gbc_cbTeeth.insets = new Insets(0, 0, 5, 0);
 		gbc_cbTeeth.fill = GridBagConstraints.HORIZONTAL;
