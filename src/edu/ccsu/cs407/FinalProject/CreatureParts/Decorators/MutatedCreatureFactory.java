@@ -44,7 +44,7 @@ public class MutatedCreatureFactory implements MutationFactory
 	 * @param mutator to be applied
 	 * @param amount in which to modify the trait
 	 */
-	public Creature CreateMutatedCreature(Creature c, int m) 
+	public Creature CreateMutatedCreature(Creature c) 
 	{
 		Creature creature = c;
 		Random randgen = new Random();
@@ -53,19 +53,19 @@ public class MutatedCreatureFactory implements MutationFactory
 		
 		if (x == 0)
 		{
-			creature = new HealthMutator(creature, randgen.nextInt(2) + mod);
+			creature = new HealthMutator(creature, mod);
 		}
 		if (x == 1)
 		{
-			creature = new SpeedMutator(creature, randgen.nextInt(2) + mod);
+			creature = new SpeedMutator(creature, mod);
 		}
 		if (x == 2)
 		{
-			creature = new WeightMutator(creature, randgen.nextInt(2) + mod);
+			creature = new WeightMutator(creature, mod);
 		}
 		if (x == 3)
 		{
-			creature = new DamageMutator(creature, randgen.nextInt(2) + mod);
+			creature = new DamageMutator(creature, mod);
 		} 
 		
 		return creature;

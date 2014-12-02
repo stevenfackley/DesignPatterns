@@ -2,7 +2,12 @@ package test;
 
 import org.junit.Test;
 
-import edu.ccsu.cs407.FinalProject.Creatures.Rabbit;
+import edu.ccsu.cs407.FinalProject.CreatureParts.Decorators.DamageMutator;
+import edu.ccsu.cs407.FinalProject.CreatureParts.Decorators.HealthMutator;
+import edu.ccsu.cs407.FinalProject.CreatureParts.Decorators.MutatedCreatureFactory;
+import edu.ccsu.cs407.FinalProject.CreatureParts.Decorators.SpeedMutator;
+import edu.ccsu.cs407.FinalProject.CreatureParts.Decorators.WeightMutator;
+import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 import edu.ccsu.cs407.FinalProject.Creatures.Wolf;
 
 public class CreaturePartsTest 
@@ -11,10 +16,10 @@ public class CreaturePartsTest
 	@Test
 	public void test() 
 	{
-		Wolf w = new Wolf();
+		Creature w = new Wolf();
+		System.out.println(w.toString());
+		MutatedCreatureFactory mcf = MutatedCreatureFactory.getInstance();
 		System.out.println(w.toString());
 		
-		Rabbit r = new Rabbit();
-		System.out.println(r.toString());
 	}
 }

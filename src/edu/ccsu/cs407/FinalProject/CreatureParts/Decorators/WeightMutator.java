@@ -12,7 +12,7 @@ import edu.ccsu.cs407.FinalProject.Creatures.Creature;
  */
 
 public class WeightMutator extends CreatureMutator 
-{
+{	
 	/**
 	 * Constructor
 	 * Passes a creature and integer to the super
@@ -32,5 +32,33 @@ public class WeightMutator extends CreatureMutator
 	public int getWeight() 
 	{
 		return creature.getWeight() + mod;
+	}
+	
+	public int getSpeed() 
+	{
+		return creature.getSpeed();
+	}
+	
+	public int getDamage() 
+	{
+		return creature.getDamage();
+	}
+	
+	public int getHealth() 
+	{
+		return creature.getHealth();
+	}
+	
+	public String toString()
+	{
+		String s;
+		
+		s = this.getName() + "\nHealth: " + this.getHealth() +
+			"\nWeight: " + this.getWeight() + "\nSpeed: " + this.getSpeed() +
+			"\nDamage: " + this.getDamage() + "\nEat Larger: " + this.canEatLarger() +
+			"\nEats Plants: " + this.canEatPlants() + "\nEats Animals " + this.canEatAnimals() + 
+			"\nCannibal: " + this.canEatSameSpecies() + "\nFighting Strategy: " + this.getFightStrategy().toString();
+		
+		return s;
 	}
 }

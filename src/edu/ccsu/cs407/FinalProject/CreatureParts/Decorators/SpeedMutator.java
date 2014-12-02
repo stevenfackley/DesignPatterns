@@ -34,4 +34,32 @@ public class SpeedMutator extends CreatureMutator
 	{
 		return creature.getSpeed() + mod;
 	}
+	
+	public int getDamage() 
+	{
+		return creature.getDamage();
+	}
+	
+	public int getHealth() 
+	{
+		return creature.getHealth();
+	}
+
+	public int getWeight() 
+	{
+		return creature.getWeight();
+	}
+	
+	public String toString()
+	{
+		String s;
+		
+		s = this.getName() + "\nHealth: " + this.getHealth() +
+			"\nWeight: " + this.getWeight() + "\nSpeed: " + this.getSpeed() +
+			"\nDamage: " + this.getDamage() + "\nEat Larger: " + this.canEatLarger() +
+			"\nEats Plants: " + this.canEatPlants() + "\nEats Animals " + this.canEatAnimals() + 
+			"\nCannibal: " + this.canEatSameSpecies() + "\nFighting Strategy: " + this.getFightStrategy().toString();
+		
+		return s;
+	}
 }

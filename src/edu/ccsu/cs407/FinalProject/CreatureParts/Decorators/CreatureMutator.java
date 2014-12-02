@@ -2,6 +2,7 @@ package edu.ccsu.cs407.FinalProject.CreatureParts.Decorators;
 
 import edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent;
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
+import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 
 /**
  * This abstract class defines the shell for a 
@@ -36,24 +37,54 @@ public abstract class CreatureMutator extends Creature
 	 *  These methods pass the calls the to creature
 	 *  that was wrapped
 	 */
-	public int getHealth()
+	public abstract int getHealth();
+	public abstract int getSpeed();
+	public abstract int getDamage();
+	public abstract int getWeight();
+	
+	public void Fight()
 	{
-		return creature.getHealth();
+		creature.Fight(); 
 	}
-
-	public int getSpeed() 
+	
+	public String getName()
 	{
-		return creature.getSpeed();
+		return creature.getName();
 	}
-
-	public int getDamage() 
+	
+	public void setName(String s)
 	{
-		return creature.getDamage();
+		creature.setName(s);
 	}
-
-	public int getWeight() 
+	
+	public void setFightStrategy(FightStrategy f)
 	{
-		return creature.getWeight();
+		creature.setFightStrategy(f);
+	}
+	
+	public FightStrategy getFightStrategy()
+	{
+		return creature.getFightStrategy();
+	}
+	
+	public void setPosition(int x,int y)
+	{
+		creature.setPosition(x, y);
+	}
+	
+	public int getX()
+	{
+		return creature.getX();
+	}
+	
+	public int getY()
+	{
+		return creature.getY();
+	}
+	
+	public void takeDamage(int damage)
+	{
+		creature.takeDamage(damage);
 	}
 	
 	public boolean canFly() 
@@ -101,8 +132,5 @@ public abstract class CreatureMutator extends Creature
 		return creature.getChild(i);
 	}
 	
-	public String toString()
-	{
-		return creature.toString();
-	}
+	public abstract String toString();
 }

@@ -1,11 +1,6 @@
 package edu.ccsu.cs407.FinalProject.Creatures;
 
 
-import java.awt.List;
-import java.util.ArrayList;
-import java.util.Random;
-
-import edu.ccsu.cs407.FinalProject.MainThread;
 import edu.ccsu.cs407.FinalProject.CreatureParts.CompositeCreatureComponent;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 
@@ -27,8 +22,7 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 	private int posY = 0;
 	private int damageTaken = 0;
 	
-	public Creature()
-	{}
+	public Creature(){}
 	
 	public Creature(String n, FightStrategy f)
 	{
@@ -56,38 +50,53 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 		fighting = f;
 	}
 	
+	public FightStrategy getFightStrategy()
+	{
+		return fighting;
+	}
+	
 	public void setPosition(int x,int y){
 		posX=x;
 		posY=y;
 	}
 	
-	private void takeDamage(int damage){
+	public int getX()
+	{
+		return posX;
+	}
+	
+	public int getY()
+	{
+		return posY;
+	}
+	
+	public void takeDamage(int damage)
+	{
 		damageTaken+=damage;
 	}
 	
-	public int getDamageTaken() {
+	public int getDamageTaken()
+	{
 		return damageTaken;
 	}
-	@Override
+	
 	public String toString()
 	{
 		String s;
 		
-		s = name + "\nHealth: " + this.getHealth() +
-			"\nWeight: " + this.getWeight() + "\nSpeed: " + this.getSpeed() +
-			"\nDamage: " + this.getDamage() + "\nEat Larger: " + this.canEatLarger() +
-			"\nEats Plants: " + this.canEatPlants() + "\nEats Animals " + this.canEatAnimals() + 
-			"\nCannibal: " + this.canEatSameSpecies() + "\nFighting Strategy: " + fighting.toString();
+		s = name + "\nHealth: " + getHealth() +
+			"\nWeight: " + getWeight() + "\nSpeed: " + getSpeed() +
+			"\nDamage: " + getDamage() + "\nEat Larger: " + canEatLarger() +
+			"\nEats Plants: " + canEatPlants() + "\nEats Animals " + canEatAnimals() + 
+			"\nCannibal: " + canEatSameSpecies() + "\nFighting Strategy: " + fighting.toString();
 		
 		return s;
 	}
 	
-	@Override
 	public Creature clone()
 	{
 	    Creature creature = this;
 	  
-
 	    return creature;
 	}	
 }

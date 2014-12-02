@@ -12,5 +12,5 @@ import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 
 public interface MutationFactory 
 {
-	public Creature CreateMutatedCreature(Creature c, int x);
+	public Creature CreateMutatedCreature(Creature c);
 }
