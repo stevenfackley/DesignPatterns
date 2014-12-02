@@ -1,7 +1,10 @@
 package edu.ccsu.cs407.FinalProject.Creatures;
 
 
+import java.util.Iterator;
+
 import edu.ccsu.cs407.FinalProject.CreatureParts.CompositeCreatureComponent;
+import edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 
 /**
@@ -95,8 +98,23 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 	
 	public Creature clone()
 	{
-	    Creature creature = this;
-	  
+	    Creature creature = new Creature();
+	    
+	    //set name on clone
+	    creature.setName(getName());
+	    
+	    //set fighting strategy
+	    creature.setFightStrategy(getFightStrategy());
+	    
+	    //set taken damage
+	    creature.takeDamage(getDamageTaken());
+	    
+	    //set body parts
+	    for (CreatureComponent component : this.getCreatureComponents())
+	    {
+	    	creature.add(component);
+	    }
+	   
 	    return creature;
-	}	
+	}
 }

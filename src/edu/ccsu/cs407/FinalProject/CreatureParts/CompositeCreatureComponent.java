@@ -6,6 +6,17 @@ import java.util.Iterator;
 public class CompositeCreatureComponent extends CreatureComponent 
 {
 	private ArrayList<CreatureComponent> creatureComponents = new ArrayList<CreatureComponent>();
+	private Iterator iterator = null;
+	
+	public Iterator getIterator()
+	{
+		if (iterator == null)
+		{
+			iterator = new CompositeIterator(creatureComponents.iterator());
+		}
+		
+		return iterator;
+	}
 	
 	public void add(CreatureComponent c)
 	{
@@ -22,11 +33,10 @@ public class CompositeCreatureComponent extends CreatureComponent
 		return creatureComponents.get(i);
 	}
 	
-	public ArrayList<CreatureComponent> getCreatureComponents(){
+	public ArrayList<CreatureComponent> getCreatureComponents()
+	{
 		return creatureComponents;
 	}
-	
-	
 	
 	public int getHealth()
 	{

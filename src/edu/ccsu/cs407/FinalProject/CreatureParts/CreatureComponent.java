@@ -1,5 +1,7 @@
 package edu.ccsu.cs407.FinalProject.CreatureParts;
 
+import java.util.Iterator;
+
 
 /**
  * Abstract class to provide interface for creature components
@@ -11,6 +13,11 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public abstract class CreatureComponent
 {
+	
+	public Iterator createIterator()
+	{
+		return new NullIterator();
+	}
 	
 	/**
 	 * Add
