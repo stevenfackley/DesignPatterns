@@ -42,8 +42,7 @@ public class TurnHandler
 	 */
 	public static TurnHandler getInstance()
 	{
-		if (instance == null)
-		{
+		if (instance == null){
 			instance = new TurnHandler();
 		}
 		return instance;
@@ -56,30 +55,36 @@ public class TurnHandler
 	 * if the grid changes.
 	 * @param grig g
 	 */
-	public void setGrid(Grid g)
-	{
+	public void setGrid(Grid g){
 		grid = g;
 		creatures = grid.getCreatures();
 	}
 	
-	public void step()
-	{
-		//ExecuteCreatureTurn(creatures.get(0));
+	/**
+	 * Steps through creature turn
+	 */
+	public void step(){
 		
-		for (Creature c : creatures)
-		{
+		for (Creature c : creatures){
 			ExecuteCreatureTurn(c);
 		}
 	}
 	
 	
-	private void ExecuteCreatureTurn(Creature c)
-	{
+	/**
+	 * Executes a creatures turn
+	 * @param c Creature
+	 */
+	private void ExecuteCreatureTurn(Creature c){
 		Eat(c);
 	}
 	
-	private void Eat(Creature c)
-	{
+	
+	/**
+	 * Gets a creature to eat
+	 * @param c Creature
+	 */
+	private void Eat(Creature c){
 		System.out.println(c.getX() + " " + c.getY());
 		ArrayList<Tile> surroundings = new ArrayList<Tile>();
 		surroundings = getSurroundings(c);
@@ -210,6 +215,11 @@ public class TurnHandler
 
 	}
 	
+	/**
+	 * @param surroundings
+	 * @param c
+	 * @return
+	 */
 	private ArrayList<Tile> locateFoodSources(ArrayList<Tile> surroundings, Creature c)
 	{
 		if (c.canEatPlants() && (c.canEatAnimals() == false))
@@ -241,6 +251,11 @@ public class TurnHandler
 		return surroundings;
 	}
 	
+	/**
+	 * @param ct
+	 * @param t
+	 * @return
+	 */
 	private Tile getFarthestOpen(Tile ct, ArrayList<Tile> t)
 	{
 
@@ -283,6 +298,10 @@ public class TurnHandler
 		
 	}
 	
+	/**
+	 * @param c
+	 * @return
+	 */
 	private ArrayList<Tile> getSurroundings(Creature c)
 	{
 		// list of tiles in range of creatures movement speed
@@ -331,6 +350,11 @@ public class TurnHandler
 		return tiles;
 	}
 	
+	/**
+	 * @param t
+	 * @param c
+	 * @return
+	 */
 	private ArrayList<Tile> LookForPlants(ArrayList<Tile> t, Creature c)
 	{
 		ArrayList<Tile> tiles = new ArrayList<Tile>();
@@ -349,6 +373,11 @@ public class TurnHandler
 		return tiles;
 	}
 	
+	/**
+	 * @param t
+	 * @param c
+	 * @return
+	 */
 	private ArrayList<Tile> LookForPrey(ArrayList<Tile> t, Creature c)
 	{
 		ArrayList<Tile> tiles = t; 
@@ -415,6 +444,11 @@ public class TurnHandler
 		return tiles;
 	}
 	
+	/**
+	 * @param ct
+	 * @param tiles
+	 * @return
+	 */
 	private Tile getClosest(Tile ct, ArrayList<Tile> tiles)
 	{
 		// pick the closest tile to the creature from a list of tiles
@@ -437,6 +471,10 @@ public class TurnHandler
 		return closestTile;
 	}
 	
+	/**
+	 * @param t
+	 * @return
+	 */
 	private ArrayList<Tile> copyTileList(ArrayList<Tile> t)
 	{
 		ArrayList<Tile> tiles = new ArrayList<Tile>();
