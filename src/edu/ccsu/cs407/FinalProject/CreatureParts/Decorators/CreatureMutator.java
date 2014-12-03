@@ -137,5 +137,10 @@ public abstract class CreatureMutator extends Creature
 		return creature.getDamageTaken();
 	}
 	
+	public int getSufficientFood()
+	{
+		return creature.getSufficientFood();
+	}
+	
 	public abstract String toString();
 }

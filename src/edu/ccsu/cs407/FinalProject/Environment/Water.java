@@ -6,7 +6,10 @@ import java.awt.Color;
  * @author grunes
  */
 public class Water extends Tile{
-	public Water(){}
+	public Water(int x, int y)
+	{
+		super(x,y);
+	}
 	/**
 	 * Always returns blue
 	 */

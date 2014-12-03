@@ -347,14 +347,14 @@ public class CreatureConfiguration {
 					builder.setTorso(torso);
 					Creature creature = builder.buildCreature();
 					
-					List<Creature> listOfCreatures = new ArrayList<Creature>();
+					ArrayList<Creature> listOfCreatures = new ArrayList<Creature>();
 					
 					for (int i = 0; i < numberOfCreatures; i++){
 						listOfCreatures.add(creature.clone());
 					}
 					frame.setVisible(false);
-					MainThread.LaunchTileUI();
-					MainThread.grid.addCreatures(listOfCreatures);
+					MainThread.LaunchTileUI(listOfCreatures);
+					//MainThread.grid.addCreatures(listOfCreatures);
 				}
 			}
 		});

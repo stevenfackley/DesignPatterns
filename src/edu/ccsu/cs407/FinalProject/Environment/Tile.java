@@ -16,7 +16,13 @@ public class Tile {
 	protected double plants = 0;
 	protected int maxPlants = 0;
 	protected Creature creature = null;
-	public Tile(){}
+	private int xPos;
+	private int yPos;
+	public Tile(int x, int y)
+	{
+		xPos = x;
+		yPos = y;
+	}
 	/**
 	 * Draws the tile to the screen and if the tile is zoomed
 	 * in enough draws any creatures on the tile
@@ -70,6 +76,43 @@ public class Tile {
 	public Creature getCreature(){
 		return creature;
 	}
+	
+	/**
+	 * @return x position of the tile
+	 */
+	public int getX()
+	{
+		return xPos;
+	}
+	
+	/**
+	 * @return y position of the tile
+	 */
+	public int getY()
+	{
+		return yPos;
+	}
+	
+	/**
+	 * @param tile t
+	 * @return distance between this tile and another tile
+	 * passed in to the argument.
+	 */
+	public double getDistance(Tile t)
+	{
+		double xDif = t.getX() - xPos;
+		double yDif = t.getY() - yPos;
+		double xDifSq = xDif * xDif;
+		double yDifSq = yDif * yDif;
+		double result = Math.sqrt(Math.abs(xDifSq+yDifSq));
+		
+		
+		return result;
+	}
+	
+	
+	
+	
 	/**
 	 * @param plants value of plants to set the tile to
 	 */

@@ -20,7 +20,7 @@ public class Grid {
 	private int width;
 	private Tile data[][];
 	private TileFactory tileFactory = TileFactory.getInstance();
-	private ArrayList<Creature> creatures = new ArrayList<Creature>();
+	private ArrayList<Creature> creaturesOnBoard = new ArrayList<Creature>();
 	
 	/**
 	 * Calls the step function on every tile in the grid
@@ -54,8 +54,9 @@ public class Grid {
 	 * @param y y-position on the grid
 	 * @return the tile at that location
 	 */
-	public Tile getTile(int x,int y){
-		return data[x][y];
+	public Tile getTile(int x,int y)
+	{
+			return data[x][y];
 	}
 	/**
 	 * sets a tile at a location on the grid
@@ -66,7 +67,7 @@ public class Grid {
 	 * @param range the range of the number of plants
 	 */
 	public void setTile(int x,int y,String tile,int minPlants,int range){
-		data[x][y] = tileFactory.createTile(tile,minPlants,range);
+		data[x][y] = tileFactory.createTile(tile,minPlants,range, x, y);
 	}
 	/**
 	 * @return returns the width of the grid
@@ -104,20 +105,53 @@ public class Grid {
 		}
 	}
 	
+	public int getNumberofLandSquares()
+	{	int count = 0;
+		
+		for(int i=0; i<width; i++)
+		{
+			for(int j=0; j<width; j++)
+			{
+				if(data[i][j] instanceof Land)
+				{
+					count++;
+				}
+			}
+		}
+		
+		return count;
+	}
+	
 	//Debug Method
-	public void addCreatures(List<Creature> creatures){
+	public void addCreatures(ArrayList<Creature> creatures){
 		int randX = 0;
 		int randY = 0;
 		
-		for(int i=0; i < creatures.size(); i++){
-			randX = rand.nextInt(width);
-			randY = rand.nextInt(width);
+		for(int i=0; i < creatures.size() && i < getNumberofLandSquares(); i++){
+			// generate random tiles until one is inhabitable
+			boolean inhabitable = false;
+			
+			while (inhabitable == false)
+			{
+				randX = rand.nextInt(width);
+				randY = rand.nextInt(width);
+				if(data[randX][randY] instanceof Land && data[randX][randY].getCreature()==null)
+				{
+					inhabitable = true;
+				}
+			}
+
 			if(data[randX][randY] instanceof Land && data[randX][randY].getCreature()==null){
 				data[randX][randY].setCreature(creatures.get(i));
 				data[randX][randY].getCreature().setPosition(randX, randY);
-				creatures.add(data[randX][randY].getCreature());
+				creaturesOnBoard.add(data[randX][randY].getCreature());
 			}
 		}
+	}
+	
+	public ArrayList<Creature> getCreatures()
+	{
+		return creaturesOnBoard;
 	}
 	/**
 	 * @param x x-position on the grid

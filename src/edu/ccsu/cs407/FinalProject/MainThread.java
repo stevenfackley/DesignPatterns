@@ -1,15 +1,11 @@
 package edu.ccsu.cs407.FinalProject;
 
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.util.List;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.util.ArrayList;
 
 import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 import edu.ccsu.cs407.FinalProject.Environment.Grid;
+import edu.ccsu.cs407.FinalProject.Simulation.TurnHandler;
 import edu.ccsu.cs407.FinalProject.UI.MyFrame;
 import edu.ccsu.cs407.FinalProject.UI.Configration.CreatureConfiguration;
 
@@ -35,6 +31,8 @@ public class MainThread implements Runnable
 	// top level swing container
 	public static MyFrame frame=null;
 	public static boolean pause=true;
+	public static TurnHandler turnHandler = TurnHandler.getInstance();
+	
 	
 	public static void main(String[] args) 
 	{
@@ -44,10 +42,12 @@ public class MainThread implements Runnable
 
 	MainThread(){}
 	
-	public static void LaunchTileUI(){
+	public static void LaunchTileUI(ArrayList<Creature> creatures){
 		tileSize = (double)canvasWidth/width;
 		frame = new MyFrame(canvasWidth,canvasHeight+30);
 		grid = new Grid(width);
+		grid.addCreatures(creatures);
+		turnHandler.setGrid(grid);
 	}
 	
 	@Override
@@ -71,7 +71,7 @@ public class MainThread implements Runnable
 					}
 					if(grid!=null && time%timePerFrame==0){
 						grid.step();
-						//add turn handler functionality here
+						turnHandler.step();
 						frames++;
 					}
 				}

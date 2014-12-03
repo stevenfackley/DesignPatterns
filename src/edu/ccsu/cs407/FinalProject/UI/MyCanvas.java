@@ -48,13 +48,14 @@ public class MyCanvas extends JPanel {
 		g.fillRect(x, y, w, h);
 		g.setColor(Color.BLACK);
 		g.drawString("Grid Square: " + Integer.toString(MainThread.realGridSize) + "m",15, 25);
-		g.drawString("Plants: " + (int)MainThread.grid.getMouseOver().getPlants()+"/" + (int)MainThread.grid.getMouseOver().getMaxPlants(), 15, 50);
+		g.drawString(MainThread.grid.getMouseOver().getX() + "," + MainThread.grid.getMouseOver().getY(), 15, 50);
+		g.drawString("Plants: " + (int)MainThread.grid.getMouseOver().getPlants()+"/" + (int)MainThread.grid.getMouseOver().getMaxPlants(), 15, 75);
 		String CreatureString = "";
 		if(MainThread.grid.getMouseOver().getCreature()!=null && MainThread.tileSize>5){
 			CreatureString+=MainThread.grid.getMouseOver().getCreature().getName();
 			CreatureString+= " "  + (MainThread.grid.getMouseOver().getCreature().getHealth()-MainThread.grid.getMouseOver().getCreature().getDamageTaken());
 			CreatureString+= "/"  + MainThread.grid.getMouseOver().getCreature().getHealth();
-			g.drawString(CreatureString, 15, 75);
+			g.drawString(CreatureString, 15, 100);
 		}
 		g.drawString("Time:" + MainThread.time + "ms", 10, 107);
 		g.drawString("Frames:" + MainThread.frames, 110, 107);

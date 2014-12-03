@@ -9,7 +9,8 @@ import java.util.Random;
  */
 public class Land extends Tile{
 	
-	public Land(int maxPlants, int range){
+	public Land(int maxPlants, int range, int x, int y){
+		super(x, y);
 		Random rand = new Random();
 		this.maxPlants = maxPlants;
 		if(range>0)

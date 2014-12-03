@@ -26,10 +26,10 @@ public class TileFactory {
 	 * @param minPlants the min number of plants(1-100)
 	 * @param range the range of the number of plants
 	 */
-	public Tile createTile(String name, int maxPlants, int range){
+	public Tile createTile(String name, int maxPlants, int range, int x, int y){
 		if(name.equalsIgnoreCase("water"))
-			return new Water();
+			return new Water(x, y);
 		else
-			return new Land(maxPlants,range);
+			return new Land(maxPlants,range, x, y);
 	}
 }

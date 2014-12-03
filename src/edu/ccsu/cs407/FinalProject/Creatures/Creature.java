@@ -83,6 +83,11 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 		return damageTaken;
 	}
 	
+	public int getSufficientFood()
+	{
+		return (int) Math.rint(getWeight()*.1+.5);
+	}
+	
 	public String toString()
 	{
 		String s;
