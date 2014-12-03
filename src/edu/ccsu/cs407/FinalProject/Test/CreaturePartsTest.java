@@ -1,4 +1,4 @@
-package test;
+package edu.ccsu.cs407.FinalProject.Test;
 
 import java.util.ArrayList;
 import java.util.Random;

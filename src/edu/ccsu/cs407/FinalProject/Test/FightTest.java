@@ -1,4 +1,4 @@
-package test;
+package edu.ccsu.cs407.FinalProject.Test;
 
 import static org.junit.Assert.*;
 import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;

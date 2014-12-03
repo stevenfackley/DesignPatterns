@@ -17,6 +17,10 @@ public class UnsupportedOperationException extends Exception
 		super("This is an unsupported operation.");
 	}
 	
+	/**
+	 * Throws an exception with custom message
+	 * @param message
+	 */
 	public UnsupportedOperationException(String message){
 		super(message);
 	}
