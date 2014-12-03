@@ -10,13 +10,19 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class SmallHead extends Head 
 {
-	public SmallHead()
-	{
+	/**
+	 * Default constructor
+	 * Health 3 
+	 * Weight 2
+	 */
+	public SmallHead(){
 		super(3, 2);
 	}
 
-	public String toString() 
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Head#toString()
+	 */
+	public String toString() {
 		return "Small Head";
 	}
 }

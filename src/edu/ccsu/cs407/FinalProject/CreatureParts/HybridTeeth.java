@@ -8,18 +8,22 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author steven
  */
-
-
 public class HybridTeeth extends Teeth 
 {
+	/**
+	 * Default Constructor
+	 * passes true, true 5
+	 */
 	public HybridTeeth() 
 	{
 		super(true, true, 5);
 	}
 
 
-	public String toString() 
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Teeth#toString()
+	 */
+	public String toString() {
 		return "Hybrid Teeth (Omnivore)";
 	}
 	

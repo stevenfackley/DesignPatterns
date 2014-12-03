@@ -3,237 +3,254 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Composite Creature Component Class
+ * Defines a creatures component
+ * @author Steven 
+ * @author Dylan
+ * @author Seth
+ */
 public class CompositeCreatureComponent extends CreatureComponent 
 {
 	private ArrayList<CreatureComponent> creatureComponents = new ArrayList<CreatureComponent>();
 	private Iterator iterator = null;
 	
-	public Iterator getIterator()
-	{
-		if (iterator == null)
-		{
+	/**
+	 * Gets an iterator
+	 * @return Iterator object
+	 */
+	public Iterator getIterator(){
+		if (iterator == null){
 			iterator = new CompositeIterator(creatureComponents.iterator());
 		}
-		
 		return iterator;
 	}
 	
-	public void add(CreatureComponent c)
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#add(edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent)
+	 */
+	public void add(CreatureComponent c){
 		creatureComponents.add(c);
 	}
 	
-	public void remove(CreatureComponent c)
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#remove(edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent)
+	 */
+	public void remove(CreatureComponent c){
 		creatureComponents.remove(c);
 	}
 	
-	public CreatureComponent getChild(int i)
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#getChild(int)
+	 */
+	public CreatureComponent getChild(int i){
 		return creatureComponents.get(i);
 	}
 	
-	public ArrayList<CreatureComponent> getCreatureComponents()
-	{
+	/**
+	 * Gets a list of current creature components
+	 * @return Array List of creature components
+	 */
+	public ArrayList<CreatureComponent> getCreatureComponents(){
 		return creatureComponents;
 	}
 	
-	public int getHealth()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#getHealth()
+	 */
+	public int getHealth(){
 		int health = 0;
 		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()){
 			CreatureComponent creatureComponent = iterator.next();
-		
-				try 
-				{
+				try {
 					health += creatureComponent.getHealth();
 				} 
-				catch (UnsupportedOperationException e) {}
+				catch (UnsupportedOperationException e) {
+					throw e;
+				}
 		}
-		
 		return health;
 	}
 	
-	public int getSpeed()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#getSpeed()
+	 */
+	public int getSpeed(){
 		int speed = 0;
 		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()){
 			CreatureComponent creatureComponent = iterator.next();
 		
-				try 
-				{
+				try {
 					speed += creatureComponent.getSpeed();
 				} 
-				catch (UnsupportedOperationException e) {}
+				catch (UnsupportedOperationException e) {
+					throw e;
+				}
 		}
 		
 		return speed;
 	}
 	
-	public int getWeight()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#getWeight()
+	 */
+	public int getWeight(){
 		int weight = 0;
 		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()){
 			CreatureComponent creatureComponent = iterator.next();
 		
-				try 
-				{
+				try {
 					weight += creatureComponent.getWeight();
 				} 
-				catch (UnsupportedOperationException e) {}
+				catch (UnsupportedOperationException e) {
+					throw e;
+				}
 		}
 		return weight;
 	}
 	
-	public int getDamage()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#getDamage()
+	 */
+	public int getDamage(){
 		int damage = 0;
 		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()){
 			CreatureComponent creatureComponent = iterator.next();
 		
-				try 
-				{
+				try {
 					damage += creatureComponent.getDamage();
 				} 
-				catch (UnsupportedOperationException e) {}
+				catch (UnsupportedOperationException e) {
+					throw e;
+				}
 		}
 		return damage;
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#canFly()
+	 */
 	public boolean canFly()
 	{
 		boolean fly = false;
 		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()){
 			CreatureComponent creatureComponent = iterator.next();
 		
-				try 
-				{
-					if (creatureComponent.canFly())
-					{
-						fly=true;
-					}
+				try {
+					fly = creatureComponent.canFly() ? true:fly;
 				} 
-				catch (UnsupportedOperationException e) {}
+				catch (UnsupportedOperationException e) {
+					throw e;
+				}
 		}
 		return fly;
 	}
 	
-	public boolean canSwim()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#canSwim()
+	 */
+	public boolean canSwim(){
 		boolean swim= false;
 		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()){
 			CreatureComponent creatureComponent = iterator.next();
 		
-				try 
-				{
-					if (creatureComponent.canSwim())
-					{
-						swim=true;
-					}
+				try {
+					swim = creatureComponent.canSwim() ? true : swim;
 				} 
-				catch (UnsupportedOperationException e) {}
+				catch (UnsupportedOperationException e) {
+					throw e;
+				}
 		}
 		return swim;
 	}
 	
-	public boolean canEatLarger()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#canEatLarger()
+	 */
+	public boolean canEatLarger(){
 		boolean larger = false;
 		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()){
 			CreatureComponent creatureComponent = iterator.next();
 		
-				try 
-				{
-					if (creatureComponent.canEatLarger())
-					{
-						larger=true;
-					}
+				try {
+					larger = creatureComponent.canEatLarger() ? true : larger;
 				} 
-				catch (UnsupportedOperationException e) {}
+				catch (UnsupportedOperationException e) {
+					throw e;
+				}
 		}
 		return larger;
 	}
 	
-	public boolean canEatPlants()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#canEatPlants()
+	 */
+	public boolean canEatPlants(){
 		boolean omni = false;
 		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()){
 			CreatureComponent creatureComponent = iterator.next();
-		
-				try 
-				{
-					if (creatureComponent.canEatPlants())
-					{
-						omni=true;
-					}
+				try {		
+					omni = creatureComponent.canEatPlants() ? true : omni;
 				} 
-				catch (UnsupportedOperationException e) {}
+				catch (UnsupportedOperationException e) {
+					throw e;
+				}
 		}
 		return omni;
 	}
 
-	public boolean canEatAnimals()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#canEatAnimals()
+	 */
+	public boolean canEatAnimals(){
 		boolean carn = false;
 		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()){
 			CreatureComponent creatureComponent = iterator.next();
 		
-				try 
-				{
-					if (creatureComponent.canEatAnimals())
-					{
-						carn=true;
-					}
+				try {
+					carn = creatureComponent.canEatAnimals() ? true : carn;
 				} 
-				catch (UnsupportedOperationException e) {}
+				catch (UnsupportedOperationException e) {
+					throw e;
+				}
 		}
 		return carn;
 	}
 
-	public boolean canEatSameSpecies()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#canEatSameSpecies()
+	 */
+	public boolean canEatSameSpecies(){
 		boolean cannibal = false;
 		Iterator<CreatureComponent> iterator = creatureComponents.iterator();
 		
-		while (iterator.hasNext())
-		{
+		while (iterator.hasNext()){
 			CreatureComponent creatureComponent = iterator.next();
 		
-				try 
-				{
-					if (creatureComponent.canEatAnimals())
-					{
-						cannibal=true;
-					}
+				try {			
+					cannibal = creatureComponent.canEatAnimals() ? true : cannibal;
 				} 
-				catch (UnsupportedOperationException e) {}
+				catch (UnsupportedOperationException e) {
+					throw e;
+				}
 		}
 		return cannibal;
 	}

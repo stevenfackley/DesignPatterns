@@ -7,17 +7,20 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author stevenv
  */
-
 public class FastLegs extends Legs 
 {
-	public FastLegs()
-	{
+	/**
+	 * calls 10,5,15,4 on super
+	 */
+	public FastLegs(){
 		super(10, 5, 15, 4);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Legs#toString()
+	 */
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		return "Fast Legs";
 	}
 }

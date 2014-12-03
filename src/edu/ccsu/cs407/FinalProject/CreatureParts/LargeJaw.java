@@ -8,18 +8,21 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author steven
  */
-
-
 public class LargeJaw extends Jaw
 {
-	public LargeJaw() 
-	{
+	/**
+	 * Default Constructor
+	 * Can eat larger animals
+	 */
+	public LargeJaw() {
 		super(true);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Jaw#toString()
+	 */
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		return "Large Jaw (Eat Larger Animals)";
 	}
 

@@ -7,17 +7,21 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author steven
  */
-
 public class WeakClaws extends Claws
 {
 
-	public WeakClaws()
-	{
+	/**
+	 * Default constructor
+	 * adds 3 damage
+	 */
+	public WeakClaws(){
 		super(3);
 	}
 
-	public String toString() 
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Claws#toString()
+	 */
+	public String toString() {
 		return "Weak Claws";
 	}
 }
