@@ -8,20 +8,21 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author steven
  */
-
-
 public class NormalJaw extends Jaw 
 {
 
-	public NormalJaw() 
-	{
+	/**
+	 * Default constructor
+	 * Cannot eat larger animals
+	 */
+	public NormalJaw() {
 		super(false);
 	}
 
 	@Override
 	public String toString() 
 	{
-		return "Normal Jaw, Cant eat larger animals."; 
+		return "Normal Jaw (Cant eat larger animals)"; 
 	}
 
 }

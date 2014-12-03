@@ -7,17 +7,21 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author steven
  */
-
-
 public class NormalBrain extends Brain 
 {
-	public NormalBrain() 
-	{
+	/**
+	 * Constructor
+	 * Passes false to Brain indicating
+	 * animal is not a cannibal
+	 */
+	public NormalBrain() {
 		super(false);
 	}
 	
-	public String toString()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Brain#toString()
+	 */
+	public String toString(){
 		return "Normal Brain (Not a Cannibal)";
 	}
 }

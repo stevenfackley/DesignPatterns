@@ -9,17 +9,22 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author steve
  */
-
 public class GiantHead extends Head 
 {
-	public GiantHead()
-	{
+	/**
+	 * Default constructor
+	 * Health 12
+	 * Weight 8
+	 */
+	public GiantHead(){
 		super(12, 8);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Head#toString()
+	 */
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		return "Giant Head";
 	}
 }

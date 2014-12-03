@@ -2,20 +2,34 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 import java.util.Iterator;
 
+/**
+ * Null iterator
+ * Used where an iterator is not necessary for a composite
+ * @author dcruz
+ * @author seth
+ * @author steven
+ *
+ */
 public class NullIterator implements Iterator
 {
-	public Object next()
-	{
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#next()
+	 */
+	public Object next(){
 		return null;
 	}
 	
-	public boolean hasNext()
-	{
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#hasNext()
+	 */
+	public boolean hasNext(){
 		return false;
 	}
 	
-	public void remove()
-	{
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#remove()
+	 */
+	public void remove(){
 		throw new UnsupportedOperationException();
 	}
 }

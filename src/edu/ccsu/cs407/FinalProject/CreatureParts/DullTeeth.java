@@ -8,13 +8,19 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  */
 
-public class DullTeeth extends Teeth 
-{
+public class DullTeeth extends Teeth{
+	/**
+	 * Default constructor
+	 * Passes true, false, 3 to super
+	 */
 	public DullTeeth() 
 	{
 		super(true, false, 3);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Teeth#toString()
+	 */
 	@Override
 	public String toString() 
 	{

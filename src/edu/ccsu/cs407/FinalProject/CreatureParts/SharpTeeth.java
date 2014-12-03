@@ -11,13 +11,19 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 public class SharpTeeth extends Teeth 
 {
 
-	public SharpTeeth() 
-	{
+	/**
+	 * Default constructor
+	 * Passes false true 7 to super
+	 * 
+	 */
+	public SharpTeeth() {
 		super(false, true, 7);
 	}
 	
-	public String toString()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Teeth#toString()
+	 */
+	public String toString(){
 		return "Sharp Teeth";
 	}
 

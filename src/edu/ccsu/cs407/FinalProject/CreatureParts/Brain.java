@@ -7,7 +7,6 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author steve
  */
-
 public abstract class Brain extends CreatureComponent 
 {
 	private boolean cannibal;
@@ -17,15 +16,19 @@ public abstract class Brain extends CreatureComponent
 	 * used by inheritors to set the boolean value
 	 * @param c
 	 */
-	protected Brain(boolean c) 
-	{
+	protected Brain(boolean c) {
 		cannibal = c;
 	}
 	
-	public boolean canEatSameSpecies()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#canEatSameSpecies()
+	 */
+	public boolean canEatSameSpecies(){
 		return cannibal;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public abstract String toString();
 }

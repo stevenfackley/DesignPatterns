@@ -11,14 +11,20 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class MediumHead extends Head 
 {
-	public MediumHead()
-	{
+	/**
+	 * Default Constructor
+	 * Health 6
+	 * Weight 4
+	 */
+	public MediumHead(){
 		super(6,4);
 	}
 
 
-	public String toString()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Head#toString()
+	 */
+	public String toString(){
 		return "Medium Head";
 	}
 }

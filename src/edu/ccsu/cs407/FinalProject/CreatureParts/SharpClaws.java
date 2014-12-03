@@ -7,17 +7,20 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author steven
  */
-
-
 public class SharpClaws extends Claws 
 {
-	public SharpClaws() 
-	{
+	/**
+	 * Default constructor
+	 * Add 10 damage
+	 */
+	public SharpClaws() {
 		super(10);
 	}
 	
-	public String toString()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Claws#toString()
+	 */
+	public String toString(){
 		return "Sharp Claws";
 	}
 }

@@ -14,15 +14,18 @@ public class CompositeIterator implements Iterator
 {
 	Stack stack = new Stack();
 	
-	public CompositeIterator(Iterator iterator)
-	{
+	/**
+	 * @param iterator
+	 */
+	public CompositeIterator(Iterator iterator){
 		stack.push(iterator);
 	}
 	
-	public Object next()
-	{
-		if (hasNext())
-		{
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#next()
+	 */
+	public Object next(){
+		if (hasNext()){
 			Iterator iterator = (Iterator) stack.peek();
 			CreatureComponent component = (CreatureComponent) iterator.next();
 			if (component instanceof CompositeCreatureComponent)
@@ -37,29 +40,29 @@ public class CompositeIterator implements Iterator
 		}
 	}
 	
-	public boolean hasNext()
-	{
-		if (stack.empty())
-		{
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#hasNext()
+	 */
+	public boolean hasNext(){
+		if (stack.empty()){
 			return false;
 		}
-		else
-		{
+		else{
 			Iterator iterator = (Iterator) stack.peek();
-			if( !iterator.hasNext())
-			{
+			if( !iterator.hasNext()){
 				stack.pop();
 				return hasNext();
 			}
-			else
-			{
+			else{
 				return true;
 			}
 		}
 	}
 	
-	public void remove()
-	{
+	/* (non-Javadoc)
+	 * @see java.util.Iterator#remove()
+	 */
+	public void remove(){
 		throw new UnsupportedOperationException();
 	}
 }

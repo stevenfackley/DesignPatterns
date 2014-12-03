@@ -16,16 +16,14 @@ public class AverageClaws extends Claws
 	 * Calls on parents constructor passing in a hard
 	 * coded damage statistic.
 	 */
-	public AverageClaws() 
-	{
+	public AverageClaws() {
 		super(5);
 	}
 
 	/**
 	 * To string
 	 */
-	public String toString()
-	{
+	public String toString(){
 		return "Average Claws";
 	}
 }

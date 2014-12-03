@@ -10,13 +10,19 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class MediumTorso extends Torso 
 {
-	public MediumTorso()
-	{
+	/**
+	 * Default constructor
+	 * Health 20
+	 * Weight 10
+	 */
+	public MediumTorso(){
 		super(20, 10);
 	}
 	
-	public String toString()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Torso#toString()
+	 */
+	public String toString(){
 		return "Medium Torso";
 	}
 }

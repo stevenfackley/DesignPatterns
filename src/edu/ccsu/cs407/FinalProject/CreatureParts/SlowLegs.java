@@ -7,16 +7,20 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author steven 
  */
-
 public class SlowLegs extends Legs 
 {
-	public SlowLegs()
-	{
+	/**
+	 * calls 20,15,5,8 on super
+	 */
+	public SlowLegs(){
 		super(20, 15, 5, 8);
 	}
 	
-	public String toString()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Legs#toString()
+	 */
+	@Override
+	public String toString(){
 		return "Slow Legs";
 	}
 }

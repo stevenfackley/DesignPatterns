@@ -12,7 +12,6 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
  * @author seth
  * @author steven
  */
-
 public abstract class Legs extends CompositeCreatureComponent 
 {
 	int health;
@@ -20,6 +19,13 @@ public abstract class Legs extends CompositeCreatureComponent
 	int speed;
 	int damage;
 	
+	/**
+	 * Constructor
+	 * @param h health
+	 * @param w weight
+	 * @param s speed
+	 * @param d damage
+	 */
 	protected Legs(int h, int w, int s, int d)
 	{
 		health = h;

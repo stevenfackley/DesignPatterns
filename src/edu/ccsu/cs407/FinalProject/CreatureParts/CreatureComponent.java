@@ -14,6 +14,11 @@ import java.util.Iterator;
 public abstract class CreatureComponent
 {
 	
+	/**
+	 * Creates an iterator
+	 * Default returns null iterator
+	 * @return null iterator
+	 */
 	public Iterator createIterator()
 	{
 		return new NullIterator();

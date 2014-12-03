@@ -10,14 +10,21 @@ package edu.ccsu.cs407.FinalProject.CreatureParts;
 
 public class LargeTorso extends Torso 
 {
-	public LargeTorso()
-	{
+
+	/**
+	 * Default Constructor
+	 * Health 30
+	 * Weight 15
+	 */
+	public LargeTorso(){
 		super(30, 15);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.Torso#toString()
+	 */
 	@Override
-	public String toString() 
-	{
+	public String toString() {
 		return "Large Torso";
 	}
 }

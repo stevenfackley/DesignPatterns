@@ -18,8 +18,12 @@ public abstract class Torso extends CompositeCreatureComponent
 	int health;
 	int weight;
 	
-	protected Torso(int h, int w)
-	{
+	/**
+	 * Default Constructor
+	 * @param h health
+	 * @param w weight
+	 */
+	protected Torso(int h, int w){
 		health = h;
 		weight = w;
 	}
@@ -28,8 +32,7 @@ public abstract class Torso extends CompositeCreatureComponent
 	 * getHealth
 	 * @return health
 	 */
-	public int getHealth()
-	{
+	public int getHealth(){
 		return health + super.getHealth();
 	}
 	
@@ -37,10 +40,12 @@ public abstract class Torso extends CompositeCreatureComponent
 	 * getWeight
 	 * @return weight
 	 */
-	public int getWeight()
-	{
+	public int getWeight(){
 		return weight + super.getWeight();
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public abstract String toString();
 }

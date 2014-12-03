@@ -17,15 +17,19 @@ public abstract class Claws extends CreatureComponent
 	 * used by inheritors to pass in a damage stat
 	 * @param d
 	 */
-	protected Claws(int d) 
-	{
+	protected Claws(int d) {
 		damage = d;
 	}
 	
-	public int getDamage()
-	{
+	/* (non-Javadoc)
+	 * @see edu.ccsu.cs407.FinalProject.CreatureParts.CreatureComponent#getDamage()
+	 */
+	public int getDamage(){
 		return damage;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public abstract String toString();
 }
