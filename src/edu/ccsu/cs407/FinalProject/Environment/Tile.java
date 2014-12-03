@@ -121,44 +121,7 @@ public class Tile {
 		attackingCreature = c;
 	}
 	
-	public void battleCreatures()
-	{
-		if (creature!=null && attackingCreature!=null)
-		{
-			// attacking creature deals damage
-			creature.takeDamage(attackingCreature.getDamage());
-			checkVictor();
-		}
-		
-		if (creature!=null && attackingCreature!=null)
-		{	
-			// defending creature deals damage
-			attackingCreature.takeDamage(creature.getDamage());
-			checkVictor();
-		}
-	}
 	
-	private void checkVictor()
-	{
-			// if attacking creature is dead set it to null
-			// and call heal on creature in space eating the 
-			// attacking creature
-		if (attackingCreature.getDamageTaken() >= attackingCreature.getHealth())
-		{
-			creature.heal(attackingCreature.getWeight());
-			attackingCreature = null;
-		}
-		
-			// if defending creature is dead set attacking creature to null
-			// and set creature to attacking creature
-			// call heal on it eating the defending creature
-		if (creature.getDamageTaken() >= creature.getHealth())
-		{
-			attackingCreature.heal(creature.getWeight());
-			creature = attackingCreature;
-			attackingCreature = null;
-		}
-	}
 	
 	/**
 	 * @param plants value of plants to set the tile to
@@ -172,15 +135,15 @@ public class Tile {
 	/**
 	 * @param creature a creature to be added to the tile
 	 */
-	public void setCreature(Creature c){
-		if (c==null)
-		{
-			this.creature = null;
-		}
-		else
-		{
+	public void setCreature(Creature c)
+	{
+
 			this.creature=c;
-		}
+	}
+	
+	public void clearCreature()
+	{
+		this.creature = null;
 	}
 	/**
 	 * @return the color of the tile

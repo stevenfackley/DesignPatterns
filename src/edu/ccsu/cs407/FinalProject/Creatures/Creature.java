@@ -85,9 +85,30 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 	
 	public void heal(int d)
 	{
+
 		if (damageTaken > 0)
 		{
 			damageTaken -= d;
+		}
+	}
+	
+	public Creature fight(Creature attackingCreature)
+	{
+		while (damageTaken < getHealth() && attackingCreature.getDamageTaken() < attackingCreature.getHealth())
+		{
+			attackingCreature.takeDamage(getDamage());
+			this.takeDamage(attackingCreature.getDamage());
+		}
+		
+		if (attackingCreature.getDamageTaken()>= attackingCreature.getHealth())
+		{
+			heal(attackingCreature.getWeight());
+			return this;
+		}
+		else
+		{
+			attackingCreature.heal(this.getWeight());
+			return attackingCreature;
 		}
 	}
 	
