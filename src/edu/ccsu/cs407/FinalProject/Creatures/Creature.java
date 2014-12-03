@@ -10,7 +10,7 @@ import edu.ccsu.cs407.FinalProject.FightStrategies.FightStrategy;
 /**
  * Creature class outlines a typical creature. Creatures have
  * a name, eating behavior, movement behavior, fighting behavior,
- * a size, a movement speed, can be a cannibal, and can eat larger animals
+ * a size, a movement speed, can be a cannibal, and can eat larger animals 
  * 
  * @author seth
  * @author steve
@@ -81,6 +81,14 @@ public class Creature extends CompositeCreatureComponent implements Cloneable
 	public int getDamageTaken()
 	{
 		return damageTaken;
+	}
+	
+	public void heal(int d)
+	{
+		if (damageTaken > 0)
+		{
+			damageTaken -= d;
+		}
 	}
 	
 	public int getSufficientFood()

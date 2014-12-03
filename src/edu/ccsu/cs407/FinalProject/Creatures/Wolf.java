@@ -10,7 +10,7 @@ import edu.ccsu.cs407.FinalProject.CreatureParts.MediumTorso;
 import edu.ccsu.cs407.FinalProject.CreatureParts.SharpClaws;
 import edu.ccsu.cs407.FinalProject.CreatureParts.SharpTeeth;
 import edu.ccsu.cs407.FinalProject.CreatureParts.Torso;
-import edu.ccsu.cs407.FinalProject.FightStrategies.Hybrid;
+import edu.ccsu.cs407.FinalProject.FightStrategies.Fights;
 
 /**
  * Wolf
@@ -28,7 +28,7 @@ public class Wolf extends Creature
 
 	public Wolf() 
 	{
-		super("Wolf", new Hybrid());
+		super("Wolf", new Fights());
 		
 		Legs l = new AverageLegs();
 		l.add(new SharpClaws());

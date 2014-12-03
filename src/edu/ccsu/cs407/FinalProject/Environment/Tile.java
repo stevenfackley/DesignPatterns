@@ -16,6 +16,7 @@ public class Tile {
 	protected double plants = 0;
 	protected int maxPlants = 0;
 	protected Creature creature = null;
+	protected Creature attackingCreature = null;
 	private int xPos;
 	private int yPos;
 	public Tile(int x, int y)
@@ -110,8 +111,54 @@ public class Tile {
 		return result;
 	}
 	
+	public Creature getAttackingCreature()
+	{
+		return attackingCreature;
+	}
 	
+	public void setAttackingCreature(Creature c)
+	{
+		attackingCreature = c;
+	}
 	
+	public void battleCreatures()
+	{
+		if (creature!=null && attackingCreature!=null)
+		{
+			// attacking creature deals damage
+			creature.takeDamage(attackingCreature.getDamage());
+			checkVictor();
+		}
+		
+		if (creature!=null && attackingCreature!=null)
+		{	
+			// defending creature deals damage
+			attackingCreature.takeDamage(creature.getDamage());
+			checkVictor();
+		}
+	}
+	
+	private void checkVictor()
+	{
+			// if attacking creature is dead set it to null
+			// and call heal on creature in space eating the 
+			// attacking creature
+		if (attackingCreature.getDamageTaken() >= attackingCreature.getHealth())
+		{
+			creature.heal(attackingCreature.getWeight());
+			attackingCreature = null;
+		}
+		
+			// if defending creature is dead set attacking creature to null
+			// and set creature to attacking creature
+			// call heal on it eating the defending creature
+		if (creature.getDamageTaken() >= creature.getHealth())
+		{
+			attackingCreature.heal(creature.getWeight());
+			creature = attackingCreature;
+			attackingCreature = null;
+		}
+	}
 	
 	/**
 	 * @param plants value of plants to set the tile to
@@ -125,8 +172,15 @@ public class Tile {
 	/**
 	 * @param creature a creature to be added to the tile
 	 */
-	public void setCreature(Creature creature){
-		this.creature=creature;
+	public void setCreature(Creature c){
+		if (c==null)
+		{
+			this.creature = null;
+		}
+		else
+		{
+			this.creature=c;
+		}
 	}
 	/**
 	 * @return the color of the tile

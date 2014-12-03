@@ -64,28 +64,120 @@ public class TurnHandler
 	
 	public void step()
 	{
-		ExecuteCreatureTurn(creatures.get(0));
+		//ExecuteCreatureTurn(creatures.get(0));
+		
+		for (Creature c : creatures)
+		{
+			ExecuteCreatureTurn(c);
+		}
 	}
 	
 	
 	private void ExecuteCreatureTurn(Creature c)
 	{
-		System.out.println(c.getX() + " " + c.getY());
-		ArrayList<Tile> workingList = new ArrayList<Tile>();
-		workingList = getSurroundings(c);
-		Tile target = getFarthestOpen(grid.getTile(c.getX(), c.getY()), workingList);
-		System.out.println(target.getX() + " " + target.getY());
+		Eat(c);
 	}
-	private void Eat(Creature c, Tile t)
+	
+	private void Eat(Creature c)
 	{
-		ArrayList<Tile> workingList = new ArrayList<Tile>();
-		workingList = getSurroundings(c);
-		workingList = locateFoodSources(workingList, c);
+		System.out.println(c.getX() + " " + c.getY());
+		ArrayList<Tile> surroundings = new ArrayList<Tile>();
+		surroundings = getSurroundings(c);
+		
+		ArrayList<Tile> foodList = new ArrayList<Tile>();
+		foodList = locateFoodSources(surroundings, c);
 		
 		// if the creature found food sources
-		if (workingList.size()>0)
+		if (foodList.size()>0)
 		{
-			Tile foodtarget = getClosest(grid.getTile(c.getX(), c.getY()), workingList);
+			Tile foodTarget = getClosest(grid.getTile(c.getX(), c.getY()), foodList);
+			
+			// the target doesnt have a creature on it then eat plants
+			if (foodTarget.getCreature()==null)
+			{
+				// move to the target
+				// set old grid space creature instance to null
+				grid.getTile(c.getX(), c.getY()).setCreature(null);
+				
+				// set the creature instance of the grid space to c
+				grid.getTile(foodTarget.getX(), foodTarget.getY()).setCreature(c);
+				
+				// update the position on the creature in the list
+				c.setPosition(foodTarget.getX(), foodTarget.getY());
+				
+				// eat plants
+				c.heal(c.getSufficientFood());
+				
+				// deduct plants from the target
+				foodTarget.setPlants(((int)foodTarget.getPlants() - c.getSufficientFood()));
+			}
+			// creature is a carnivore and targeted a space with a creature
+			else
+			{
+				// set attacking creature on tile
+				foodTarget.setAttackingCreature(c);
+				
+				// update attacking creatures old tile
+				grid.getTile(c.getX(), c.getY()).setCreature(null);
+				
+				// update the coordinate on attackingCreature
+				foodTarget.getAttackingCreature().setPosition(foodTarget.getX(), foodTarget.getY());
+				
+				// if defending creature fight strategy is run
+				// attempt to run away. 
+				if (foodTarget.getCreature().getFightStrategy().toString().equalsIgnoreCase("Runs"))
+				{
+					Random rand = new Random();
+					
+					if (foodTarget.getCreature().getSpeed() > foodTarget.getAttackingCreature().getSpeed())
+					{
+						int x = rand.nextInt(2);
+						
+						// run away successful. 
+						// Relocate old creature
+						// set attacking creature to null
+						// deal damage to new creature based on its food need
+						if (x == 1)
+						{
+							// relocate
+							ArrayList<Tile> fleeOptions = new ArrayList<Tile>();
+							fleeOptions = getSurroundings(foodTarget.getCreature());
+							Tile fleeTile = getFarthestOpen(foodTarget, fleeOptions);
+							
+							// set the creature instance of the grid space to fleeing creature
+							fleeTile.setCreature(foodTarget.getCreature());
+							
+							// set old grid space creature instance to new creature
+							foodTarget.setCreature(foodTarget.getAttackingCreature());
+							
+							// set old attacking creature to null so theres no fight
+							foodTarget.setAttackingCreature(null);
+							
+							// update the position on the creature in the list
+							fleeTile.getCreature().setPosition(fleeTile.getX(), fleeTile.getY());
+							
+							// deal damage to the attacking creature for not eating. At least they 
+							// got the space though...
+							foodTarget.getCreature().takeDamage(foodTarget.getCreature().getSufficientFood());
+						}
+					}
+					else
+					{
+						creatures.remove(foodTarget.getAttackingCreature());
+						creatures.remove(foodTarget.getCreature());
+						
+						// FIGHT!!!
+						while (foodTarget.getAttackingCreature()!=null)
+						{
+							foodTarget.battleCreatures();
+						}
+						
+						creatures.add(0, foodTarget.getCreature());
+					}
+					
+				}
+				
+			}
 		}
 		// the creature didnt find food
 		else
@@ -94,17 +186,28 @@ public class TurnHandler
 			c.takeDamage(c.getSufficientFood());
 			
 			//check if its dead, if so remove it from the list
+			//and remove it from the grid
 			if (c.getDamageTaken() >= c.getHealth())
 			{
 				creatures.remove(c);
+				grid.getTile(c.getX(), c.getY()).setCreature(null);
 			}
 			//move creature to farthest open space on its range
 			else
 			{
-				Tile moveTarget = getFarthestOpen(grid.getTile(c.getX(), c.getY()), workingList);
+				Tile moveTarget = getFarthestOpen(grid.getTile(c.getX(), c.getY()), surroundings);
+				
+				// set the creature instance of the old grid space to null
+				grid.getTile(c.getX(), c.getY()).setCreature(null);
+				
+				// set the creature instance of the grip space to c
+				grid.getTile(moveTarget.getX(), moveTarget.getY()).setCreature(c);
+				
+				// update the creatures coordinates
 				c.setPosition(moveTarget.getX(), moveTarget.getY());
 			}
 		}
+
 	}
 	
 	private ArrayList<Tile> locateFoodSources(ArrayList<Tile> surroundings, Creature c)
@@ -137,6 +240,7 @@ public class TurnHandler
 		
 		return surroundings;
 	}
+	
 	private Tile getFarthestOpen(Tile ct, ArrayList<Tile> t)
 	{
 

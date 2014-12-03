@@ -21,6 +21,6 @@ public class RunAway implements FightStrategy
 	}
 	public String toString()
 	{
-		return ("Runs Away");
+		return ("Runs");
 	}
 }

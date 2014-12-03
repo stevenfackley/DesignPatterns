@@ -68,7 +68,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 					health += creatureComponent.getHealth();
 				} 
 				catch (UnsupportedOperationException e) {
-					throw e;
+					
 				}
 		}
 		return health;
@@ -88,7 +88,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 					speed += creatureComponent.getSpeed();
 				} 
 				catch (UnsupportedOperationException e) {
-					throw e;
+					
 				}
 		}
 		
@@ -109,7 +109,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 					weight += creatureComponent.getWeight();
 				} 
 				catch (UnsupportedOperationException e) {
-					throw e;
+					
 				}
 		}
 		return weight;
@@ -129,7 +129,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 					damage += creatureComponent.getDamage();
 				} 
 				catch (UnsupportedOperationException e) {
-					throw e;
+				
 				}
 		}
 		return damage;
@@ -150,7 +150,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 					fly = creatureComponent.canFly() ? true:fly;
 				} 
 				catch (UnsupportedOperationException e) {
-					throw e;
+					
 				}
 		}
 		return fly;
@@ -170,7 +170,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 					swim = creatureComponent.canSwim() ? true : swim;
 				} 
 				catch (UnsupportedOperationException e) {
-					throw e;
+					
 				}
 		}
 		return swim;
@@ -190,7 +190,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 					larger = creatureComponent.canEatLarger() ? true : larger;
 				} 
 				catch (UnsupportedOperationException e) {
-					throw e;
+					
 				}
 		}
 		return larger;
@@ -209,7 +209,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 					omni = creatureComponent.canEatPlants() ? true : omni;
 				} 
 				catch (UnsupportedOperationException e) {
-					throw e;
+					
 				}
 		}
 		return omni;
@@ -229,7 +229,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 					carn = creatureComponent.canEatAnimals() ? true : carn;
 				} 
 				catch (UnsupportedOperationException e) {
-					throw e;
+					
 				}
 		}
 		return carn;
@@ -249,7 +249,7 @@ public class CompositeCreatureComponent extends CreatureComponent
 					cannibal = creatureComponent.canEatAnimals() ? true : cannibal;
 				} 
 				catch (UnsupportedOperationException e) {
-					throw e;
+					
 				}
 		}
 		return cannibal;
