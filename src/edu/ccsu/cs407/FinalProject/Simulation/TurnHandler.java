@@ -8,6 +8,7 @@ import edu.ccsu.cs407.FinalProject.Creatures.Creature;
 import edu.ccsu.cs407.FinalProject.Environment.Grid;
 import edu.ccsu.cs407.FinalProject.Environment.Land;
 import edu.ccsu.cs407.FinalProject.Environment.Tile;
+import edu.ccsu.cs407.FinalProject.Environment.Water;
 
 /**
  * Turn Handler
@@ -83,8 +84,40 @@ public class TurnHandler
 	private void ExecuteCreatureTurn(Creature c)
 	{
 		Eat(c);
+		Random rand = new Random();
+		if(rand.nextDouble()<(.02))
+			workingCreaturesList = reproduce(c,copyCreatureList(workingCreaturesList));
 	}
 	
+	private ArrayList<Creature> reproduce(Creature c, ArrayList<Creature> cl){
+		int offspringTileX = -1;
+		int offspringTileY = -1;
+		if(grid.getTile(c.getX()+1, c.getY()).getCreature()==null && !(grid.getTile(c.getX()+1, c.getY()) instanceof Water)){
+			offspringTileX = c.getX()+1;
+			offspringTileY = c.getY();
+		}
+		if(grid.getTile(c.getX()-1, c.getY()).getCreature()==null && !(grid.getTile(c.getX()-1, c.getY()) instanceof Water)){
+			offspringTileX = c.getX()-1;
+			offspringTileY = c.getY();
+		}
+		if(grid.getTile(c.getX(), c.getY()+1).getCreature()==null && !(grid.getTile(c.getX(), c.getY()+1) instanceof Water)){
+			offspringTileX = c.getX();
+			offspringTileY = c.getY()+1;
+		}
+		if(grid.getTile(c.getX(), c.getY()-1).getCreature()==null && !(grid.getTile(c.getX(), c.getY()-1) instanceof Water)){
+			offspringTileX = c.getX();
+			offspringTileY = c.getY()-1;
+		}
+		if(offspringTileX!=-1 && offspringTileY!=-1){
+			Creature offspring = c.clone();
+			offspring.setPosition(offspringTileX, offspringTileY);
+			offspring.takeDamage(-1*offspring.getDamageTaken());
+			grid.getTile(offspringTileX, offspringTileY).setCreature(offspring);
+			cl.add(offspring);
+		}
+		System.out.println(c.getX() + " "+ c.getY());
+		return cl;
+	}
 	
 	/**
 	 * Gets a creature to eat
@@ -460,5 +493,9 @@ public class TurnHandler
 		
 		return creatures;
 		
+	}
+
+	public int getNumberOfCreatures() {
+		return creatures.size();
 	}
 }

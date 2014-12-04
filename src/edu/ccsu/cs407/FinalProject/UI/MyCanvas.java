@@ -48,6 +48,7 @@ public class MyCanvas extends JPanel {
 		g.fillRect(x, y, w, h);
 		g.setColor(Color.BLACK);
 		g.drawString("Grid Square: " + Integer.toString(MainThread.realGridSize) + "m",15, 25);
+		g.drawString(Integer.toString(MainThread.turnHandler.getNumberOfCreatures()), 65, 50);
 		g.drawString(MainThread.grid.getMouseOver().getX() + "," + MainThread.grid.getMouseOver().getY(), 15, 50);
 		g.drawString("Plants: " + (int)MainThread.grid.getMouseOver().getPlants()+"/" + (int)MainThread.grid.getMouseOver().getMaxPlants(), 15, 75);
 		String CreatureString = "";

@@ -13,7 +13,7 @@ public class SlowLegs extends Legs
 	 * calls 20,15,5,8 on super
 	 */
 	public SlowLegs(){
-		super(20, 15, 5, 8);
+		super(20, 15, 1, 8);
 	}
 	
 	/* (non-Javadoc)

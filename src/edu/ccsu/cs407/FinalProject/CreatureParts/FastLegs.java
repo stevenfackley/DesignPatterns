@@ -13,7 +13,7 @@ public class FastLegs extends Legs
 	 * calls 10,5,15,4 on super
 	 */
 	public FastLegs(){
-		super(10, 5, 15, 4);
+		super(10, 5, 2, 4);
 	}
 
 	/* (non-Javadoc)
